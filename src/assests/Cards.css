@@ -1,0 +1,40 @@
+body{
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", 
+  Helvetica, Arial, "Lucida Grande", sans-serif;
+  }
+.text-danger {
+  font-size: medium;
+}
+.inStock {
+  color: #6fbc22;
+ 
+}
+.special_offer{
+  color: #525252;
+  text-align: center;
+}
+.oldPrice{
+  text-decoration: line-through;
+
+}
+/* Card slider */
+.arrow_slider{
+  background-color: #27579A;
+  border-radius: 50px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  -o-border-radius: 50px;
+}
+.card_title{
+  font-size: 90%;
+}
+.card{
+  margin-top: 5%;
+
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}

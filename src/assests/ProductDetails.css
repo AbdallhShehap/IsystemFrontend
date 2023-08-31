@@ -1,0 +1,118 @@
+.price{
+    font-weight: bold;
+    font-size: 22px;
+}
+.color {
+    width: 30px;
+    height: 30px;
+    /* border: 2px solid red;  */
+    border-radius: 50%;
+  }
+  .container_box{
+    display: flex;
+justify-content: space-around;
+align-items: center; 
+margin-bottom: 2%;
+}
+
+.Deep_Purple{
+    background-color: #62596A;
+
+}
+.Silver{
+    background-color: #EFF1F1;
+}
+.Space_Black{
+    background-color: #403D3B;
+}
+.Gold{
+    background-color: #F6EAD2;
+}
+  .btn_productDetails{
+    background-color: #27579A;
+ 
+}
+  .btn_details_trade{
+    background-color: #668ABC;
+    border-radius:5% ;
+    -webkit-border-radius:5% ;
+    -moz-border-radius:5% ;
+    -ms-border-radius:5% ;
+    -o-border-radius:5% ;
+}
+
+/* / slider image / */
+
+#content-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.column{
+    width: 600px;
+    padding: 10px;
+
+}
+
+#featured{
+    max-width: 500px;
+    max-height: 600px;
+    object-fit: cover;
+    cursor: pointer;
+    margin-bottom: 9%;
+    /* / border: 2px solid black; / */
+
+}
+
+.thumbnail{
+    object-fit: cover;
+    max-width: 180px;
+    max-height: 100px;
+    cursor: pointer;
+    opacity: 0.5;
+    margin: 5px;
+    /* / border: 2px solid black; / */
+
+}
+
+.thumbnail:hover{
+    opacity:1;
+}
+
+.active{
+    opacity: 1;
+}
+
+#slide-wrapper{
+    max-width: 500px;
+    display: flex;
+    min-height: 100px;
+    align-items: center;
+}
+
+#slider{
+    width: 440px;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: hidden;
+/* / margin-right: 2%; */ 
+}
+
+
+
+.arrow{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+
+@media screen and (max-width:768px) {
+   #slider{
+    width: 240px;
+
+   } 
+}

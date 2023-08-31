@@ -1,0 +1,74 @@
+
+@media screen and (min-width:945px) and (max-width: 1100px) {
+   
+      
+      .inputLogin {
+          width: 30%;
+          
+        }
+        .imgLogin {
+          width: 50%;
+          height: 50%;
+        }
+
+  } 
+  
+  @media screen and (min-width:615px) and (max-width: 945px) {
+   
+      
+
+      .imgLogin img {
+        width: 120%;
+        height: 100%;
+      }
+
+      .inputLogin {
+        width: 70%;
+        
+      }
+      
+}
+
+@media  screen and (min-width:506px) and (max-width: 610px) {
+    
+  
+    .imgLogin,
+    .inputLogin {
+      display: block; /* Display each component on a separate line */
+      margin-bottom: 20px; /* Add some spacing between the components */
+    }
+    .imgLogin img {
+        width: 450px;
+    }
+  }
+  
+
+  @media  screen and (min-width:400px) and (max-width: 506px) {
+    
+  
+    .imgLogin,
+    .inputLogin {
+      display: block; /* Display each component on a separate line */
+      margin-bottom: 20px; /* Add some spacing between the components */
+    }
+    .imgLogin img {
+        width: 350px;
+    }
+   
+
+  }
+
+  @media screen and (max-width: 400px) {
+    
+  
+    .imgLogin,
+    .inputLogin {
+      display: block; /* Display each component on a separate line */
+      margin-bottom: 20px; /* Add some spacing between the components */
+    }
+    .imgLogin img {
+        width: 230px;
+    }
+   
+
+  }

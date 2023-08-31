@@ -1,0 +1,26 @@
+input.search_blog {
+    background: transparent url("../images/searchIcon.png") no-repeat 13px center;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+  
+  }
+  .title{
+      font-size: 23px;
+      font-weight: bold;
+  
+  }
+  .paragraph{
+      text-align: justify;
+      font-size: 20px;
+  }
+  @media screen and (max-width:768px) {
+      .title{
+          font-size: 19px;
+      }
+      .paragraph{
+          font-size: 17px;
+      }
+  }

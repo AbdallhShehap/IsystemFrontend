@@ -1,0 +1,94 @@
+
+@media screen and (min-width: 1100px) and (max-width: 1200px) {
+   
+      
+    .inputRegistration {
+        width: 30%;
+        
+      }
+      .imgRegistration {
+        width: 50%;
+        height: 50%;
+      }
+
+} 
+
+
+
+
+
+@media screen and (min-width:945px) and (max-width: 1100px) {
+   
+      
+  
+    .imgRegistration img {
+        width: 120%;
+        height: 100%;
+      }
+  
+      .inputRegistration {
+        width: 70%;
+        
+      }
+
+} 
+
+@media screen and (min-width:615px) and (max-width: 945px) {
+ 
+    
+
+    .imgRegistration img {
+      width: 120%;
+      height: 100%;
+    }
+
+    .inputRegistration {
+      width: 70%;
+      
+    }
+    
+}
+
+@media  screen and (min-width:506px) and (max-width: 610px) {
+  
+
+  .imgRegistration,
+  .inputRegistration {
+    display: block; /* Display each component on a separate line */
+    margin-bottom: 20px; /* Add some spacing between the components */
+  }
+  .imgRegistration img {
+      width: 450px;
+  }
+}
+
+
+@media  screen and (min-width:400px) and (max-width: 506px) {
+  
+
+  .imgRegistration,
+  .inputRegistration {
+    display: block; /* Display each component on a separate line */
+    margin-bottom: 20px; /* Add some spacing between the components */
+  }
+  .imgRegistration img {
+      width: 350px;
+  }
+ 
+
+}
+
+@media screen and (max-width: 400px) {
+  
+
+  .imgRegistration,
+  .inputRegistration {
+    display: block; /* Display each component on a separate line */
+    margin-bottom: 20px; /* Add some spacing between the components */
+  }
+  .imgRegistration img {
+      width: 230px;
+  }
+ 
+
+}

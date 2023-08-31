@@ -1,0 +1,49 @@
+.subscrib {
+  width: 100%;
+  background-color: #27579a;
+  height: 230px;
+  text-align: center;
+  padding-top: 50px;
+}
+
+.text {
+  color: white;
+  margin: 0 auto;
+  width: 60%;
+
+  /* background-color: rgb(255, 240, 244); /
+    margin: 0 auto; / Add this line to horizontally center the text /
+    padding: 20px; / Add some padding for better visual appearance */
+}
+.subscribe {
+  display: flex;
+  justify-content: center;
+}
+.box_subscribe {
+  width: 90%;
+  text-align: center;
+}
+.subscribe_title {
+  font-size: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  /* .box_subscribe{
+   
+    } */
+  .subscribe_title {
+    font-size: 15px;
+  }
+  .subscrib {
+    padding-top: 15px;
+  }
+  #subscribe_btn {
+    margin-left: 60px;
+    font-size: 8px;
+    font-weight: bold;
+  }
+  .input_subscribe::placeholder {
+    /* Set the minimum font size */
+    font-size: 12px;
+  }
+}

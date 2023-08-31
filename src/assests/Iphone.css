@@ -1,0 +1,29 @@
+.slider-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.slider_box{
+  margin: 2% 0 2% 15%;
+
+}
+
+.CARD_STYLE {
+  padding: 10px;
+  border-radius: 20px;
+  background-color: #fff;
+  color: #27579A;
+  border-color: #27579A;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  width: 150px; /* Adjust the width as needed */
+
+}
+@media screen and (max-width:768px) {
+  .slider-container{
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  }
+  
+}
