@@ -1,12 +1,12 @@
-import React from 'react';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-
-
+import React from "react";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import "../assests/Carts.css";
+import Image from "react-bootstrap/Image";
 
 const CartItem = ({ item, updateQuantity }) => {
-  const { name, quantity, price } = item;
+  const { name, img, quantity, price ,color,model} = item;
 
   const handleQuantityChange = (newQuantity) => {
     updateQuantity(item, newQuantity);
@@ -14,22 +14,50 @@ const CartItem = ({ item, updateQuantity }) => {
 
   return (
     <>
-
       <Container fluid="md">
         <Row>
-          <Col className="item-name">{name}</Col>
+          <Col xs={12} xl={3} md={4}>
+            {" "}
+            <Image src={img} fluid className="mx-auto d-block" />
+          </Col>
 
-          <Col className="item-quantity">
-            <button onClick={() => handleQuantityChange(quantity - 1)}>
+          <Col className="item-name mt-3">{name}<br/>{color}<br/>{model}</Col>
+          <br></br>
+          <br></br>
+
+          <Col className="item-quantity mt-4">
+            <button
+              onClick={() => handleQuantityChange(quantity - 1)}
+              className="btn btn-primary btn_remove "
+              style={{
+                backgroundColor: "#27579A",
+                borderRadius: "20px",
+                width: "30px", // Adjust the width as needed
+                height: "30px", // Adjust the height as needed
+                padding: "0", // Remove padding to make the button smaller
+                fontSize: "16px", // Adjust the font size
+              }}
+            >
               -
             </button>
             <span>{quantity}</span>
-            <button onClick={() => handleQuantityChange(quantity + 1)}>
+            <button
+              onClick={() => handleQuantityChange(quantity + 1)}
+              className="btn btn-primary btn_add"
+              style={{
+                backgroundColor: "#27579A",
+                borderRadius: "20px",
+                width: "30px", // Adjust the width as needed
+                height: "30px", // Adjust the height as needed
+                padding: "0", // Remove padding to make the button smaller
+                fontSize: "16px", // Adjust the font size
+              }}
+            >
               +
             </button>
           </Col>
 
-          <Col className="item-price">${price.toFixed(2)}</Col>
+          <Col className="item-price mt-4 text-center">${price.toFixed(2)}</Col>
         </Row>
       </Container>
     </>
@@ -37,7 +65,6 @@ const CartItem = ({ item, updateQuantity }) => {
 };
 
 export default CartItem;
-
 
 // <Container fluid="md">
 // <Row>
