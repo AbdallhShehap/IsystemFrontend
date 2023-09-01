@@ -3,7 +3,7 @@ import "../assests/Information.css";
 function Information() {
   return (
     <div>
-      <div class="container text-center">
+      <div class="container text-center mb-3 mt-5">
         <div class="row">
           <div class="col col_icon">
             <div

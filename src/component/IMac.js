@@ -35,7 +35,7 @@ width={"100%"}          />
           <div className="col-lg-1 ">
             {" "}
             <a
-              className="btn btn-primary mb-3 arrow_slider "
+              className="btn btn-primary mb-3 arrow_slider hide_btn"
               role="button"
               data-slide="prev"
               onClick={() => slider.current.slickPrev()}
@@ -95,7 +95,7 @@ width={"100%"}          />
             <div className="col-lg-1 ">
               {" "}
               <a
-                className="btn btn-primary mb-3 arrow_slider"
+                className="btn btn-primary mb-3 arrow_slider hide_btn"
                 role="button"
                 data-slide="next"
                 onClick={() => slider.current.slickNext()}
