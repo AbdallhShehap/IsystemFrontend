@@ -58,13 +58,13 @@ export default function CardCategories() {
       <Row>
       <Col xs={12} md={12} lg={6}  className='mb-1'>
       <Link to="">
-        <img  src={require("../images/image.png")} width="100%" />
+        <img  src={require("../images/image.png")} className='mr-5' width="87%" height="100%" />
         </Link>
         </Col>
 
         <Col xs={12} md={12} lg={6}  >
         <Link to="">
-        <img src={require("../images/image.png")} width="100%" />
+        <img src={require("../images/image.png")} className='mr-5' width="100%" />
         </Link>
         </Col>
 
