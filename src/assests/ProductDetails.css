@@ -13,6 +13,7 @@
 justify-content: space-around;
 align-items: center; 
 margin-bottom: 2%;
+font-size: 14px;
 }
 
 .Deep_Purple{
@@ -34,31 +35,33 @@ margin-bottom: 2%;
 }
   .btn_details_trade{
     background-color: #668ABC;
-    border-radius:5% ;
-    -webkit-border-radius:5% ;
-    -moz-border-radius:5% ;
-    -ms-border-radius:5% ;
-    -o-border-radius:5% ;
+    border-radius:12px ;
+    -webkit-border-radius:12px ;
+    -moz-border-radius:12px ;
+    -ms-border-radius:12px ;
+    -o-border-radius:12px ;
 }
 
 /* / slider image / */
 
 #content-wrapper{
-    display: flex;
+    /* display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
+    display: grid;
+    justify-content: center;
 }
 
 .column{
-    width: 600px;
+    width: 850px;
     padding: 10px;
 
 }
 
 #featured{
     max-width: 500px;
-    max-height: 600px;
+    height:300px;
     object-fit: cover;
     cursor: pointer;
     margin-bottom: 9%;
@@ -69,7 +72,7 @@ margin-bottom: 2%;
 .thumbnail{
     object-fit: cover;
     max-width: 180px;
-    max-height: 100px;
+    height: 100px;
     cursor: pointer;
     opacity: 0.5;
     margin: 5px;
@@ -86,14 +89,14 @@ margin-bottom: 2%;
 }
 
 #slide-wrapper{
-    max-width: 500px;
+    max-width: 800px;
     display: flex;
     min-height: 100px;
     align-items: center;
 }
 
 #slider{
-    width: 440px;
+    width: 1440px;
     display: flex;
     flex-wrap: nowrap;
     overflow-x: hidden;
@@ -102,17 +105,34 @@ margin-bottom: 2%;
 
 
 
-.arrow{
+/* .arrow{
     width: 30px;
     height: 30px;
     cursor: pointer;
     transition: .3s;
+} */
+.btn_details_cart{
+    background-color: #27579A;
+    border-radius: 12px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -ms-border-radius: 12px;
+    -o-border-radius: 12px;
 }
-
+.product_details{
+    margin-top: 8%;
+}
 
 @media screen and (max-width:768px) {
    #slider{
-    width: 240px;
+    width: 340px;
 
    } 
+.column{
+    width: 250px;
+
+}
+/* #featured{
+    max-width: 19px;
+} */
 }

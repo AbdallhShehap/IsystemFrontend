@@ -5,21 +5,27 @@ import "../assests/Cards.css";
 function CardSlider({ title }) {
   useEffect(() => {
     const carousel = document.getElementById("carouselExampleIndicators2");
-
-    carousel.addEventListener("slide.bs.carousel", function (event) {
-      const indicators = document.querySelectorAll(
-        "#carouselExampleIndicators2 .carousel-indicators li"
-      );
-
-      // Remove the 'active' class from all indicators
-      indicators.forEach((indicator) => {
-        indicator.classList.remove("active");
-      });
-
-      // Add the 'active' class to the new indicator
-      indicators[event.to].classList.add("active");
-    });
+  
+    if (carousel) {
+      carousel.addEventListener("slide.bs.carousel", function (event) {
+        const indicators = document.querySelectorAll(
+          "#carouselExampleIndicators2 .carousel-indicators li"
+        );
+  
+        // Remove the 'active' class from all indicators
+        indicators.forEach((indicator) => {
+          indicator.classList.remove("active");
+        });
+  
+        // Add the 'active' class to the new indicator
+        if (event.to >= 0 && event.to < indicators.length) {
+          indicators[event.to].classList.add("active");
+        }
+              });
+    }
   }, []);
+  
+
 
   return (
     <div>
