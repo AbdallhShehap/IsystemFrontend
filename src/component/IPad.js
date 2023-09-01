@@ -21,95 +21,93 @@ export default function IPad() {
   
   return (
     <>
-      <div className="container-fluid ">
-        <div className="row">
-          <div className="col">
-            <div className="legend-container" >
+            <div >
               
               <img
                 src={require("../images/ipadB.png")}
                 alt=""
-                className="background_slider"
-              
+                height={"670px"}    
+                width={"100%"}                
               />
             </div>{" "}
-          </div>
-        </div>
-        <div className="row slider_box" >
-          <div className="col-lg-1">
-            {" "}
-            <a
-              className="btn btn-primary mb-3 arrow_slider"
-              role="button"
-              data-slide="prev"
-              onClick={() => slider.current.slickPrev()}
-            >
-              <i className="fa fa-arrow-left "></i>
-            </a>
-          </div>
-          <div className="col  d-flex justify-content-center">
-            <div className="slider-container">
-              <Slider {...settings} ref={slider}>
-                <div>
-                  {" "}
-                  <button class="CARD_STYLE" tabindex="-1">
-                  iPad Pro 12.9
-                  </button>
-                </div>
-                <div>
-                  {" "}
-                  <button class="CARD_STYLE" tabindex="-1">
-                  iPad Pro 11
-                  </button>
-                </div>
-                <div>
-                  {" "}
-                  <button class="CARD_STYLE" tabindex="-1">
-                  iPad Pro 12.9
-                  </button>
-                </div>
-                <div>
-                  {" "}
-                  <button class="CARD_STYLE" tabindex="-1">
-                  iPad Pro 11
-                  </button>
-                </div>
-                <div>
-                  {" "}
-                  <button class="CARD_STYLE" tabindex="-1">
-                  iPad Pro 12.9
-                  </button>
-                </div>
-                <div>
-                  {" "}
-                  <button class="CARD_STYLE" tabindex="-1">
-                    watch
-                  </button>
-                </div>
-                <div>
-                  {" "}
-                  <button class="CARD_STYLE" tabindex="-1">
-                    iPad{" "}
-                  </button>
-                </div>
-              </Slider>
-            </div>
-            </div>
-
-            <div className="col">
-              {" "}
-              <a
-                className="btn btn-primary mb-3 arrow_slider"
-                role="button"
-                data-slide="next"
-                onClick={() => slider.current.slickNext()}
-              >
-                <i className="fa fa-arrow-right"></i>
-              </a>
-            </div>
-        </div>
-        <AllProduct />
+   
+        <div >
+    
+    <div className="row slider_box" >
+      <div className="col-lg-1 ">
+        {" "}
+        <a
+          className="btn btn-primary mb-3 arrow_slider "
+          role="button"
+          data-slide="prev"
+          onClick={() => slider.current.slickPrev()}
+        >
+          <i className="fa fa-arrow-left "></i>
+        </a>
       </div>
+      <div className="col-lg-9">
+        <div className="slider-container">
+          <Slider {...settings} ref={slider}>
+            <div>
+              {" "}
+              <button class="CARD_STYLE" tabIndex="-1">
+              iPad,1
+              </button>
+            </div>
+            <div>
+              {" "}
+              <button class="CARD_STYLE" tabIndex="-1">
+              iPad,2
+              </button>
+            </div>
+            <div>
+              {" "}
+              <button class="CARD_STYLE" tabIndex="-1">
+              iPad,1
+              </button>
+            </div>
+            <div>
+              {" "}
+              <button class="CARD_STYLE" tabIndex="-1">
+              iPad,2
+              </button>
+            </div>
+            <div>
+              {" "}
+              <button class="CARD_STYLE" tabIndex="-1">
+                iMac
+              </button>
+            </div>
+            <div>
+              {" "}
+              <button class="CARD_STYLE" tabIndex="-1">
+                watch
+              </button>
+            </div>
+            <div>
+              {" "}
+              <button class="CARD_STYLE" tabIndex="-1">
+                iPad{" "}
+              </button>
+            </div>
+          </Slider>
+        </div>
+        </div>
+
+        <div className="col-lg-1 ">
+          {" "}
+          <a
+            className="btn btn-primary mb-3 arrow_slider"
+            role="button"
+            data-slide="next"
+            onClick={() => slider.current.slickNext()}
+          >
+            <i className="fa fa-arrow-right"></i>
+          </a>
+        </div>
+    </div>
+  </div>
+        <AllProduct />
     </>
   );
 }

@@ -21,25 +21,21 @@ export default function IMac() {
   
   return (
     <>
-      <div className="container-fluid ">
-        <div className="row">
-          <div className="col">
-            <div className="legend-container" >
+            <div  >
               
               <img
                 src={require("../images/Imac.jpg")}
                 alt=""
-                className="background_slider"
-               
-              />
+height={"670px"}    
+width={"100%"}          />
             </div>{" "}
-          </div>
-        </div>
+      <div >
+    
         <div className="row slider_box" >
-          <div className="col-lg-1">
+          <div className="col-lg-1 ">
             {" "}
             <a
-              className="btn btn-primary mb-3 arrow_slider"
+              className="btn btn-primary mb-3 arrow_slider "
               role="button"
               data-slide="prev"
               onClick={() => slider.current.slickPrev()}
@@ -47,48 +43,48 @@ export default function IMac() {
               <i className="fa fa-arrow-left "></i>
             </a>
           </div>
-          <div className="col  d-flex justify-content-center">
+          <div className="col-lg-9">
             <div className="slider-container">
               <Slider {...settings} ref={slider}>
                 <div>
                   {" "}
-                  <button class="CARD_STYLE" tabindex="-1">
+                  <button class="CARD_STYLE" tabIndex="-1">
                   iMac20,1
                   </button>
                 </div>
                 <div>
                   {" "}
-                  <button class="CARD_STYLE" tabindex="-1">
+                  <button class="CARD_STYLE" tabIndex="-1">
                   iMac20,2
                   </button>
                 </div>
                 <div>
                   {" "}
-                  <button class="CARD_STYLE" tabindex="-1">
+                  <button class="CARD_STYLE" tabIndex="-1">
                   iMac19,1
                   </button>
                 </div>
                 <div>
                   {" "}
-                  <button class="CARD_STYLE" tabindex="-1">
+                  <button class="CARD_STYLE" tabIndex="-1">
                   iMac19,2
                   </button>
                 </div>
                 <div>
                   {" "}
-                  <button class="CARD_STYLE" tabindex="-1">
+                  <button class="CARD_STYLE" tabIndex="-1">
                     iMac
                   </button>
                 </div>
                 <div>
                   {" "}
-                  <button class="CARD_STYLE" tabindex="-1">
+                  <button class="CARD_STYLE" tabIndex="-1">
                     watch
                   </button>
                 </div>
                 <div>
                   {" "}
-                  <button class="CARD_STYLE" tabindex="-1">
+                  <button class="CARD_STYLE" tabIndex="-1">
                     iPad{" "}
                   </button>
                 </div>
@@ -96,7 +92,7 @@ export default function IMac() {
             </div>
             </div>
 
-            <div className="col">
+            <div className="col-lg-1 ">
               {" "}
               <a
                 className="btn btn-primary mb-3 arrow_slider"
@@ -108,8 +104,8 @@ export default function IMac() {
               </a>
             </div>
         </div>
-        <AllProduct />
       </div>
+        <AllProduct />
     </>
   );
 }

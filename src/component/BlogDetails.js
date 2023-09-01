@@ -64,7 +64,14 @@ function BlogDetails() {
           voluptas nulla pariatur
         </p>
       </div>
-      <div class="row">
+      <div className="row">
+<div className="col">
+
+      <h3 className="ms-5" >Also In Blog</h3>
+</div>
+      </div>
+      <div className="row">
+
         {details.map((data) => (
           <div class="col">
             <div

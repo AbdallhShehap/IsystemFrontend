@@ -9,7 +9,7 @@ function CardSlider({title}) {
         <div className="container">
           <div className="row">
             <div >
-              <h3 className="mb-3 special_offer">{title}</h3>
+              <h3 className="mb-3 special_offer topAccsesories">{title} </h3>
             </div>
 
             <div className="col-12">

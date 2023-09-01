@@ -26,7 +26,7 @@ function AllProduct() {
                 </div>
                 <div class="card-body">
                   <div class="d-flex justify-content-between">
-                    <p className="small price" style={{ color: "#707070" }}>
+                    <p className="small price" style={{ color: "#C6C6C6",fontSize:"14px "}}>
                       Starting at{" "}
                       <span
                         style={{

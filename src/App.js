@@ -15,6 +15,7 @@ import ISystemCare from "./component/ISystemCare.js"
 import  Registration from "./component/Registration"
 import Home from "./pages/Home.js"
 import Cart from './component/Cart.js';
+import Blog from './component/Blog.js';
 import BlogDetails from './component/BlogDetails.js';
 
 
@@ -39,6 +40,7 @@ function App() {
                 <Route path="isystemcare" element={<ISystemCare />} />
                 <Route path="cart" element={<Cart />} />
                 <Route path="blogdetails" element={<BlogDetails />} />
+                <Route path="blog" element={<Blog />} />
                 <Route path="registration" element={<Registration />} />
           </Route>
           {/* <Route path="login" element={<Login />} /> */}

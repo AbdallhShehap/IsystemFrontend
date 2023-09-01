@@ -25,6 +25,9 @@ body{
   -moz-border-radius: 50px;
   -ms-border-radius: 50px;
   -o-border-radius: 50px;
+  margin-left: 5%;
+  margin-right: 5%;
+
 }
 .card_title{
   font-size: 90%;
@@ -38,3 +41,8 @@ body{
   -ms-border-radius: 20px;
   -o-border-radius: 20px;
 }
+#dot{
+  background-color: #27579A;
+  color:#27579A ;
+}
+

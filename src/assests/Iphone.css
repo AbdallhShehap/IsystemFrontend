@@ -1,9 +1,10 @@
 .slider-container {
   max-width: 800px;
   margin: 0 auto;
+  
 }
 .slider_box{
-  margin: 2% 0 2% 15%;
+  margin: 2% 0 2% 13%;
 
 }
 
@@ -21,9 +22,14 @@
 
 }
 @media screen and (max-width:768px) {
-  .slider-container{
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  .CARD_STYLE{
+ width: 80px;
+ font-size: 10px;
   }
-  
+.hide_btn{
+  display: none;
+}
+.slider-container{
+  margin-right:15px;
+}
 }

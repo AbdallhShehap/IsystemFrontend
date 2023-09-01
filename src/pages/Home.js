@@ -124,10 +124,20 @@ function Home() {
           </div>
         </div>
       </div>
+      <br></br>
+      <br></br>
+      <br></br>
       <CardSlider />
+      <br></br>
+      <br></br>
+      <br></br>
       <CardCategories />
+      <br></br>
+      <br></br>
+      <br></br>
       <TopSellingCard
-       
+       title="Top Selling Accessories" 
+
       />
     </>
   );

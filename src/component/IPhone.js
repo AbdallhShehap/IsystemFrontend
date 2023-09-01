@@ -21,93 +21,90 @@ export default function IPhone() {
   
   return (
     <>
-      <div className="container-fluid ">
-        <div className="row">
-          <div className="col">
             <div className="legend-container">
               <img
                 src={require("../images/iPhone14Backgroundedit.png")}
                 alt=""
-                className="background_slider"
-              />
+                height={"670px"}    
+                width={"100%"}                />
             </div>{" "}
-          </div>
-        </div>
-        <div className="row slider_box" >
-          <div className="col-lg-1">
-            {" "}
-            <a
-              className="btn btn-primary mb-3 arrow_slider"
-              role="button"
-              data-slide="prev"
-              onClick={() => slider.current.slickPrev()}
-            >
-              <i className="fa fa-arrow-left "></i>
-            </a>
-          </div>
-          <div className="col  d-flex justify-content-center">
-            <div className="slider-container">
-              <Slider {...settings} ref={slider}>
-                <div>
-                  {" "}
-                  <button class="CARD_STYLE" tabindex="-1">
-                    iPhone 14
-                  </button>
-                </div>
-                <div>
-                  {" "}
-                  <button class="CARD_STYLE" tabindex="-1">
-                    iPhone 13
-                  </button>
-                </div>
-                <div>
-                  {" "}
-                  <button class="CARD_STYLE" tabindex="-1">
-                    iPhone 12
-                  </button>
-                </div>
-                <div>
-                  {" "}
-                  <button class="CARD_STYLE" tabindex="-1">
-                    iPhone 11
-                  </button>
-                </div>
-                <div>
-                  {" "}
-                  <button class="CARD_STYLE" tabindex="-1">
-                    iMac
-                  </button>
-                </div>
-                <div>
-                  {" "}
-                  <button class="CARD_STYLE" tabindex="-1">
-                    watch
-                  </button>
-                </div>
-                <div>
-                  {" "}
-                  <button class="CARD_STYLE" tabindex="-1">
-                    iPad{" "}
-                  </button>
-                </div>
-              </Slider>
-            </div>
-            </div>
-
-            <div className="col">
-              {" "}
-              <a
-                className="btn btn-primary mb-3 arrow_slider"
-                role="button"
-                data-slide="next"
-                onClick={() => slider.current.slickNext()}
-              >
-                <i className="fa fa-arrow-right"></i>
-              </a>
-            </div>
-        </div>
-        <AllProduct />
+            <div >
+    
+    <div className="row slider_box" >
+      <div className="col-lg-1 ">
+        {" "}
+        <a
+          className="btn btn-primary mb-3 arrow_slider hide_btn"
+          role="button"
+          data-slide="prev"
+          onClick={() => slider.current.slickPrev()}
+        >
+          <i className="fa fa-arrow-left "></i>
+        </a>
       </div>
+      <div className="col-lg-9">
+        <div className="slider-container">
+          <Slider {...settings} ref={slider}>
+            <div>
+              {" "}
+              <button class="CARD_STYLE" tabIndex="-1">
+              iPhone 14
+              </button>
+            </div>
+            <div>
+              {" "}
+              <button class="CARD_STYLE" tabIndex="-1">
+              iPhone 13
+              </button>
+            </div>
+            <div>
+              {" "}
+              <button class="CARD_STYLE" tabIndex="-1">
+              iPhone 12
+              </button>
+            </div>
+            <div>
+              {" "}
+              <button class="CARD_STYLE" tabIndex="-1">
+              iPhone 11
+              </button>
+            </div>
+            <div>
+              {" "}
+              <button class="CARD_STYLE" tabIndex="-1">
+              iPhone x
+              </button>
+            </div>
+            <div>
+              {" "}
+              <button class="CARD_STYLE" tabIndex="-1">
+                watch
+              </button>
+            </div>
+            <div>
+              {" "}
+              <button class="CARD_STYLE" tabIndex="-1">
+                iPad{" "}
+              </button>
+            </div>
+          </Slider>
+        </div>
+        </div>
+
+        <div className="col-lg-1 ">
+          {" "}
+          <a
+            className="btn btn-primary mb-3 arrow_slider hide_btn"
+            role="button"
+            data-slide="next"
+            onClick={() => slider.current.slickNext()}
+          >
+            <i className="fa fa-arrow-right"></i>
+          </a>
+        </div>
+    </div>
+  </div>
+        <AllProduct />
     </>
   );
 }

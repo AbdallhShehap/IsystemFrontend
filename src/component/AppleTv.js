@@ -21,96 +21,97 @@ export default function AppleTv() {
   
   return (
     <>
-      <div className="container-fluid ">
-        <div className="row">
-          <div className="col">
-            <div className="legend-container" >
+            <div >
               
               <img
                 src={require("../images/applications-7025904_1920.jpg")}
                 alt=""
-                className="background_slider"
-              
+                height={"670px"}    
+                width={"100%"}                
               />
             </div>{" "}
-          </div>
-        </div>
-        <div className="row slider_box" >
-          <div className="col-lg-1">
-            {" "}
-            <a
-              className="btn btn-primary mb-3 arrow_slider"
-              role="button"
-              data-slide="prev"
-              onClick={() => slider.current.slickPrev()}
-            >
-              <i className="fa fa-arrow-left "></i>
-            </a>
-          </div>
-          <div className="col  d-flex justify-content-center">
-            <div className="slider-container">
-              <Slider {...settings} ref={slider}>
-                <div>
-                  {" "}
-                  <button class="CARD_STYLE" tabindex="-1">
-                  AppleTv 1
-                  </button>
-                </div>
-                <div>
-                  {" "}
-                  <button class="CARD_STYLE" tabindex="-1">
-                  AppleTv 2
-                  </button>
-                </div>
-                <div>
-                  {" "}
-                  <button class="CARD_STYLE" tabindex="-1">
-                  AppleTv 3
-                  </button>
-                </div>
-                <div>
-                  {" "}
-                  <button class="CARD_STYLE" tabindex="-1">
-                  AppleTv 4 
-                  </button>
-                </div>
-                <div>
-                  {" "}
-                  <button class="CARD_STYLE" tabindex="-1">
-                  AppleTv 7
-                  </button>
-                </div>
-                <div>
-                  {" "}
-                  <button class="CARD_STYLE" tabindex="-1">
-                  AppleTv 5
-                  </button>
-                </div>
-                <div>
-                  {" "}
-                  <button class="CARD_STYLE" tabindex="-1">
-                  AppleTv 6
-                  </button>
-                </div>
-              </Slider>
-            </div>
-            </div>
-
-            <div className="col">
-              {" "}
-              <a
-                className="btn btn-primary mb-3 arrow_slider"
-                role="button"
-                data-slide="next"
-                onClick={() => slider.current.slickNext()}
-              >
-                <i className="fa fa-arrow-right"></i>
-              </a>
-            </div>
-        </div>
-        <AllProduct />
+            <div >
+    
+    <div className="row slider_box" >
+      <div className="col-lg-1 ">
+        {" "}
+        <a
+          className="btn btn-primary mb-3 arrow_slider "
+          role="button"
+          data-slide="prev"
+          onClick={() => slider.current.slickPrev()}
+        >
+          <i className="fa fa-arrow-left "></i>
+        </a>
       </div>
-    </>
+      <div className="col-lg-9">
+        <div className="slider-container">
+          <Slider {...settings} ref={slider}>
+            <div>
+              {" "}
+              <button class="CARD_STYLE" tabIndex="-1">
+              AppleTv,1
+              </button>
+            </div>
+            <div>
+              {" "}
+              <button class="CARD_STYLE" tabIndex="-1">
+              AppleTv,1
+,2
+              </button>
+            </div>
+            <div>
+              {" "}
+              <button class="CARD_STYLE" tabIndex="-1">
+              AppleTv,1
+,1
+              </button>
+            </div>
+            <div>
+              {" "}
+              <button class="CARD_STYLE" tabIndex="-1">
+              AppleTv,1
+,2
+              </button>
+            </div>
+            <div>
+              {" "}
+              <button class="CARD_STYLE" tabIndex="-1">
+              AppleTv,1
+
+              </button>
+            </div>
+            <div>
+              {" "}
+              <button class="CARD_STYLE" tabIndex="-1">
+                watch
+              </button>
+            </div>
+            <div>
+              {" "}
+              <button class="CARD_STYLE" tabIndex="-1">
+                iPad{" "}
+              </button>
+            </div>
+          </Slider>
+        </div>
+        </div>
+
+        <div className="col-lg-1 ">
+          {" "}
+          <a
+            className="btn btn-primary mb-3 arrow_slider"
+            role="button"
+            data-slide="next"
+            onClick={() => slider.current.slickNext()}
+          >
+            <i className="fa fa-arrow-right"></i>
+          </a>
+        </div>
+    </div>
+  </div>
+        <AllProduct />
+]    </>
   );
 }
 const rootElement = document.getElementById("root");

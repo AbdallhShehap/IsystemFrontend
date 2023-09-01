@@ -6,6 +6,7 @@ import Modal from '@mui/material/Modal';
 import { LinkContainer } from "react-router-bootstrap";
 import { Navbar, Nav, Container, Form, Row, Col } from "react-bootstrap";
 import { Link ,useLocation } from 'react-router-dom';
+import {BiUserCircle} from "react-icons/fa";
 
 const modalStyle = {
   position: 'absolute',
@@ -25,6 +26,9 @@ const formStyle = {
   flexDirection: 'column',
   gap: '15px',
 };
+const customButtonStyles = {
+  textTransform: 'none', // Reset text-transform to default
+};
 
 export default function EnhancedModal({ onClose }) {
   const [open, setOpen] = useState(false);
@@ -37,10 +41,10 @@ export default function EnhancedModal({ onClose }) {
 
   return (
     <div >
-      <Button  onClick={handleOpen} >
-      <LinkContainer to="">
+      <Button  onClick={handleOpen} style={customButtonStyles}>
+      <LinkContainer to="" style={{fontSize:"12px" }} >
                   <Nav.Link>
-                    Login
+                  <i class="fa-solid fa-circle-user fa-sm" style={{Color: "#fff"}}></i>              Login
                   </Nav.Link>
                 </LinkContainer>
       </Button>
