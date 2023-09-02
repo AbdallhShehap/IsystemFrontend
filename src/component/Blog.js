@@ -119,7 +119,7 @@ function Blog() {
               style={{ width: "25rem", border: "none", textAlign: "left" }}
               key={data.id}
             >
-              <img src={data.image} className="card-img-top" alt={data.title} />
+              <img src={data.image} className="card-img-top" alt={data.title}  />
               <div className="card-body">
                 <p className="card-text">{data.title}</p>
                 <small className="card-title" style={{ color: "#BEBEBE" }}>

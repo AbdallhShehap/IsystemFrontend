@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import DataCategory from "./DataCategory";
+import DataCategory from "../Data/DataCategory.js";
 // import '../assests/Cards.css'
 import "../assests/Category.css";
 function AllProduct() {

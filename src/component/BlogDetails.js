@@ -3,7 +3,7 @@ import BlogDetailsData from "../Data/BlogDetailsData.js";
 import Image from "react-bootstrap/Image";
 import '../assests/BlogDetails.css'
 function BlogDetails() {
-  const [details, setDetails] = useState(BlogDetailsData);
+  const [details, setDetails] = useState(BlogDetailsData.slice(0, 3));
 
   return (
     <div class="container">
@@ -67,7 +67,7 @@ function BlogDetails() {
       <div className="row">
 <div className="col">
 
-      <h3 className="mt-5 ms-3" >Also In Blog</h3>
+      <h3 className="mt-5 ms-2" >Also In Blog</h3>
 </div>
       </div>
       <div className="row">
@@ -82,7 +82,7 @@ function BlogDetails() {
             >
               <img src={data.image} className="card-img-top" alt={data.title} />
               <div className="card-body">
-                <p className="card-text">{data.content}</p>
+                <p className="card-text">{data.title}</p>
                 <small className="card-title" style={{ color: "#BEBEBE" }}>
                   {data.date}
                 </small>
