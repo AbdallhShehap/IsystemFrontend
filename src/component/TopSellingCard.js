@@ -440,47 +440,43 @@ function CardSlider({title}) {
                 </div>
               </div>
             </div>
-            <div className="col-6 text-right d-flex justify-content-center ms-5">
-              
-              <a
-                className="btn btn-primary mb-3 arrow_slider"
-                href="#carouselExampleIndicators2"
-                role="button"
-                data-slide="prev"
-              >
-                <i className="fa fa-arrow-left "></i>
-              </a>
-              <div
-                id="carouselExampleIndicators2"
-                className="carousel slide"
-                data-ride="carousel"
-              >
-                <ol className="carousel-indicators">
-                  <li
-                    data-target="#carouselExampleIndicators2"
-                    data-slide-to="0"
-                    className="active"
-                  ></li>
-                  <li
-                    data-target="#carouselExampleIndicators2"
-                    data-slide-to="1"
-                  ></li>
-                   <li
-                    data-target="#carouselExampleIndicators2"
-                    data-slide-to="2"
-                  ></li>
-                </ol> 
-          </div>
-              <a
-                className="btn btn-primary mb-3 arrow_slider"
-                href="#carouselExampleIndicators2"
-                role="button"
-                data-slide="next"
-              >
-                <i className="fa fa-arrow-right"></i>
-              </a>
-           
-            
+            <div className="col-12 text-right d-flex justify-content-center mt-4 ">
+            <a
+              className="btn btn-primary mb-3 arrow_slider"
+              href="#carouselExampleIndicators2"
+              role="button"
+              data-slide="prev"
+            >
+              <i className="fa fa-arrow-left "></i>
+            </a>
+            <div>
+              <ol className="carousel-indicators ">
+                <li
+                  data-target="#carouselExampleIndicators2"
+                  data-slide-to="0"
+                  className="active "
+                  id="dot"
+                ></li>
+                <li
+                  data-target="#carouselExampleIndicators2"
+                  data-slide-to="1"
+                  id="dot"
+                ></li>
+                <li
+                  data-target="#carouselExampleIndicators2"
+                  data-slide-to="2"
+                  id="dot"
+                ></li>
+              </ol>
+            </div>
+            <a
+              className="btn btn-primary mb-3 arrow_slider"
+              href="#carouselExampleIndicators2"
+              role="button"
+              data-slide="next"
+            >
+              <i className="fa fa-arrow-right"></i>
+            </a>
           </div>
         </div>
         </div>

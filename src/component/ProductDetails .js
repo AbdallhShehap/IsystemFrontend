@@ -128,7 +128,7 @@ function ProductDetails() {
           <div className="col-lg-5 product_details">
             {" "}
             <h4>iPhone 14 Pro Max</h4> <p className="price">JD900</p>
-            <p className="">Color</p>
+            <h5 className="">Color</h5>
             <div className="container_box">
               <div className="color Deep_Purple"></div>
               <div className="color Silver"></div>
@@ -141,7 +141,7 @@ function ProductDetails() {
               <p>Space Black</p>
               <p>Gold</p>
             </div>
-            <p className="">Model</p>
+            <h5 className="">Model</h5>
             <div className="container_box">
               <p>128 GB</p>
               <p>256 GB</p>

@@ -130,8 +130,9 @@ function Home() {
       <CardSlider />
       <br></br>
       <br></br>
-      <br></br>
+      {/* <br></br> */}
       <CardCategories />
+      <br></br>
       <br></br>
       <br></br>
       <br></br>
