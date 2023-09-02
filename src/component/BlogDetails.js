@@ -67,16 +67,17 @@ function BlogDetails() {
       <div className="row">
 <div className="col">
 
-      <h3 className="ms-5" >Also In Blog</h3>
+      <h3 className="mt-5 ms-3" >Also In Blog</h3>
 </div>
       </div>
       <div className="row">
 
         {details.map((data) => (
           <div class="col">
+          
             <div
               className="card mx-auto"
-              style={{ width: "18rem", border: "none", textAlign: "left" }}
+              style={{ width: "25rem", border: "none", textAlign: "left" }}
               key={data.id}
             >
               <img src={data.image} className="card-img-top" alt={data.title} />

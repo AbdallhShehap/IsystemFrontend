@@ -9,7 +9,7 @@ function AllProduct() {
       <div class="container text-center">
         <div class="row">
           {data.map((data) => (
-            <div class="col-md-6 col-lg-4 mb-4 mb-lg-4 ">
+            <div class="col-md-6 col-lg-4 mb-4 mb-lg-4 "key={data.id}>
               <div class="card">
                 <img src={data.image} class="card-img-top" alt="Laptop" />
                 <div class="d-flex justify-content-between ps-3 pt-3">
