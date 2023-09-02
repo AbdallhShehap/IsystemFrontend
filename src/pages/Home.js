@@ -127,7 +127,7 @@ function Home() {
       <br></br>
       <br></br>
       <br></br>
-      <CardSlider />
+      <CardSlider title="Special Offers"/>
       <br></br>
       <br></br>
       {/* <br></br> */}

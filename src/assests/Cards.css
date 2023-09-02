@@ -1,3 +1,8 @@
+.box_card {
+  width: 100%;
+  border-top-left-radius: calc(.25rem - 1px);
+  border-top-right-radius: calc(.25rem - 1px);
+}
 body{
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", 
   Helvetica, Arial, "Lucida Grande", sans-serif;
@@ -15,19 +20,17 @@ body{
 }
 .oldPrice{
   text-decoration: line-through;
+  color: #BEBEBE;
 
 }
 /* Card slider */
 .arrow_slider{
   background-color: #27579A;
   border-radius: 50px;
-  -webkit-border-radius: 50px;
-  -moz-border-radius: 50px;
-  -ms-border-radius: 50px;
-  -o-border-radius: 50px;
-  margin-left: 5%;
-  margin-right: 5%;
 
+  margin-left: 5%;
+  margin-right: 10%;
+  
 }
 .card_title{
   font-size: 90%;
@@ -41,8 +44,30 @@ body{
   -ms-border-radius: 20px;
   -o-border-radius: 20px;
 }
-#dot{
-  background-color: #27579A;
-  color:#27579A ;
-}
+ ul.slick-dots{
+  bottom: -43px;
 
+}
+.slider_home{
+  background-color: #27579A;
+  border-radius: 50px; 
+  
+}
+.custom_btn_margin1{
+  margin-left:500px 
+
+}
+.custom_btn_margin2{
+  margin-left:195px 
+
+}
+.title_card{
+  text-align: center;
+}
+@media screen and (max-width: 768px) {
+  .slider_home {
+    display: none;
+  }
+
+
+}
