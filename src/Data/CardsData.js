@@ -3,7 +3,7 @@ const CardsData = [
     "id": 1,
     "title": "AirPods Pro with MagSafe Charging Case (2021)",
     "image":require("../images/airpods.png"),
-    "price": "$100",
+    "price": "JD100",
     "oldPrice": "JD120",
     "inStock": "inStock",
   },

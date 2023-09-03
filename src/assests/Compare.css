@@ -1,0 +1,44 @@
+.circle {
+  position: relative;
+  border: 2px solid #999;
+  border-radius: 100%;
+  width: 20px;
+  height: 30px;
+  text-align: center;
+  margin-top: 50px;
+  background-color: #000;
+  z-index: 2;
+}
+.circle:first-child {
+  margin-top: 0;
+}
+.circle:before {
+  position: absolute;
+  border: 1px solid #999;
+  width: 0;
+  height: 50px;
+  display: block;
+  content: "";
+  left: 50%;
+  z-index: 1;
+  top: -54px;
+  margin-left: -1px;
+}
+.circle:first-child:before {
+  display: none;
+}
+.compare_title{
+text-align: center;
+margin: 2% 0 2% 0;}
+.card_info{
+  background-color: #F9F9F9;
+  width:340px;
+}
+.more_info_btn{
+  border-color: #27579A;
+  color: #27579A;
+
+}
+.more_info_btn:hover{
+background-color: #27579A;
+}

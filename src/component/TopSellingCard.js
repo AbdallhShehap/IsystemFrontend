@@ -85,7 +85,7 @@ function TopSellingCard({title}) {
                       </div>
                       <div class="d-flex justify-content-between mb-3">
                         <button
-                          class="btn btn-outline-primary w-100"
+                          class="btn btn-outline-primary w-100 more_info_btn"
                           type="button"
                         >
                           More Info
