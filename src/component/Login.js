@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Button from 'react-bootstrap/Button';
@@ -6,11 +6,95 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Link } from "react-router-dom";
-
+import { useNavigate } from 'react-router-dom';
 import "../assests/Login.css"
-
+import axios from 'axios';
 
 export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+const [userFlag,setUserFlag]=useState(true)
+const [emailFlag,setEmailFlag]=useState(true)
+const [passwordFlag,setPasswordFlag]=useState(true)
+
+const navigate = useNavigate();
+const handleEmailChange = (event) => {
+  setEmail(event.target.value);
+};
+const handlePasswordChange = (event) => {
+  setPassword(event.target.value);
+};
+const validateEmail = (email) => {
+  const pattern = /^[^\s@]+@[^\s@]+.[^\s@]+$/;
+
+  return pattern.test(email);
+};
+
+const validatePassword = (password) => {
+if(!password){
+  return false;
+}else{
+  return true;
+}
+
+};
+const validateUser = async () => {
+  let emailIsValid = validateEmail(email);
+  let passwordIsValid = validatePassword(password);
+  // console.log(email, password,);
+  setUserFlag(true);
+
+  if (emailIsValid) {
+    setEmailFlag(true);
+  } else {
+    setEmailFlag(false);
+  }
+
+  if (passwordIsValid) {
+    setPasswordFlag(true);
+  } else {
+    setPasswordFlag(false);
+  }
+
+};
+  const submitUser = async () => {
+      try{
+      const response = await axios.post(
+        "http://localhost:9090/users/login",
+        {
+          email: email,
+          password: password,
+        }
+      );
+
+      const result = await response.data;
+      console.log(result);
+      if (result.status === "error") {
+        console.log(result.message);
+        setUserFlag(false);
+      }
+      if (result.status === "success") {
+        console.log(result.token);
+        setUserFlag(true);
+
+        navigate("/");
+      }
+    } catch (err) {
+      console.log(err.message);
+    }
+
+    
+      }
+
+      
+
+ useEffect(() => {
+    if (email && password) {
+      submitUser();
+      
+    }
+  }, [email,password]);
+
   return (
     <Container fluid>
       <Row>
@@ -40,6 +124,8 @@ export default function Login() {
               placeholder="Username"
               aria-label="Username"
               aria-describedby="basic-addon1"
+              value={email}
+              onChange={handleEmailChange}
             />
           </InputGroup>
 
@@ -48,10 +134,12 @@ export default function Login() {
               placeholder="Password"
               aria-label="Password"
               aria-describedby="basic-addon1"
+              value={password}
+              onChange={handlePasswordChange}
             />
           </InputGroup>
 
-          <Button variant="primary" size="lg" style={{ width: "100%", marginBottom:"5%" ,textAlign:"center"}} active>
+          <Button variant="primary" size="lg" style={{ width: "100%", marginBottom:"5%" ,textAlign:"center"}} active onClick={validateUser}>
             Login
           </Button>
           <Link to='/registration'> Don`t hava an account ? SignUp</Link>

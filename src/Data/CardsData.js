@@ -1,4 +1,5 @@
 const CardsData = [
+
   {
     "id": 1,
     "title": "AirPods Pro with MagSafe Charging Case (2021)",
@@ -9,7 +10,7 @@ const CardsData = [
   },
   {
     "id": 2,
-    "title": "AirPods Pro with MagSafe Charging Case (2021)",
+    "title": "AirPods Pro with MagSafe Charging Case (2019)",
     "image": require("../images/watch.png"),
     "price": "JD80",
     "oldPrice": "JD90",
@@ -18,7 +19,7 @@ const CardsData = [
 
   {
     "id": 3,
-    "title": "AirPods Pro with MagSafe Charging Case (2021)",
+    "title": "AirPods Pro with MagSafe Charging Case (2020)",
     "image": require("../images/airpods.png"),
     "price": "JD80",
     "oldPrice": "JD90",
@@ -26,7 +27,7 @@ const CardsData = [
   },
   {
     "id": 4,
-    "title": "AirPods Pro with MagSafe Charging Case (2021)",
+    "title": "AirPods Pro with MagSafe Charging Case (2023)",
     "image": require("../images/airpods.png"),
     "price": "JD80",
     "oldPrice": "JD90",
@@ -34,7 +35,7 @@ const CardsData = [
   },
   {
     "id": 5,
-    "title": "AirPods Pro with MagSafe Charging Case (2021)",
+    "title": "AirPods Pro with MagSafe Charging Case (2022)",
     "image": require("../images/airpods.png"),
     "price": "JD80",
     "oldPrice": "JD90",

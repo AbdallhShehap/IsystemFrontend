@@ -11,7 +11,7 @@ const DataCategory=[
     {
       "id": 2,
       "image": require('../images/iPhone_14_Pro_Silver_Pure_Back_iPhone_14_Pro_Silver.png'),
-      "title": "iPhone 14 Pro 256GB Silver",
+      "title": "iPhone 13 Pro 256GB Silver",
       "price": "JD19.99",
       "inStock": false,
 
@@ -20,7 +20,7 @@ const DataCategory=[
     {
       "id": 3,
       "image": require('../images/iPad.png'),
-      "title": "iPhone 14 Pro 256GB Silver",
+      "title": "iPhone 12 Pro 256GB Silver",
       "price": "JD19.99",
       "inStock": true,
 
@@ -28,7 +28,7 @@ const DataCategory=[
     {
       "id": 4,
       "image": require('../images/iPhone_14_Pro_Silver_Pure_Back_iPhone_14_Pro_Silver.png'),
-      "title": "iPhone 14 Pro 256GB Silver",
+      "title": "iPhone 11 Pro 256GB Silver",
       "price": "JD19.99",
       "inStock": true,
 
@@ -36,7 +36,7 @@ const DataCategory=[
     {
       "id": 5,
       "image": require('../images/iPhone_14_Pro_Silver_Pure_Back_iPhone_14_Pro_Silver.png'),
-      "title": "iPhone 14 Pro 256GB Silver",
+      "title": "iPhone 9 Pro 256GB Silver",
       "price": "JD19.99",
       "inStock": false,
 

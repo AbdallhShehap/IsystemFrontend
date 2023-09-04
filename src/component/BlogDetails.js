@@ -27,7 +27,7 @@ function BlogDetails() {
           <Image
             src={require("../images/mainCameraedit.png")}
             fluid
-            style={{ float: "left", margin: "5px" }}
+            style={{ float: "left", margin: "5px",paddingRight:"13px" }}
           />
         </div>
         <h3 className="title">
