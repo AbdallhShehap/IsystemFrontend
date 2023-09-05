@@ -56,15 +56,19 @@ const validateUser = async () => {
     setPasswordFlag(false);
   }
 
+
 };
+
   const submitUser = async () => {
       try{
       const response = await axios.post(
-        "http://localhost:9090/users/login",
+        "http://localhost:9090/login",
         {
           email: email,
           password: password,
-        }
+         
+        },
+     
       );
 
       const result = await response.data;
@@ -77,7 +81,7 @@ const validateUser = async () => {
         console.log(result.token);
         setUserFlag(true);
 
-        navigate("/");
+        navigate("/compare");
       }
     } catch (err) {
       console.log(err.message);
@@ -86,7 +90,7 @@ const validateUser = async () => {
     
       }
 
-      
+
 
  useEffect(() => {
     if (email && password) {
@@ -125,7 +129,7 @@ const validateUser = async () => {
               aria-label="Username"
               aria-describedby="basic-addon1"
               value={email}
-              onChange={handleEmailChange}
+              // onChange={handleEmailChange}
             />
           </InputGroup>
 
@@ -135,7 +139,7 @@ const validateUser = async () => {
               aria-label="Password"
               aria-describedby="basic-addon1"
               value={password}
-              onChange={handlePasswordChange}
+              // onChange={handlePasswordChange}
             />
           </InputGroup>
 

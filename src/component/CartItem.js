@@ -1,4 +1,4 @@
-import React from "react";
+import React , {useState} from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -8,8 +8,19 @@ import Image from "react-bootstrap/Image";
 const CartItem = ({ item, updateQuantity }) => {
   const { name, img, quantity, price ,color,model} = item;
 
-  const handleQuantityChange = (newQuantity) => {
-    updateQuantity(item, newQuantity);
+  // const [quantityy, setQuantity] = useState("");
+
+
+ 
+
+  const handleIncrease = () => {
+    updateQuantity(item, quantity + 1);
+  };
+
+  const handleDecrease = () => {
+    if (quantity > 1) {
+      updateQuantity(item, quantity - 1);
+    }
   };
 
   return (
@@ -27,7 +38,7 @@ const CartItem = ({ item, updateQuantity }) => {
 
           <Col className="item-quantity mt-4">
             <button
-              onClick={() => handleQuantityChange(quantity - 1)}
+              onClick= {handleDecrease}
               className="btn btn-primary btn_remove "
               style={{
                 backgroundColor: "#27579A",
@@ -42,7 +53,7 @@ const CartItem = ({ item, updateQuantity }) => {
             </button>
             <span>{quantity}</span>
             <button
-              onClick={() => handleQuantityChange(quantity + 1)}
+              onClick={handleIncrease}
               className="btn btn-primary btn_add"
               style={{
                 backgroundColor: "#27579A",

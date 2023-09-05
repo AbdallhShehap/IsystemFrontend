@@ -16,7 +16,7 @@ const [password, setPassword] = useState("");
 const [email, setEmail] = useState("");
 const navigate = useNavigate();
 const handleUserNameChange = (event) => {
-  setEmail(event.target.value);
+  setUserName(event.target.value);
 };
 const handleEmailChange = (event) => {
   setEmail(event.target.value);
@@ -28,7 +28,7 @@ const submitUser = async () => {
   try {
     // const username = generateUsername(firstName, lastName);
     await axios.post(
-      "http://localhost:9090/users/register",
+      "http://localhost:9090/signup",
       {
         username: userName,
         email: email,
@@ -53,7 +53,7 @@ useEffect(() => {
       console.log(err);
     }
   }
-}, [email, password,userName ]);
+}, [email,userName ]);
 
   return (
     <Container fluid>
@@ -104,15 +104,6 @@ useEffect(() => {
               aria-describedby="basic-addon1"
               value={password}
               onChange={handlePasswordChange}
-            />
-          </InputGroup>
-
-          <InputGroup className="mb-4">
-            <Form.Control
-              placeholder="current password"
-              aria-label="current password"
-              aria-describedby="basic-addon1"
-           
             />
           </InputGroup>
 
