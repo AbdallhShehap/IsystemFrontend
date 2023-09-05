@@ -5,9 +5,11 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import CardsData from "../Data/CardsData";
+import { Link, useParams } from "react-router-dom";
 function CardSlider({title}) {
   const [slider, setSlider] = useState(null);
   const [cardsData, setCardsData] = useState(CardsData);
+
   const settings = {
     dots: true,
     infinite: true,
@@ -68,7 +70,7 @@ function CardSlider({title}) {
                 <div class="col-lg-12 col-md-12 m-1" >
                   <div class="card ">
                     <img
-                      src={require("../images/watch.png")}
+                      src={data.image}
                       class="card-img-top"
                       alt="Laptop"
                     />
@@ -84,19 +86,23 @@ function CardSlider({title}) {
                         <p class="mb-0 inStock">{data.inStock} </p>
                       </div>
                       <div class="d-flex justify-content-between mb-3 ">
+                      <Link to={`productdetails/${data.id}`} className="w-100">
                         <button
                           class="btn btn-outline-primary w-100 more_info_btn"
                           type="button"
                         >
                           More Info
                         </button>
+                        </Link>
                         <button type="button" class="btn btn-danger ms-2">
+                        <Link to={'cart'} >
                           {" "}
                           <img
                             src={require("../images/cart.png")}
                             class="card-img-top"
                             alt="Laptop"
                           />
+                        </Link>
                         </button>
                       </div>
                     </div>

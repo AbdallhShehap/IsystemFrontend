@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CardSlider from "./CardSlider";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -15,7 +15,11 @@ function Cart() {
     { id: 3, img:require('../images/iPhone_14_Pro_Silver_Pure_Back_iPhone_14_Pro_Silver.png'),color:"white",model:"256 GB",name: "Product 2", quantity: 2, price: 24.99 },
     // Add more items as needed
   ]);
+useEffect(()=>{
+  window.scrollTo(0, 0);
 
+}
+,[])
   const updateQuantity = (itemToUpdate, newQuantity) => {
     const updatedCartItems = cartItems.map((item) =>
       item.id === itemToUpdate.id ? { ...item, quantity: newQuantity } : item

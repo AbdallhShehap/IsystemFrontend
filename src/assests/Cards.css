@@ -52,6 +52,9 @@ body{
 .more_info_btn:hover{
 background-color: #27579A;
 }
+.cart_link{
+  height: 500px;
+}
  ul.slick-dots{
   bottom: -43px;
 

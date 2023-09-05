@@ -7,13 +7,17 @@
     height: 30px;
     /* border: 2px solid red;  */
     border-radius: 50%;
+    margin: 2%;
   }
   .container_box{
     display: flex;
-justify-content: space-around;
-align-items: center; 
+
 margin-bottom: 2%;
 font-size: 14px;
+}
+.model_space{
+    margin: 3%;
+
 }
 
 .Deep_Purple{

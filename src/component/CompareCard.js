@@ -16,7 +16,7 @@ function CompareCard({ selected, selected2,selected3,selected4 }) {
               key={selected.id}
             >
               <div className="d-flex flex-column">
-                <div class="card card_info ms-2">
+                <div class="card card_info ms-2 " >
                   <img
                     src={require("../images/watch.png")}
                     class="card-img-top"

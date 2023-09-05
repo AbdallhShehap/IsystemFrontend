@@ -3,8 +3,8 @@ import Image from "react-bootstrap/Image";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import CardsData from "../Data/CardsData.js";
 import BlogDetailsData from '../Data/BlogDetailsData.js';
+import { Link } from 'react-router-dom';
 function Blog() {
   const [slider, setSlider] = useState(null);
   // const [cardsData, setCardsData] = useState(CardsData);
@@ -55,19 +55,50 @@ function Blog() {
       // You can access the slider methods here, e.g., slider.slickNext(), slider.slickPrev()
     }
   }, [slider]);
+  // let updatedBlog
+  // let [query,setQuery]=useState("")
+  // const search = (event) => {
+  //   const searchTerm = event.target.value.toLowerCase();
+  //   const updatedBlog = blogData.filter((item) =>
+  //     item.title.toLowerCase().includes(searchTerm)
+  //   );
+  //   setQuery(event.target.value); // Update the query state here
+  //   setBlogData(updatedBlog);
+  // };
+  const [searchField, setSearchField] = useState("");
+
+  const handleChange = e => {
+    setSearchField(e.target.value);
+  };
+  const filteredPersons = blogData.filter(
+    person => {
+      return (
+        person
+        .title
+        .toLowerCase()
+        .includes(searchField.toLowerCase()) ||
+        person
+        .desc
+        .toLowerCase()
+        .includes(searchField.toLowerCase())
+      );
+    }
+  );
   return (
     <>
                 <Image  src={require('../images/BigBlog.png')} height={"50%"} width={"100%"}/>
     <div className='container'>
 <div className='row'>
-  <h3 className='mt-5 mb-4'>Our Blog</h3>
-<form>
-        <div class="input-group">
+  <h3 className='mt-5 mb-4 ms-5'>Our Blog</h3>
+<form >
+        <div className="input-group  ms-4">
           <input
             type="text"
-            className="form-control search_blog"
+            className="form-control search_blog  "
             placeholder="Search Blog"
             aria-describedby="basic-addon1"
+            value={searchField}
+            onChange={handleChange}
           />
         </div>
         
@@ -80,7 +111,7 @@ function Blog() {
           <div className="row">
 
             <Slider {...settings} ref={(slider) => setSlider(slider)}>
-              {blogData.map((data) => (
+              {filteredPersons.map((data) => (
                 <div key={data.id}>
                 <div class="col-lg-12 col-md-12 m-1" >
                   <div className='row'>
@@ -96,7 +127,7 @@ function Blog() {
                   {data.date}
                 </small>
                 <br></br>
-                <a
+                <Link to={`blogdetails/${data.id}`}
                   href="#"
                   className="btn btn-primary"
                   style={{
@@ -106,7 +137,7 @@ function Blog() {
                   }}
                 >
                   Read More{" "}
-                </a>
+                </Link>
               </div>
             </div>
                   </div>
@@ -126,7 +157,7 @@ function Blog() {
                   {data.date}
                 </small>
                 <br></br>
-                <a
+                <Link to={`blogdetails/${data.id}`}
                   href="#"
                   className="btn btn-primary"
                   style={{
@@ -136,7 +167,7 @@ function Blog() {
                   }}
                 >
                   Read More{" "}
-                </a>
+                </Link>
               </div>
             </div>
                   </div>

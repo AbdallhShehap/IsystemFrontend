@@ -95,10 +95,10 @@ function Layouts() {
                     Accessories
                   </Nav.Link>
                 </LinkContainer>
-                <LinkContainer to="blogdetails" style={{fontSize:"14px"}}>
+                <LinkContainer to="blog" style={{fontSize:"14px"}}>
                   <Nav.Link className="catigories_type" id="catigories_type">
                     {/* <FaShoppingCart /> */}
-Blog Details                  </Nav.Link>
+Blog                   </Nav.Link>
                 </LinkContainer>
               </Nav>
               <form class="nosubmit">

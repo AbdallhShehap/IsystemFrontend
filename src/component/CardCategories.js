@@ -64,7 +64,7 @@ export default function CardCategories() {
 
         <Col xs={12} md={12} lg={6}  >
         <Link to="">
-        <img src={require("../images/image.png")} className='mr-5' width="100%" />
+        <img src={require("../images/image.png")} className='' width="100%" />
         </Link>
         </Col>
 

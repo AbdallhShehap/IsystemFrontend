@@ -27,7 +27,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Layouts />} >
               {/* <Route/> */}
-                <Route path='productdetails' element={<ProductDetails/>}/>
+                <Route path='productdetails/:id' element={<ProductDetails/>}/>
                 <Route path="home" element={<Home />} />
                 <Route path="mac" element={<IMac />} />
                 <Route path="macmini" element={<MacMini/>} />
@@ -40,10 +40,12 @@ function App() {
                 <Route path="accessories" element={<Accessories />} />
                 <Route path="isystemcare" element={<ISystemCare />} />
                 <Route path="cart" element={<Cart />} />
-                <Route path="blogdetails" element={<BlogDetails />} />
+                <Route path="blog/blogdetails/:id" element={<BlogDetails />} />
                 <Route path="blog" element={<Blog />} />
                 <Route path="registration" element={<Registration />} />
                 <Route path='compare' element={<Compare/>}/>
+                <Route path='cart/productdetails/:id' element={<ProductDetails/>}/>
+                <Route path='blog/blogdetails/:id' element={<BlogDetails/>}/>
           </Route>
           {/* <Route path="login" element={<Login />} /> */}
         </Routes>
