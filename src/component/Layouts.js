@@ -48,14 +48,13 @@ function Layouts() {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="m-auto nav_categories">
-                <LinkContainer to="/mac" style={{fontSize:"14px"}}>
-                  <Nav.Link className="catigories_type" >
+                <LinkContainer to="/mac" style={{ fontSize: "14px" }}>
+                  <Nav.Link className="catigories_type">
                     {/* <FaShoppingCart /> */}
                     Mac
-                  
                   </Nav.Link>
                 </LinkContainer>
-                <LinkContainer to="ipad" style={{fontSize:"14px"}}>
+                <LinkContainer to="ipad" style={{ fontSize: "14px" }}>
                   <Nav.Link
                     href="/ipad"
                     className="catigories_type"
@@ -65,52 +64,54 @@ function Layouts() {
                     iPad
                   </Nav.Link>
                 </LinkContainer>
-                <LinkContainer to="iphone" style={{fontSize:"14px"}}>
+                <LinkContainer to="iphone" style={{ fontSize: "14px" }}>
                   <Nav.Link className="catigories_type" id="catigories_type">
                     {/* <FaShoppingCart /> */}
                     iPhone
                   </Nav.Link>
-                </LinkContainer >
-                <LinkContainer to="watch" style={{fontSize:"14px"}}>
+                </LinkContainer>
+                <LinkContainer to="watch" style={{ fontSize: "14px" }}>
                   <Nav.Link className="catigories_type" id="catigories_type">
                     {/* <FaShoppingCart /> */}
                     Watch
                   </Nav.Link>
                 </LinkContainer>
-                <LinkContainer to="audio" style={{fontSize:"14px"}}>
+                <LinkContainer to="audio" style={{ fontSize: "14px" }}>
                   <Nav.Link className="catigories_type" id="catigories_type">
                     {/* <FaShoppingCart /> */}
                     Audio
                   </Nav.Link>
                 </LinkContainer>
-                <LinkContainer to="appletv"style={{fontSize:"14px"}}>
+                <LinkContainer to="appletv" style={{ fontSize: "14px" }}>
                   <Nav.Link className="catigories_type" id="catigories_type">
                     {/* <FaShoppingCart /> */}
                     Apple Tv
                   </Nav.Link>
                 </LinkContainer>
-                <LinkContainer to="accessories" style={{fontSize:"14px"}}>
+                <LinkContainer to="accessories" style={{ fontSize: "14px" }}>
                   <Nav.Link className="catigories_type" id="catigories_type">
                     {/* <FaShoppingCart /> */}
                     Accessories
                   </Nav.Link>
                 </LinkContainer>
-                <LinkContainer to="blog" style={{fontSize:"14px"}}>
+                <LinkContainer to="blog" style={{ fontSize: "14px" }}>
                   <Nav.Link className="catigories_type" id="catigories_type">
                     {/* <FaShoppingCart /> */}
-Blog                   </Nav.Link>
+                    Blog{" "}
+                  </Nav.Link>
                 </LinkContainer>
               </Nav>
               <form class="nosubmit">
                 <input class="nosubmit" type="search" />
               </form>
-           
 
               <Nav className="ml-auto">
-                <LinkContainer to="/cart" style={{fontSize:"12px" }} >
+                <LinkContainer to="/cart" style={{ fontSize: "12px" }}>
                   <Nav.Link className="cart-link">
                     <FaShoppingCart />
-                    <span><b>Cart</b> </span>
+                    <span>
+                      <b>Cart</b>{" "}
+                    </span>
                   </Nav.Link>
                 </LinkContainer>
 
@@ -141,51 +142,55 @@ Blog                   </Nav.Link>
             <MDBRow className="mt-3">
               <MDBCol md="2" lg="2" xl="2" className="mx-auto mb-4">
                 <p className="fw-bold mb-4 footer_title">Our Company</p>
-                  <a href="#!" className="text-reset">
-                    About Us{" "}
-                  </a><br></br>
-                  <a href="#!" className="text-reset">
-                    Join Our Team
-                  </a><br></br>
-                  <a href="#!" className="text-reset">
-                    Shipping & Return Policy{" "}
-                  </a><br></br>
-                  <a href="#!" className="text-reset">
-                    Contact Us
-                  </a>
+                <a href="#!" className="text-reset">
+                  About Us{" "}
+                </a>
+                <br></br>
+                <a href="#!" className="text-reset">
+                  Join Our Team
+                </a>
+                <br></br>
+                <a href="#!" className="text-reset">
+                  Shipping & Return Policy{" "}
+                </a>
+                <br></br>
+                <a href="#!" className="text-reset">
+                  Contact Us
+                </a>
               </MDBCol>
 
               <MDBCol md="3" lg="2" xl="2" className="mx-auto mb-4">
                 <h6 className=" fw-bold mb-4 footer_title">Our Services</h6>
-                  <a href="#!" className="text-reset">
-                    Installment Plans{" "}
-                  </a>
-                  <br></br>
-                  <a href="#!" className="text-reset">
-                    Trade-In
-                  </a>
-                  <br></br>               
-                  <a href="#!" className="text-reset">
-                    iSystem Care{" "}
-                  </a><br></br>
+                <a href="#!" className="text-reset">
+                  Installment Plans{" "}
+                </a>
+                <br></br>
+                <a href="#!" className="text-reset">
+                  Trade-In
+                </a>
+                <br></br>
+                <a href="#!" className="text-reset">
+                  iSystem Care{" "}
+                </a>
+                <br></br>
               </MDBCol>
               <MDBCol md="3" lg="2" xl="2" className="mx-auto mb-4">
                 <h6 className=" fw-bold mb-4 footer_title">Our Categories</h6>
-                  <a href="#!" className="text-reset">
-                    Shop All
-                  </a><br></br>
-                  <a href="#!" className="text-reset">
-                    Mac
-                  </a><br></br>
-                  <a href="#!" className="text-reset">
-                    iPhone
-                  </a>
+                <a href="#!" className="text-reset">
+                  Shop All
+                </a>
+                <br></br>
+                <a href="#!" className="text-reset">
+                  Mac
+                </a>
+                <br></br>
+                <a href="#!" className="text-reset">
+                  iPhone
+                </a>
               </MDBCol>
 
               <MDBCol md="3" lg="4" xl="3" className="mx-auto mb-4 ">
-                <h6 className=" fw-bold mb-4 footer_title">
-                  Follow us{" "}
-                </h6>
+                <h6 className=" fw-bold mb-4 footer_title">Follow us </h6>
                 {/* <p style={{ fontSize: "12px" }}>
                   Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                   Voluptatem, illum. Facilis optio iste, ducimus numquam

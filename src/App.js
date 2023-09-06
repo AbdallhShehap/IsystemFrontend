@@ -18,7 +18,7 @@ import Cart from './component/Cart.js';
 import Blog from './component/Blog.js';
 import BlogDetails from './component/BlogDetails.js';
 import Compare from './component/Compare.js';
-
+import Dashboard from './Dashboard/Dashboard.js';
 
 function App() {
   return (
@@ -46,6 +46,8 @@ function App() {
                 <Route path='compare' element={<Compare/>}/>
                 <Route path='cart/productdetails/:id' element={<ProductDetails/>}/>
                 <Route path='blog/blogdetails/:id' element={<BlogDetails/>}/>
+                <Route path="dashboard" element={<Dashboard />} />
+
           </Route>
           {/* <Route path="login" element={<Login />} /> */}
         </Routes>
