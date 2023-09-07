@@ -86,12 +86,12 @@ function ContactUs() {
         </div>
         
       </div>
-      <div className="row d-flex justify-content-center">
+      <div className="row">
         <div className="col">
           <div
             class="card"
             style={{
-              width: "18rem",
+              width: "20rem",
               backgroundColor: "#707070",
               color: "#fff",
             }}
