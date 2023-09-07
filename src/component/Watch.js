@@ -24,7 +24,7 @@ export default function Watch() {
             <div className="legend-container" >
               
               <img
-                src={require("../images/apple-watch.png")}
+                src={require("../images/Watch Section.jpg")}
                 alt=""
                 height={"670px"}    
                 width={"100%"}                

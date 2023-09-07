@@ -9,7 +9,6 @@ import Image from "react-bootstrap/Image";
 import location_icon from "../images/location_icon.png";
 import appleCare_icon from "../images/appleCare_icon.png";
 import iSystemCare from "../images/iSystemCare.png";
-// import Slider from "infinite-react-carousel";
 import backgroundIphone from "../images/backgroundIphone.png";
 import iPhone14Backgroundedit from "../images/iPhone14Backgroundedit.png";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
@@ -28,9 +27,10 @@ function Home() {
           infiniteLoop
           showThumbs={false}
           showStatus={false}
+          className="sliderHome"
         >
-          <div className="legend-container">
-            <img src={backgroundIphone} alt="" className="background_slider" />
+          <div >
+            <img src={backgroundIphone} alt="" className="background_slider" height={"100%"}/>
             <div className="container_btn_background">
               <button
                 type="button"
@@ -48,16 +48,23 @@ function Home() {
           </div>
 
           <div>
-            <img src={iPhone14Backgroundedit} alt="" />
+            <img src={require('../images/Mac Section.jpg')} alt="" height={"670px"} />
           </div>
           <div>
-            <img src={backgroundIphone} alt="" />
+            <img src={require('../images/Accessories Section.jpg')} alt=""      height={"670px"}    
+ />
           </div>
           <div>
-            <img src={iPhone14Backgroundedit} alt="" />
+            <img src={require('../images/Apple TV Section.jpg')} alt=""  height={"670px"}/>
           </div>
           <div>
-            <img src={backgroundIphone} alt="" />
+            <img src={require('../images/Audio Section.jpg')} alt="" height={"670px"}/>
+          </div>
+          <div>
+            <img src={require('../images/Watch Section.jpg')} alt="" height={"670px"}/>
+          </div>
+          <div>
+            <img src={require('../images/iPhone14Background.png')} alt="" height={"670px"}/>
           </div>
         </Carousel>
 

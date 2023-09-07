@@ -10,7 +10,7 @@ body{
       background-color: #707070;
       padding-left: 2%;
       padding-right: 2%;
-    }
+  }
     .catigories_type {
   margin-right:25px; }
     form.nosubmit {
@@ -51,7 +51,7 @@ body{
   }
   .social_media_icon{
     display: flex;
-    justify-content: space-around;
+    /* justify-content: space-around; */
     margin-top: 10%;
   }
 /* @media screen  and (min-width:768px){

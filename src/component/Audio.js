@@ -21,13 +21,13 @@ export default function Audio() {
   
   return (
     <>
-            <div  >
+            <div   className="legend-container">
               
               <img
-                src={require("../images/ipod-699053_1920.jpg")}
+                src={require("../images/Audio Section.jpg")}
                 alt=""
                 height={"670px"}    
-                width={"100%"}                
+                style={{width:"100%"}}               
               />
             </div>{" "}
             <div >

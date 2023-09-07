@@ -35,7 +35,7 @@ useEffect(()=>{
   return (
     <>
       <Container fluid="md">
-        <Col  style={{ marginTop: "20px" }}>
+        <Col  style={{ marginTop: "8%" }}>
           <h3> Cart</h3>
         </Col>
         <div class="row">

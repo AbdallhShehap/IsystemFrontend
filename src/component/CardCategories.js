@@ -13,22 +13,22 @@ export default function CardCategories() {
       <Row>
         <Col xs={12} >
          <Link to="">
-            <img src={require("../images/image.png")} width="100%" />
+            <img src={require("../images/Watch Section.jpg")} width="100%" style={{borderRadius:"30px"}}/>
 
          </Link>
         </Col>
       </Row>
-        <br></br>
+      <br/>
       <Row>
         <Col xs={12} md={12} lg={7} className='mb-1'>
         <Link to="" >
-        <img src={require("../images/image.png")} width="90%" height="100%" />
+        <img src={require("../images/Audio Section.jpg")} width="90%" height="100%" style={{borderRadius:"30px"}}/>
         </Link>
         </Col>
 
         <Col xs={12} md={12} lg={5} >
         <Link to="">
-        <img md={{ span: 4}} src={require("../images/image.png")} width="100%" height="100%"/>
+        <img md={{ span: 4}} src={require("../images/iPad Sction.jpg")} width="100%" height="100%" style={{borderRadius:"30px"}}/>
         </Link>
         </Col>
 
@@ -40,14 +40,14 @@ export default function CardCategories() {
 
       <Col xs={12} md={12} lg={5} className='mb-1'>
       <Link to="">
-        <img src={require("../images/image.png")} width="85%" height="100%" />
+        <img src={require("../images/blogSection.png")} width="85%" height="100%" style={{borderRadius:"30px"}}/>
        </Link>
        </Col>
 
 
       <Col xs={12} md={12} lg={7} >
       <Link to="">
-        <img src={require("../images/image.png")} width="100%" height="100%"/>
+        <img src={require("../images/Accessories Section.jpg")} width="100%" height="100%" style={{borderRadius:"30px"}}/>
        </Link>
         </Col>
 
@@ -58,13 +58,13 @@ export default function CardCategories() {
       <Row>
       <Col xs={12} md={12} lg={6}  className='mb-1'>
       <Link to="">
-        <img  src={require("../images/image.png")} className='mr-5' width="87%" height="100%" />
+        <img  src={require("../images/Apple TV Section.jpg")} className='mr-5' width="87%" height="100%" style={{borderRadius:"30px"}}/>
         </Link>
         </Col>
 
         <Col xs={12} md={12} lg={6}  >
         <Link to="">
-        <img src={require("../images/image.png")} className='' width="100%" />
+        <img src={require("../images/Mac Section.jpg")} className='' width="100%" style={{borderRadius:"30px"}}/>
         </Link>
         </Col>
 

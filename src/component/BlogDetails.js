@@ -18,7 +18,7 @@ function BlogDetails() {
   },[])
   return (
     <div class="container">
-      <form class="container-fluid mt-5">
+      <form class="container-fluid  form_container">
         <div class="input-group">
           <input
             type="text"
@@ -31,14 +31,14 @@ function BlogDetails() {
       </form>
       <div
         class="square mt-5"
-        style={{ backgroundColor: "#F7F7F7", padding: "20px" }}
+        style={{ backgroundColor: "#F7F7F7", padding: "20px",height:"46rem" }}
       >
         <div>
        
           <Image
             src={selectedBlog.image}
             fluid
-            style={{ float: "left", margin: "2px",paddingRight:"13px" }}
+            style={{ float: "left", margin: "2px",paddingRight:"13px",height:"300px",width:"550px",borderRadius:"50px"}}
           />
         </div>
         <h3 className="title">
@@ -64,9 +64,9 @@ function BlogDetails() {
               style={{ border: "none", textAlign: "left" }}
               key={data.id}
             >
-              <img src={data.image} className="card-img-top" alt={data.title} />
+              <img src={require('../images/appleEvent.png')} className="card-img-top blog_img" alt={data.title}  />
               <div className="card-body">
-                <p className="card-text">{data.title}</p>
+                <p className="card-text blog_title">{data.title}</p>
                 <small className="card-title" style={{ color: "#BEBEBE" }}>
                   {data.date}
                 </small>

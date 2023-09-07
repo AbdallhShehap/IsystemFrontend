@@ -21,12 +21,12 @@ export default function IPad() {
   
   return (
     <>
-            <div >
+            <div  className="legend-container">
               
               <img
-                src={require("../images/ipadB.png")}
+                src={require("../images/iPad Sction.jpg")}
                 alt=""
-                height={"670px"}    
+                height={"680px"}    
                 width={"100%"}                
               />
             </div>{" "}

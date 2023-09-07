@@ -21,12 +21,12 @@ export default function AppleTv() {
   
   return (
     <>
-            <div >
+            <div>
               
               <img
-                src={require("../images/applications-7025904_1920.jpg")}
+                src={require("../images/Apple TV Section.jpg")}
                 alt=""
-                height={"670px"}    
+                height={"740px"}    
                 width={"100%"}                
               />
             </div>{" "}

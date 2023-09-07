@@ -24,9 +24,9 @@ export default function IMac() {
             <div  >
               
               <img
-                src={require("../images/Imac.jpg")}
+                src={require("../images/Mac Section.jpg")}
                 alt=""
-height={"670px"}    
+height={"740px"}    
 width={"100%"}          />
             </div>{" "}
       <div >
