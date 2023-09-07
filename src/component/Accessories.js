@@ -24,9 +24,9 @@ export default function Accessories() {
             <div  >
               
               <img
-                src={require("../images/applications-7025904_1920.jpg")}
+                src={require("../images/Accessories Section.jpg")}
                 alt=""
-                height={"670px"}    
+                height={"840px"}    
                 width={"100%"}                
               />
             </div>{" "}

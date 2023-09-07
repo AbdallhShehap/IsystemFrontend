@@ -1,0 +1,20 @@
+.container_installment{
+    margin-top: 75pt;
+
+}
+.installment_title{
+    font-size: 17pt;
+    text-align: center;
+}
+.link_credit{
+    color: #000;
+    font-size: 17pt;
+    font-weight: bold;
+}
+.payment_steps{
+    font-size: 17pt;
+}
+.terms{
+    text-align: center;
+    font-size: 17pt;
+}

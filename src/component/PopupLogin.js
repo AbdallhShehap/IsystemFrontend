@@ -177,7 +177,7 @@ const validateUser = async () => {
             </Button>
             <Link to="/registration"  onClick={handleClose} >
             <Button type="submit" variant="outlined" color="primary" >
-              Create an accuont
+              Create an account
             </Button>
 
             </Link>

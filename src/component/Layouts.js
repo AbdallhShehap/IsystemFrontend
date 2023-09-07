@@ -37,7 +37,7 @@ function Layouts() {
           variant="dark"
           expand="md"
           collapseOnSelect
-          className="main_nav"
+          className="main_nav fixed-top"
         >
           <Container fluid>
             <LinkContainer to="/">
@@ -142,28 +142,28 @@ function Layouts() {
             <MDBRow className="mt-3">
               <MDBCol md="2" lg="2" xl="2" className="mx-auto mb-4">
                 <p className="fw-bold mb-4 footer_title">Our Company</p>
-                <a href="#!" className="text-reset">
+                <Link to={"aboutus"} className="text-reset">
                   About Us{" "}
-                </a>
+                </Link>
                 <br></br>
-                <a href="#!" className="text-reset">
+                <Link to={"jointeam"} className="text-reset">
                   Join Our Team
-                </a>
+                </Link>
                 <br></br>
                 <a href="#!" className="text-reset">
                   Shipping & Return Policy{" "}
                 </a>
                 <br></br>
-                <a href="#!" className="text-reset">
+                <Link to={'contactus'} className="text-reset">
                   Contact Us
-                </a>
+                </Link>
               </MDBCol>
 
               <MDBCol md="3" lg="2" xl="2" className="mx-auto mb-4">
                 <h6 className=" fw-bold mb-4 footer_title">Our Services</h6>
-                <a href="#!" className="text-reset">
+                <Link to={"installmentplan"} className="text-reset">
                   Installment Plans{" "}
-                </a>
+                </Link>
                 <br></br>
                 <a href="#!" className="text-reset">
                   Trade-In
@@ -197,10 +197,10 @@ function Layouts() {
                   molestiae obcaecati rem quaerat deserunt.
                 </p> */}
                 <div className="social_media_icon">
-                  <Image src={youtube} fluid width={"20px"} />
-                  <Image src={facebook} fluid width={"20px"} />
-                  <Image src={instagram} fluid width={"20px"} />
-                  <Image src={twitter} fluid width={"20px"} />
+                  <Image src={youtube} fluid width={"23px"} style={{marginRight:"6%"}}/>
+                  <Image src={facebook} fluid width={"23px"} style={{marginRight:"6%"}}/>
+                  <Image src={instagram} fluid width={"23px"} style={{marginRight:"6%"}}/>
+                  <Image src={twitter} fluid width={"23px"} style={{marginRight:"6%"}}/>
                 </div>
               </MDBCol>
             </MDBRow>

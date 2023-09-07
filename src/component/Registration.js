@@ -289,7 +289,7 @@ useEffect(() => {
 
   return (
     <Container fluid>
-      <Row>
+      <Row className='mt-5'>
       <Col className='imgLogin'style={{marginTop:"6%"}} >
       
         <img src={require("../images/Mask_Group_2.png")}  alt="Your Image" fluid width={"100%"}height={"90%"} />
@@ -321,7 +321,7 @@ useEffect(() => {
 
           <InputGroup className="mb-4">
             <Form.Control
-              placeholder="email"
+              placeholder="Email"
               aria-label="email"
               aria-describedby="basic-addon2"
               value={email}

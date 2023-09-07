@@ -70,11 +70,14 @@ function Blog() {
   });
   return (
     <>
+    <div className="blog_container">
+
       <Image
-        src={require("../images/BigBlog.png")}
-        height={"50%"}
+        src={require("../images/blogSection.png")}
+        height={"670px"}
         width={"100%"}
       />
+    </div>
       <div className="container">
         <div className="row">
           <h3 className="mt-5 mb-4 ms-5">Our Blog</h3>
@@ -175,7 +178,7 @@ function Blog() {
               <img src={data.image} className="card-img-top" alt={data.title} />
               <div className="card-body">
                 <p className="card-text">{data.title}</p>
-                <small className="card-title" style={{ color: "#BEBEBE" }}>
+                <small className="card-title blog_title" style={{ color: "#BEBEBE" }}>
                   {data.date}
                 </small>
                 <br></br>
@@ -201,7 +204,7 @@ function Blog() {
                   </Slider> 
                 : 
                   <Slider {...settings} ref={(slider) => setSlider(slider)}>
-                  {filteredBlog
+                  {blogData
                     .reduce((rows, item, index) => {
                       if (index % 2 === 0) rows.push([]);
                       rows[rows.length - 1].push(item);
@@ -219,16 +222,17 @@ function Blog() {
                                 width: "25rem",
                                 border: "none",
                                 textAlign: "left",
+                                height:"25rem"
                               }}
                               key={data.id}
                             >
                               <img
                                 src={data.image}
-                                className="card-img-top"
+                                className="card-img-top blog_img"
                                 alt={data.title}
                               />
                               <div className="card-body">
-                                <p className="card-text">{data.title}</p>
+                                <p className="card-text blog_title">{data.title}</p>
                                 <small
                                   className="card-title"
                                   style={{ color: "#BEBEBE" }}
