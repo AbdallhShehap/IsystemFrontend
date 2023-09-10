@@ -1,7 +1,7 @@
 /* Style the counter cards */
 .sliderHome{
   margin-top: 51pt;
-
+width: 100%;
 }
 .col_top_categories {
   padding-bottom: 2em;
@@ -67,10 +67,7 @@
   display: inline-block; /* To make sure the container sizes to its content */
 }
 
-.background_slider {
-  width: 100%; /* Make sure the image covers the entire container */
-  height: auto; /* Maintain the aspect ratio */
-}
+
 .container_btn_background {
   display: flex;
 }
@@ -118,6 +115,12 @@ border-color: #707070;
     font-size: x-small;
 
   }
+  /* .background_slider{
+    width: 10px;
+  } */
+.sliderHome{
+  width: 100%;
+}
 }
 @media screen and (min-width:511px) and (max-width:1139px){
   .btn_preOrder {

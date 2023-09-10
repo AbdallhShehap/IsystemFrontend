@@ -32,11 +32,11 @@ const CartItem = ({ item, updateQuantity }) => {
             <Image src={img} fluid className="mx-auto d-block" />
           </Col>
 
-          <Col className="item-name mt-3">{name}<br/>{color}<br/>{model}</Col>
+          <Col xs={12} xl={3} md={4} className="item-name mt-3 ">{name}<br/>{color}<br/>{model}</Col>
           <br></br>
           <br></br>
 
-          <Col className="item-quantity mt-4">
+          <Col xs={12} xl={3} md={4} className="item-quantity mt-4">
             <button
               onClick= {handleDecrease}
               className="btn btn-primary btn_remove "
@@ -68,7 +68,12 @@ const CartItem = ({ item, updateQuantity }) => {
             </button>
           </Col>
 
-          <Col className="item-price mt-4 text-center">${price.toFixed(2)}</Col>
+          <Col  className="item-price mt-4 text-center">${price.toFixed(2)}</Col>
+          <Col className="item-price mt-4 text-center"><img
+            src={require("../images/delete.png")}
+            alt=""
+          /> </Col>
+
         </Row>
       </Container>
     </>

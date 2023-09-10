@@ -21,6 +21,7 @@ import InstallmentPlan from "./component/InstallmentPlan.js";
 import AboutUs from "./component/AboutUs.js";
 import JoinTeam from "./component/JoinTeam.js";
 import ContactUs from "./component/ContactUs.js";
+import TradeIn from "./component/TradeIn.js";
 
 function App() {
   return (
@@ -54,6 +55,7 @@ function App() {
             <Route path="aboutus" element={<AboutUs/>}/>
             <Route path="jointeam" element={<JoinTeam/>}/>
             <Route path="contactus" element={<ContactUs/>}/>
+            <Route path="tradein" element={<TradeIn/>}/>
           </Route>
           {/* <Route path="login" element={<Login />} /> */}
         </Routes>

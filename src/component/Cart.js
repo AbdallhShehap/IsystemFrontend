@@ -8,13 +8,14 @@ import Col from "react-bootstrap/Col";
 import { useState } from "react";
 import CartItem from "./CartItem";
 
-function Cart() {
+function Cart({cart}) {
   const [cartItems, setCartItems] = useState([
     { id: 1, img:require('../images/iPhone_14_Pro_Silver_Pure_Back_iPhone_14_Pro_Silver.png'),color:"white",model:"256 GB",name: "Product 2", quantity: 2, price: 24.99 },
     { id: 2,img:require('../images/iPhone_14_Pro_Silver_Pure_Back_iPhone_14_Pro_Silver.png'),color:"black",model:"128 GB", name: "Product 1", quantity: 1, price: 10.99 },
     { id: 3, img:require('../images/iPhone_14_Pro_Silver_Pure_Back_iPhone_14_Pro_Silver.png'),color:"white",model:"256 GB",name: "Product 2", quantity: 2, price: 24.99 },
     // Add more items as needed
   ]);
+  console.log(`cart item${cart}`)
 useEffect(()=>{
   window.scrollTo(0, 0);
 
@@ -46,6 +47,8 @@ useEffect(()=>{
               <Col style={{marginLeft:"60px",textAlign:"center"}}>QTY </Col>
 
               <Col style={{textAlign:"center"}}>Price</Col>
+              <Col style={{marginLeft:"60px",textAlign:"center"}}> </Col>
+
             </Row>
             <hr/>
             <Row>
@@ -102,32 +105,3 @@ useEffect(()=>{
 }
 
 export default Cart;
-
-// const Cart = () => {
-//   const [cartItems, setCartItems] = useState([
-//     { id: 1, name: 'Product 1', quantity: 1, price: 10.99 },
-//     { id: 2, name: 'Product 2', quantity: 2, price: 24.99 },
-//     // Add more items as needed
-//   ]);
-
-//   const updateQuantity = (itemToUpdate, newQuantity) => {
-//     const updatedCartItems = cartItems.map((item) =>
-//       item.id === itemToUpdate.id ? { ...item, quantity: newQuantity } : item
-//     );
-//     setCartItems(updatedCartItems);
-//   };
-
-//   const cartTotal = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
-
-//   return (
-//     <div className="cart">
-//       <h2>Your Cart</h2>
-//       {cartItems.map((item) => (
-//         <CartItem key={item.id} item={item} updateQuantity={updateQuantity} />
-//       ))}
-//       <div className="cart-total">Total: ${cartTotal.toFixed(2)}</div>
-//     </div>
-//   );
-// };
-
-// export default Cart;

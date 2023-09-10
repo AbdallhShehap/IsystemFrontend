@@ -42,7 +42,7 @@ function Layouts() {
           <Container fluid>
             <LinkContainer to="/">
               <Navbar.Brand className="brand">
-                <img src={logoApple} alt="" className="logo" />| iSystem
+                <img src={require('../images/iSystem logo -04.png')} alt="" className="logo" height={"55px"}/>
               </Navbar.Brand>
             </LinkContainer>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -165,9 +165,9 @@ function Layouts() {
                   Installment Plans{" "}
                 </Link>
                 <br></br>
-                <a href="#!" className="text-reset">
+                <Link to={"tradein"} className="text-reset">
                   Trade-In
-                </a>
+                </Link>
                 <br></br>
                 <a href="#!" className="text-reset">
                   iSystem Care{" "}
@@ -176,17 +176,16 @@ function Layouts() {
               </MDBCol>
               <MDBCol md="3" lg="2" xl="2" className="mx-auto mb-4">
                 <h6 className=" fw-bold mb-4 footer_title">Our Categories</h6>
-                <a href="#!" className="text-reset">
-                  Shop All
-                </a>
+                <Link to={'ipad'} className="text-reset">
+iPad                </Link>
                 <br></br>
-                <a href="#!" className="text-reset">
+                <Link to={'mac'} className="text-reset">
                   Mac
-                </a>
+                </Link>
                 <br></br>
-                <a href="#!" className="text-reset">
+                <Link to={'iphone'} className="text-reset">
                   iPhone
-                </a>
+                </Link>
               </MDBCol>
 
               <MDBCol md="3" lg="4" xl="3" className="mx-auto mb-4 ">
@@ -197,10 +196,9 @@ function Layouts() {
                   molestiae obcaecati rem quaerat deserunt.
                 </p> */}
                 <div className="social_media_icon">
-                  <Image src={youtube} fluid width={"23px"} style={{marginRight:"6%"}}/>
-                  <Image src={facebook} fluid width={"23px"} style={{marginRight:"6%"}}/>
-                  <Image src={instagram} fluid width={"23px"} style={{marginRight:"6%"}}/>
-                  <Image src={twitter} fluid width={"23px"} style={{marginRight:"6%"}}/>
+                 <Link to={'https://www.youtube.com/channel/UCjuoIbmRGSdkk8dTcE54D8g'} style={{marginRight:"6%"}}><Image src={youtube} fluid width={"23px"} /></Link> 
+                  <Link to={'https://www.facebook.com/isystemjordan'} style={{marginRight:"6%"}}><Image src={facebook} fluid width={"23px"} /></Link>
+                  <Link to={'https://www.instagram.com/isystemjordan/'} style={{marginRight:"6%"}}><Image src={instagram} fluid width={"23px"} /></Link>
                 </div>
               </MDBCol>
             </MDBRow>

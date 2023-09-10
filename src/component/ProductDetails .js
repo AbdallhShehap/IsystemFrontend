@@ -2,11 +2,16 @@ import React, { useEffect, useState } from "react";
 import "../assests/ProductDetails.css";
 import Image from "react-bootstrap/Image";
 import CardSlider from "./CardSlider";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import CardsData from "../Data/CardsData";
+import Cart from "./Cart";
+import CartItem from "./CartItem";
+
+
 function ProductDetails() {
   const { id } = useParams();
   let [selectData, setSelectData] = useState([]);
+  const [cart,setCart]=useState([])
   selectData = CardsData.find((select) => select.id == id);
   console.log(selectData);
   useEffect(() => {
@@ -56,16 +61,33 @@ function ProductDetails() {
       });
     };
   }, []);
+  const handleCart = (product) => {
+    // Create a copy of the current cart
+    const updatedCart = [...cart];
+  
+    // Check if the product is already in the cart based on some identifier (e.g., product id)
+    const existingProduct = updatedCart.find((item) => item.id === product.id);
+  
+    if (existingProduct) {
+      // If the product is already in the cart, update its quantity
+      existingProduct.quantity += 1;
+    } else {
+      // If the product is not in the cart, add it
+      updatedCart.push({ ...product, quantity: 1 });
+    }
+  
+    // Update the cart state with the new cart
+    setCart(updatedCart);
+  };
+  
+  console.log(cart); // This will show the updated cart after adding items
+  
   return (
     <div>
-      <div className="container">
+      <div className="container" style={{marginTop:"5%"}}>
         <div className="row">
-          <div className="col-lg-7 mt-5 ">
-            {/* <div className="row">
-              <div className="col">
-
-              </div>
-            </div> */}
+          <div className="col-lg-7 mt-5 " >
+       
             <div id="content-wrapper">
               <div class="column mb-5">
                 <div className="d-flex justify-content-center">
@@ -156,21 +178,27 @@ function ProductDetails() {
             <button
               className="btn btn-primary w-100 btn_details_cart mb-1 "
               type="submit"
+              onClick={()=>handleCart(selectData)}
             >
               Add to Cart{" "}
             </button>
+            <Link to={'/tradein'}>
             <button
               className="btn btn-primary w-100 btn_details_trade mb-1"
               type="submit"
             >
               Trade In
             </button>
+            </Link>
+<Link to={'/installmentplan'}>
             <button
               className="btn btn-primary w-100 btn_details_trade mb-1"
               type="submit"
             >
               Installment
             </button>
+            </Link>
+
           </div>
         </div>
       </div>
@@ -191,6 +219,7 @@ function ProductDetails() {
           <CardSlider />
         </div>
       </div>
+      <Cart cart={cart} />
     </div>
   );
 }

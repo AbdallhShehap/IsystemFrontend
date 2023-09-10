@@ -1,16 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import "../assests/Iphone.css";
 import { Component } from "react";
 import ReactDOM from "react-dom";
-// import ReactCardCarousel from "react-card-carousel";
-
-// import "swiper/swiper-bundle.css";
+import DataCategory from "../Data/DataCategory";
 import AllProduct from "./AllProduct";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 export default function Audio() {
   const slider = React.useRef(null);
+  const [data, setData] = useState(DataCategory);
+  let [filteredProducts,setFilteredProducts]=useState(data)
   const settings = {
     dots: false,
     infinite: true,
@@ -18,7 +18,20 @@ export default function Audio() {
     slidesToShow: 3,
     slidesToScroll: 1,
   };
-  
+  const handleClick = (productName) => {
+    // Find products with titles containing the productName
+    const filtered = data.filter((product) =>
+      product.title.includes(productName)
+    );
+  setFilteredProducts(filtered)
+    // Check if any products were found
+    if (filteredProducts.length > 0) {
+      console.log('Selected Products:', filteredProducts);
+      // You can do something with the selected product data here
+    } else {
+      console.log('Products not found');
+    }
+  };
   return (
     <>
             <div   className="legend-container">
@@ -49,43 +62,43 @@ export default function Audio() {
           <Slider {...settings} ref={slider}>
             <div>
               {" "}
-              <button class="CARD_STYLE" tabIndex="-1">
+              <button class="CARD_STYLE" tabIndex="-1" onClick={() => handleClick("Audio,1")}>
               Audio,1
               </button>
             </div>
             <div>
               {" "}
-              <button class="CARD_STYLE" tabIndex="-1">
+              <button class="CARD_STYLE" tabIndex="-1" onClick={() => handleClick("iPhone 14")}>
               Audio,3
               </button>
             </div>
             <div>
               {" "}
-              <button class="CARD_STYLE" tabIndex="-1">
+              <button class="CARD_STYLE" tabIndex="-1"onClick={() => handleClick("iPhone 14")} >
               Audio,4
               </button>
             </div>
             <div>
               {" "}
-              <button class="CARD_STYLE" tabIndex="-1">
+              <button class="CARD_STYLE" tabIndex="-1"onClick={() => handleClick("iPhone 14")}>
               Audio,2
               </button>
             </div>
             <div>
               {" "}
-              <button class="CARD_STYLE" tabIndex="-1">
+              <button class="CARD_STYLE" tabIndex="-1"onClick={() => handleClick("iPhone 14")}>
               Audio
               </button>
             </div>
             <div>
               {" "}
-              <button class="CARD_STYLE" tabIndex="-1">
+              <button class="CARD_STYLE" tabIndex="-1"onClick={() => handleClick("iPhone 14")}>
               Audio
               </button>
             </div>
             <div>
               {" "}
-              <button class="CARD_STYLE" tabIndex="-1">
+              <button class="CARD_STYLE" tabIndex="-1"onClick={() => handleClick("iPhone 14")}>
                 iPad{" "}
               </button>
             </div>
@@ -106,7 +119,7 @@ export default function Audio() {
         </div>
     </div>
   </div>
-        <AllProduct />
+        <AllProduct filteredProducts={filteredProducts} />
     </>
   );
 }

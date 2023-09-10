@@ -29,8 +29,8 @@ function Home() {
           showStatus={false}
           className="sliderHome"
         >
-          <div >
-            <img src={backgroundIphone} alt="" className="background_slider" height={"100%"}/>
+          {/* <div >
+            <img src={backgroundIphone} alt="" className="background_slider" />
             <div className="container_btn_background">
               <button
                 type="button"
@@ -45,23 +45,22 @@ function Home() {
                 Learn More
               </button>
             </div>
-          </div>
-
-          <div>
-            <img src={require('../images/Mac Section.jpg')} alt="" height={"670px"} />
-          </div>
-          <div>
-            <img src={require('../images/Accessories Section.jpg')} alt=""      height={"670px"}    
- />
+          </div> */}
+ <div>
+            <img src={require('../images/Trade-In MP.jpg')} alt="" height={"670px"} />
           </div>
           <div>
-            <img src={require('../images/Apple TV Section.jpg')} alt=""  height={"670px"}/>
+            <img src={require('../images/Mac Section.jpg')} alt="" height={"670px"}/>
           </div>
           <div>
-            <img src={require('../images/Audio Section.jpg')} alt="" height={"670px"}/>
+            <img src={require('../images/Authorised Service Provider MP.jpg')} alt="" height={"670px"} />
+          </div>
+         
+          <div>
+            <img src={require('../images/Do more on iPad MP.jpg')} alt="" height={"670px"} />
           </div>
           <div>
-            <img src={require('../images/Watch Section.jpg')} alt="" height={"670px"}/>
+            <img src={require('../images/Why Apple Watch MP.jpg')} alt="" height={"670px"} />
           </div>
           <div>
             <img src={require('../images/iPhone14Background.png')} alt="" height={"670px"}/>

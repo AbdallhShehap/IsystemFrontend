@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect ,useState} from "react";
 import "../assests/Iphone.css";
 import { Component } from "react";
 import ReactDOM from "react-dom";
@@ -9,7 +9,10 @@ import AllProduct from "./AllProduct";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import DataCategory from "../Data/DataCategory";
 export default function IPhone() {
+  const [data, setData] = useState(DataCategory);
+let [filteredProducts,setFilteredProducts]=useState(data)
   const slider = React.useRef(null);
   const settings = {
     dots: false,
@@ -18,12 +21,28 @@ export default function IPhone() {
     slidesToShow: 3,
     slidesToScroll: 1,
   };
-  
+  useEffect(()=>{
+    window.scrollTo(0,0)
+        },[])
+        const handleClick = (productName) => {
+          // Find products with titles containing the productName
+          const filtered = data.filter((product) =>
+            product.title.includes(productName)
+          );
+        setFilteredProducts(filtered)
+          // Check if any products were found
+          if (filteredProducts.length > 0) {
+            console.log('Selected Products:', filteredProducts);
+            // You can do something with the selected product data here
+          } else {
+            console.log('Products not found');
+          }
+        };
   return (
     <>
             <div className="legend-container">
               <img
-                src={require("../images/iPhone14Backgroundedit.png")}
+                src={require("../images/iphonesection.jpeg")}
                 alt=""
                 height={"670px"}    
                 width={"100%"}                />
@@ -47,46 +66,35 @@ export default function IPhone() {
           <Slider {...settings} ref={slider}>
             <div>
               {" "}
-              <button class="CARD_STYLE" tabIndex="-1">
+              <button class="CARD_STYLE" tabIndex="-1" onClick={() => handleClick("iPhone 14")}>
               iPhone 14
               </button>
             </div>
             <div>
               {" "}
-              <button class="CARD_STYLE" tabIndex="-1">
+              <button class="CARD_STYLE" tabIndex="-1" onClick={() => handleClick("iPhone 13")}>
               iPhone 13
               </button>
             </div>
             <div>
               {" "}
-              <button class="CARD_STYLE" tabIndex="-1">
+              <button class="CARD_STYLE" tabIndex="-1" onClick={() => handleClick("iPhone 12")}>
               iPhone 12
               </button>
             </div>
             <div>
               {" "}
-              <button class="CARD_STYLE" tabIndex="-1">
+              <button class="CARD_STYLE" tabIndex="-1" onClick={() => handleClick("iPhone 11")}>
               iPhone 11
               </button>
             </div>
             <div>
               {" "}
-              <button class="CARD_STYLE" tabIndex="-1">
+              <button class="CARD_STYLE" tabIndex="-1" onClick={() => handleClick("iPhone x")}>
               iPhone x
               </button>
             </div>
-            <div>
-              {" "}
-              <button class="CARD_STYLE" tabIndex="-1">
-                watch
-              </button>
-            </div>
-            <div>
-              {" "}
-              <button class="CARD_STYLE" tabIndex="-1">
-                iPad{" "}
-              </button>
-            </div>
+            
           </Slider>
         </div>
         </div>
@@ -104,7 +112,7 @@ export default function IPhone() {
         </div>
     </div>
   </div>
-        <AllProduct />
+  <AllProduct filteredProducts={filteredProducts} />
     </>
   );
 }

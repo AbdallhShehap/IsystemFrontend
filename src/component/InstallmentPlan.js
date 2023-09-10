@@ -30,40 +30,40 @@ function InstallmentPlan() {
       </div>
       <div className="row">
 <div className="col-lg-4 col-sm-12">
-<img src={require('../assests/kuwaitBank.webp')} alt="" width={"80%"} height={"70%"}/>
+<img src={require('../images/kuwaitBank.webp')} alt="" width={"80%"} height={"70%"}/>
 </div>
 <div className="col-lg-4 col-sm-12">
-<img src={require('../assests/etihadBank.webp')} alt="" width={"80%"} height={"70%"}/>
+<img src={require('../images/etihadBank.webp')} alt="" width={"80%"} height={"70%"}/>
 
 </div>
 <div className="col-lg-4 col-sm-12">
-<img src={require('../assests/ahliBank.webp')} alt="" width={"80%"} height={"85%"}/>
-
-</div>
-      </div>
-      <div className="row">
-<div className="col-lg-4 col-sm-12">
-<img src={require('../assests/standardChartered.webp')} alt="" width={"80%"} height={"70%"}/>
-</div>
-<div className="col-lg-4 col-sm-12">
-<img src={require('../assests/safwaBank.webp')} alt="" width={"80%"} height={"70%"}/>
-
-</div>
-<div className="col-lg-4 col-sm-12">
-<img src={require('../assests/arabBank.webp')} alt="" width={"80%"} height={"70%"}/>
+<img src={require('../images/ahliBank.webp')} alt="" width={"80%"} height={"85%"}/>
 
 </div>
       </div>
       <div className="row">
 <div className="col-lg-4 col-sm-12">
-<img src={require('../assests/Capital Bank.webp')} alt="" width={"80%"} height={"70%"}/>
+<img src={require('../images/investbank.png')} alt="" width={"80%"} height={"70%"}/>
 </div>
 <div className="col-lg-4 col-sm-12">
-<img src={require('../assests/bank of Jordan.webp')} alt="" width={"80%"} height={"70%"}/>
+<img src={require('../images/safwaBank.webp')} alt="" width={"80%"} height={"70%"}/>
 
 </div>
 <div className="col-lg-4 col-sm-12">
-<img src={require('../assests/cairoBank.webp')} alt="" width={"80%"}height={"70%"}/>
+<img src={require('../images/arabBank.webp')} alt="" width={"80%"} height={"70%"}/>
+
+</div>
+      </div>
+      <div className="row">
+<div className="col-lg-4 col-sm-12">
+<img src={require('../images/Capital Bank.webp')} alt="" width={"80%"} height={"50%"}/>
+</div>
+<div className="col-lg-4 col-sm-12">
+<img src={require('../images//Bank of Jordan new.png')} alt="" width={"80%"} height={"50%"}/>
+
+</div>
+<div className="col-lg-4 col-sm-12">
+<img src={require('../images/cairoBank.webp')} alt="" width={"80%"}height={"40%"}/>
 
 </div>
       </div>
@@ -82,8 +82,7 @@ function InstallmentPlan() {
             </li>
             <li className="payment_steps">
               Maximum monthly payments are up to 12 months for Jordan Ahli Bank,
-              Bank al Etihad, Safwa Islamic Bank, Cairo Amman Bank, and Standard
-              Chartered Bank.
+              Bank al Etihad, Safwa Islamic Bank, Cairo Amman Bank.
             </li>
           </ul>
           <p className="terms">Terms & Conditions apply.</p>

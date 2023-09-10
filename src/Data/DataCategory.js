@@ -3,15 +3,15 @@
 const DataCategory=[
     {
       "id": 1,
-      "image":require('../images/iPad.png'),
+      "image":require('../images/iphoneyellow.jpg'),
       "title": "iPhone 14 Pro 256GB Silver",
       "price": "JD19.99",
       "inStock": true,
     },
     {
       "id": 2,
-      "image": require('../images/iPhone_14_Pro_Silver_Pure_Back_iPhone_14_Pro_Silver.png'),
-      "title": "iPhone 13 Pro 256GB Silver",
+      "image": require('../images/iphoneyellow.jpg'),
+      "title": "AppleTv,1",
       "price": "JD19.99",
       "inStock": false,
 
@@ -19,7 +19,7 @@ const DataCategory=[
     },
     {
       "id": 3,
-      "image": require('../images/iPad.png'),
+      "image": require('../images/iphoneyellow.jpg'),
       "title": "iPhone 12 Pro 256GB Silver",
       "price": "JD19.99",
       "inStock": true,
@@ -27,7 +27,7 @@ const DataCategory=[
     },
     {
       "id": 4,
-      "image": require('../images/iPhone_14_Pro_Silver_Pure_Back_iPhone_14_Pro_Silver.png'),
+      "image": require('../images/ipblack.jpeg'),
       "title": "iPhone 11 Pro 256GB Silver",
       "price": "JD19.99",
       "inStock": true,
@@ -35,11 +35,20 @@ const DataCategory=[
     },
     {
       "id": 5,
-      "image": require('../images/iPhone_14_Pro_Silver_Pure_Back_iPhone_14_Pro_Silver.png'),
+      "image": require('../images/ipblack.jpeg'),
       "title": "iPhone 9 Pro 256GB Silver",
       "price": "JD19.99",
       "inStock": false,
 
-    }
+    },
+    {
+      "id": 6,
+      "image": require('../images/iphoneyellow.jpg'),
+      "title": "iMac20",
+      "price": "JD19.99",
+      "inStock": false,
+
+      
+    },
   ]
 export default DataCategory;  

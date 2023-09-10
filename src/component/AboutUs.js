@@ -18,7 +18,7 @@ window.scrollTo(0,0)
         </div>
         <div className="row mt-4">
             <div className="col">
-                <img src={require('../assests/aboutus.webp')} alt="" width={"100%"} height={"550pt"} />
+                <img src={require('../images/aboutus.webp')} alt="" width={"100%"} height={"550pt"} />
             </div>
              </div>
              <div className="row mt-4">

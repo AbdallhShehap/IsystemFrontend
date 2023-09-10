@@ -28,7 +28,7 @@ export default function CardCategories() {
 
         <Col xs={12} md={12} lg={5} >
         <Link to="">
-        <img md={{ span: 4}} src={require("../images/iPad Sction.jpg")} width="100%" height="100%" style={{borderRadius:"30px"}}/>
+        <img md={{ span: 4}} src={require("../images/ipadsection.jpeg")} width="100%" height="100%" style={{borderRadius:"30px"}}/>
         </Link>
         </Col>
 

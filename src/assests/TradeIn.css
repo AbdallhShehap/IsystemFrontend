@@ -1,0 +1,28 @@
+.margin{
+    margin-top: 75pt;
+
+}
+.container_trade{
+    display: grid;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    text-align: center; 
+}
+.apple_tradein{
+
+}
+.credit{
+    margin-top: 5%;
+}
+.device{
+font-weight: bold;
+margin-top: 3% ;
+}
+.li_order{
+list-style-type: none;}
+.container_upgrade{
+    display: grid;
+justify-content: flex-start;
+margin-top: 5%;
+}
+  
