@@ -47,23 +47,23 @@ function Home() {
             </div>
           </div> */}
  <div>
-            <img src={require('../images/Trade-In MP.jpg')} alt="" height={"670px"} />
+            <img src={require('../images/Trade-In MP.jpg')} alt="" height={"100%"} />
           </div>
           <div>
-            <img src={require('../images/Mac Section.jpg')} alt="" height={"670px"}/>
+            <img src={require('../images/Mac Section.jpg')} alt="" height={"100%"}/>
           </div>
           <div>
-            <img src={require('../images/Authorised Service Provider MP.jpg')} alt="" height={"670px"} />
+            <img src={require('../images/Authorised Service Provider MP.jpg')} alt="" height={"100%"} />
           </div>
          
           <div>
-            <img src={require('../images/Do more on iPad MP.jpg')} alt="" height={"670px"} />
+            <img src={require('../images/Do more on iPad MP.jpg')} alt="" height={"100%"} />
           </div>
           <div>
-            <img src={require('../images/Why Apple Watch MP.jpg')} alt="" height={"670px"} />
+            <img src={require('../images/Why Apple Watch MP.jpg')} alt="" height={"100%"} />
           </div>
           <div>
-            <img src={require('../images/iPhone14Background.png')} alt="" height={"670px"}/>
+            <img src={require('../images/iPhone14Background.png')} alt="" height={"100%"}/>
           </div>
         </Carousel>
 

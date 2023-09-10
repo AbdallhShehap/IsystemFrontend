@@ -40,7 +40,7 @@ export default function CardCategories() {
 
       <Col xs={12} md={12} lg={5} className='mb-1'>
       <Link to="">
-        <img src={require("../images/blogSection.png")} width="85%" height="100%" style={{borderRadius:"30px"}}/>
+        <img src={require("../images/blogedit.jpg")} style={{ width: "100%", borderRadius: "30px"}}/>
        </Link>
        </Col>
 

@@ -12,6 +12,13 @@
       margin-left: 0;
       
   }
+  .product_info{
+    text-align: center;
+  }
+  .quantity{
+    display: flex;
+    justify-content: center;
+  }
   .cart_title{
       display: none;
   }
