@@ -42,11 +42,13 @@ useEffect(()=>{
         <div class="row">
           <div class="col-lg-9 col-md-9 col-sm-12">
             <Row className="cart_title">
+            <Col  style={{marginLeft:"40px",textAlign:"center"}}></Col>
+
               <Col  style={{marginLeft:"40px",textAlign:"center"}}>Item</Col>
 
               <Col style={{marginLeft:"60px",textAlign:"center"}}>QTY </Col>
 
-              <Col style={{textAlign:"center"}}>Price</Col>
+              <Col style={{textAlign:"center",marginLeft:"15%"}}>Price</Col>
               <Col style={{marginLeft:"60px",textAlign:"center"}}> </Col>
 
             </Row>

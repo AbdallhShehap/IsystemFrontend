@@ -36,7 +36,7 @@ const CartItem = ({ item, updateQuantity }) => {
           <br></br>
           <br></br>
 
-          <Col xs={12} xl={3} md={4} className="item-quantity mt-4">
+          <Col xs={12} xl={2} md={4} className="item-quantity mt-4">
             <button
               onClick= {handleDecrease}
               className="btn btn-primary btn_remove "
@@ -68,8 +68,8 @@ const CartItem = ({ item, updateQuantity }) => {
             </button>
           </Col>
 
-          <Col  className="item-price mt-4 text-center">${price.toFixed(2)}</Col>
-          <Col className="item-price mt-4 text-center"><img
+          <Col xl={3}className="item-price mt-4 text-center">${price.toFixed(2)}</Col>
+          <Col xl={1}className="item-price mt-4 text-center"><img
             src={require("../images/delete.png")}
             alt=""
           /> </Col>
