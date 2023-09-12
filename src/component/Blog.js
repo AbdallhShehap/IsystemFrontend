@@ -74,7 +74,6 @@ function Blog() {
 
       <Image
         src={require("../images/blogBackground.png")}
-        height={"670px"}
         width={"100%"}
       />
     </div>

@@ -16,10 +16,10 @@ import { Carousel } from "react-responsive-carousel";
 import CardSlider from "../component/CardSlider.js";
 import CardCategories from "../component/CardCategories";
 import TopSellingCard from "../component/TopSellingCard.js"
+import { Link } from "react-router-dom";
 function Home() {
   return (
-    <>
-      <div>
+    <div>
         <Carousel
           autoPlay
           interval="5000"
@@ -27,7 +27,7 @@ function Home() {
           infiniteLoop
           showThumbs={false}
           showStatus={false}
-          className="sliderHome"
+          className="sliderHome "
         >
           {/* <div >
             <img src={backgroundIphone} alt="" className="background_slider" />
@@ -50,7 +50,7 @@ function Home() {
             <img src={require('../images/Trade-In MP.jpg')} alt="" height={"100%"} />
           </div>
           <div>
-            <img src={require('../images/Mac Section.jpg')} alt="" height={"100%"}/>
+            <img src={require('../images/Switchers MP.jpg')} alt="" height={"100%"}/>
           </div>
           <div>
             <img src={require('../images/Authorised Service Provider MP.jpg')} alt="" height={"100%"} />
@@ -63,13 +63,14 @@ function Home() {
             <img src={require('../images/Why Apple Watch MP.jpg')} alt="" height={"100%"} />
           </div>
           <div>
-            <img src={require('../images/iPhone14Background.png')} alt="" height={"100%"}/>
+            <img src={require('../images/Mac does that MP.jpg')} alt="" height={"100%"}/>
           </div>
         </Carousel>
 
         <div className="container-fluid text-center">
           <div className="row">
             <div className="col col_top_categories">
+              <Link to={'installmentplan'} style={{textDecoration:"none"}}>
               <div className="card mx-auto card_topCategories installment">
                 <div className="card-body">
                   <div className="icon-wrapper">
@@ -80,8 +81,10 @@ function Home() {
                   </h2>
                 </div>
               </div>
+              </Link>
             </div>
             <div className="col col_top_categories">
+              <Link to={"contactus"} style={{textDecoration:"none"}}>
               <div className="card mx-auto card_topCategories our_location">
                 <div className="card-body">
                   <div className="icon-wrapper">
@@ -95,6 +98,7 @@ function Home() {
                 </p> */}
                 </div>
               </div>
+              </Link>
             </div>
             <div className="col col_top_categories">
               <div className="card mx-auto card_topCategories apple_care">
@@ -113,6 +117,7 @@ function Home() {
               </div>
             </div>
             <div className="col col_top_categories">
+              <Link to={"tradein"}style={{textDecoration:"none"}}>
               <div className="card mx-auto card_topCategories tradein">
                 <div className="card-body">
                   <div className="icon-wrapper">
@@ -121,15 +126,14 @@ function Home() {
                   <h5 className="card-title card_title_topCategories">
                     Trade In{" "}
                   </h5>
-                  {/* <p className="card-text desc_of_topCategories">
-                  Schedule and reserve classroomof student attendance.
-                </p> */}
+               
                 </div>
               </div>
+              </Link>
+
             </div>
           </div>
         </div>
-      </div>
       <br></br>
       <br></br>
       <br></br>
@@ -146,7 +150,7 @@ function Home() {
        title="Top Selling Accessories" 
 
       />
-    </>
+    </div>
   );
 }
 

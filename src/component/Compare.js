@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CardsData from "../Data/CardsData.js";
 import "../assests/Compare.css";
 import CompareCard from "./CompareCard.js";
@@ -10,11 +10,13 @@ function Compare() {
   const [selected4, setSelected4] = useState([]);
 
   const [firstCombo, setFirstCombo] = useState("");
-
   const [secondCombo, setSecondCombo] = useState("");
   const [thirdCombo, setThirdCombo] = useState("");
   const [fourCombo, setFourCombo] = useState("");
 
+  useEffect(()=>{
+window.scrollTo(0,0)
+  },[])
   function handleChange1(e) {
     const target = e.target.value;
     setFirstCombo(target);
@@ -85,6 +87,8 @@ function Compare() {
             onChange={handleChange1}
             className="select_box"
           >
+                          <option value="static">Select Option</option>
+
             {dataCategory.map((item) => (
               <option value={item.id} key={item.id} className="option_selected">
                 {item.title}
@@ -98,6 +102,8 @@ function Compare() {
             onChange={handleChange2}
             className="select_box"
           >
+                          <option value="static">Select Option</option>
+
             {dataCategory.map((item) => (
               <option value={item.id} key={item.id}>
                 {item.title}
@@ -111,10 +117,13 @@ function Compare() {
             onChange={handleChange3}
             className="select_box"
           >
+              <option value="static">Select Option</option>
+
             {dataCategory.map((item) => (
               <option value={item.id} key={item.id}>
                 {item.title}
               </option>
+             
             ))}
           </select>
         </div>
@@ -124,6 +133,8 @@ function Compare() {
             onChange={handleChange4}
             className="select_box"
           >
+                          <option value="static">Select Option</option>
+
             {dataCategory.map((item) => (
               <option value={item.id} key={item.id}>
                 {item.title}

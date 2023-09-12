@@ -2,9 +2,7 @@ import React, { useEffect ,useState} from "react";
 import "../assests/Iphone.css";
 import { Component } from "react";
 import ReactDOM from "react-dom";
-// import ReactCardCarousel from "react-card-carousel";
-
-// import "swiper/swiper-bundle.css";
+import axios from "axios";
 import AllProduct from "./AllProduct";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -23,6 +21,13 @@ let [filteredProducts,setFilteredProducts]=useState(data)
   };
   useEffect(()=>{
     window.scrollTo(0,0)
+ axios.get('http://localhost:1010/product/get')
+ .then((res)=>{
+  console.log(res.data)
+ })
+ .catch((err)=>{
+  console.log(`err${err}`)
+ })
         },[])
         const handleClick = (productName) => {
           // Find products with titles containing the productName

@@ -149,10 +149,10 @@ function Layouts() {
                 <Link to={"jointeam"} className="text-reset">
                   Join Our Team
                 </Link>
-                <br></br>
+                {/* <br></br>
                 <a href="#!" className="text-reset">
                   Shipping & Return Policy{" "}
-                </a>
+                </a> */}
                 <br></br>
                 <Link to={'contactus'} className="text-reset">
                   Contact Us
@@ -169,9 +169,12 @@ function Layouts() {
                   Trade-In
                 </Link>
                 <br></br>
-                <a href="#!" className="text-reset">
+                {/* <a href="#!" className="text-reset">
                   iSystem Care{" "}
-                </a>
+                </a> */}
+                   <Link to={'compare'}  className="text-reset">
+                  Compare{" "}
+                </Link>
                 <br></br>
               </MDBCol>
               <MDBCol md="3" lg="2" xl="2" className="mx-auto mb-4">

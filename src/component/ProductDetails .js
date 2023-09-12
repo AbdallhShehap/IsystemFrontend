@@ -6,12 +6,18 @@ import { Link, useParams } from "react-router-dom";
 import CardsData from "../Data/CardsData";
 import Cart from "./Cart";
 import CartItem from "./CartItem";
-
+import { useNavigate } from "react-router-dom";
 
 function ProductDetails() {
   const { id } = useParams();
+  const navigate=useNavigate()
   let [selectData, setSelectData] = useState([]);
   const [cart,setCart]=useState([])
+  const [selectedColor, setSelectedColor] = useState(""); // Initialize state for selected color
+const [selectedModel,setSelectedModel]=useState("")
+// const [containerBoxClassName, setContainerBoxClassName] = useState("unselected");
+const [chosenProduct,setChosenProduct]=useState([])
+
   selectData = CardsData.find((select) => select.id == id);
   console.log(selectData);
   useEffect(() => {
@@ -61,27 +67,47 @@ function ProductDetails() {
       });
     };
   }, []);
-  const handleCart = (product) => {
-    // Create a copy of the current cart
-    const updatedCart = [...cart];
+  // const handleCart = (product) => {
+  //   // Create a copy of the current cart
+  //   const updatedCart = [...cart];
   
-    // Check if the product is already in the cart based on some identifier (e.g., product id)
-    const existingProduct = updatedCart.find((item) => item.id === product.id);
+  //   // Check if the product is already in the cart based on some identifier (e.g., product id)
+  //   const existingProduct = updatedCart.find((item) => item.id === product.id);
   
-    if (existingProduct) {
-      // If the product is already in the cart, update its quantity
-      existingProduct.quantity += 1;
-    } else {
-      // If the product is not in the cart, add it
-      updatedCart.push({ ...product, quantity: 1 });
-    }
+  //   if (existingProduct) {
+  //     // If the product is already in the cart, update its quantity
+  //     existingProduct.quantity += 1;
+  //   } else {
+  //     // If the product is not in the cart, add it
+  //     updatedCart.push({ ...product, quantity: 1 });
+  //   }
   
-    // Update the cart state with the new cart
-    setCart(updatedCart);
+  //   // Update the cart state with the new cart
+  //   setCart(updatedCart);
+  // };
+  
+  // console.log(cart); // This will show the updated cart after adding items
+  const handleAddToCart = (product) => {
+    // You can add your logic to handle adding to cart here
+    // For demonstration, we'll navigate to the cart with the product data as a query parameter
+    navigate(`/cart?productId=${product.id}`);
   };
-  
-  console.log(cart); // This will show the updated cart after adding items
-  
+
+  const handleColorClick = (color) => {
+    setSelectedColor(color); // Update the selected color in the state
+    setChosenProduct((prevChosenProduct) => [...prevChosenProduct, color]);
+      // setContainerBoxClassName("selected"); // Apply the 'selected' class to the container
+
+  };
+  const handleModel = (model) => {
+    setSelectedModel(model); // Update the selected color in the state
+setChosenProduct((prevChosenProduct)=>[...prevChosenProduct,model])
+
+
+  };
+console.log(selectedColor)
+console.log(selectedModel)
+console.log(chosenProduct)
   return (
     <div>
       <div className="container" style={{marginTop:"5%"}}>
@@ -154,31 +180,52 @@ function ProductDetails() {
             <h4>{selectData.title}</h4>{" "}
             <p className="price">{selectData.price}</p>
             <h5 className="">Color</h5>
-            <div className="container_box">
+            {/* <div className="container_box">
               <img src={selectData.colorImg[0]} alt="" className="color" />
               <img src={selectData.colorImg[1]} alt="" className="color" />
-              {/* <img src={selectData.colorImg[2]} alt="" className="color" />
-              <img src={selectData.colorImg[3]} alt="" className="color" /> */}
-
-              {/* <img src={selectData.colorImg[1]} alt="" className="color" />    */}
+          
             </div>
             <div className="container_box">
-              <p className="color">{selectData.color[0]}</p>
-              <p className="color">{selectData.color[1]}</p>
-              <p className="color">{selectData.color[2]}</p>
-              <p className="color">{selectData.color[3]}</p>
-            </div>
+             {selectData.color.map((colorOption, index) => (
+          <p
+            key={index}
+            className={`color ${selectedColor === colorOption ? "selected" : ""}`}
+            onClick={() => handleColorClick(colorOption)}
+          >
+            {colorOption}
+          </p>
+        ))}
+            </div> */}
+        <div className="container_box">
+  {selectData.color.map((colorOption, index) => (
+    <div key={index} className={`color-option ${selectedColor === colorOption ? "selected" : ""}`} onClick={() => handleColorClick(colorOption)}>
+      <img src={selectData.colorImg[index]} alt="" className="color" />
+      <p>{colorOption}</p>
+    </div>
+  ))}
+</div>
+
+
             <h5 className="">Model</h5>
             <div className="container_box">
-              <p className="model_space">{selectData.model[0]}</p>
+            {selectData.model.map((modelOption, index) => (
+          <p
+            key={index}
+            className={`model_space ${selectedModel === modelOption ? "selected" : ""}`}
+            onClick={() => handleModel(modelOption)}
+          >
+            {modelOption}
+          </p>
+        ))}
+              {/* <p className="model_space">{selectData.model[0]}</p>
               <p className="model_space">{selectData.model[1]}</p>
               <p className="model_space">{selectData.model[2]}</p>
-              <p className="model_space">{selectData.model[3]}</p>
+              <p className="model_space">{selectData.model[3]}</p> */}
             </div>
             <button
               className="btn btn-primary w-100 btn_details_cart mb-1 "
               type="submit"
-              onClick={()=>handleCart(selectData)}
+              onClick={()=>handleAddToCart(selectData)}
             >
               Add to Cart{" "}
             </button>
@@ -219,7 +266,7 @@ function ProductDetails() {
           <CardSlider />
         </div>
       </div>
-      <Cart cart={cart} />
+      <Cart chosenProduct={chosenProduct} />
     </div>
   );
 }

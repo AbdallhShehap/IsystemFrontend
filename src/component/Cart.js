@@ -7,15 +7,16 @@ import Col from "react-bootstrap/Col";
 
 import { useState } from "react";
 import CartItem from "./CartItem";
-
-function Cart({cart}) {
+import { useLocation } from "react-router-dom";
+function Cart({chosenProduct}) {
   const [cartItems, setCartItems] = useState([
     { id: 1, img:require('../images/iPhone_14_Pro_Silver_Pure_Back_iPhone_14_Pro_Silver.png'),color:"white",model:"256 GB",name: "Product 2", quantity: 2, price: 24.99 },
     { id: 2,img:require('../images/iPhone_14_Pro_Silver_Pure_Back_iPhone_14_Pro_Silver.png'),color:"black",model:"128 GB", name: "Product 1", quantity: 1, price: 10.99 },
     { id: 3, img:require('../images/iPhone_14_Pro_Silver_Pure_Back_iPhone_14_Pro_Silver.png'),color:"white",model:"256 GB",name: "Product 2", quantity: 2, price: 24.99 },
     // Add more items as needed
   ]);
-  console.log(`cart item${cart}`)
+  const location=useLocation()
+  console.log(`cart item${chosenProduct}`)
 useEffect(()=>{
   window.scrollTo(0, 0);
 

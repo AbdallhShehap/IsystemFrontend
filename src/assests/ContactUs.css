@@ -1,0 +1,17 @@
+iframe.map {
+  margin-top: 2%;
+    width: 900px;
+    height: 350px;
+    border: 0;
+  }
+  .email{
+    text-decoration: none;
+    color: #000;
+margin-bottom: 50%;  }
+@media screen and (max-width:768px) {
+    iframe.map {
+        width: 300px;
+        height: 450px;
+        border: 0;
+      }
+}  

@@ -2,7 +2,7 @@ const BlogDetailsData = [
   {
     "id": 1,
     "title": "Apple Events",
-    "image": require("../images/appleEvent.png"),
+    "image": require("../images/appleEvents.png"),
         "desc":"Sed ut perspiciatis unde omnis iste natus error sit voluptatemaccusantium doloremque laudantium, totam rem aperiam, ea",
 
     "date": "February 23, 2022",

@@ -30,8 +30,7 @@ function BlogDetails() {
         
       </form>
       <div
-        class="square mt-5"
-        style={{ backgroundColor: "#F7F7F7", padding: "20px",height:"46rem" }}
+        className="square mt-5"
       >
         <div>
        
@@ -48,10 +47,10 @@ function BlogDetails() {
          {selectedBlog.desc}
         </p>
       </div>
-      <div className="row">
+      <div className="row also_blog">
 <div className="col">
 
-      <h3 className="mt-5 ms-2" >Also In Blog</h3>
+      <h3 className=" ms-2" >Also In Blog</h3>
 </div>
       </div>
       <div className="row">
@@ -64,7 +63,7 @@ function BlogDetails() {
               style={{ border: "none", textAlign: "left" }}
               key={data.id}
             >
-              <img src={require('../images/appleEvent.png')} className="card-img-top blog_img" alt={data.title}  />
+              <img src={require('../images/appleEvents.png')} className="card-img-top blog_img" alt={data.title}  />
               <div className="card-body">
                 <p className="card-text blog_title">{data.title}</p>
                 <small className="card-title" style={{ color: "#BEBEBE" }}>

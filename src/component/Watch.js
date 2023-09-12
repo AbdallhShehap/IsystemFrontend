@@ -42,7 +42,7 @@ export default function Watch() {
               <img
                 src={require("../images/Watch Section.jpg")}
                 alt=""
-                height={"670px"}    
+                // height={"670px"}    
                 width={"100%"}                
               />
             </div>{" "}

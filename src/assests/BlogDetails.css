@@ -35,6 +35,11 @@ input.search_blog {
   .card_BlogDetails{
     width: 25rem;
 }
+.square{
+  background-color: "#F7F7F7";
+   padding: 20px;
+   height:40rem 
+}
   .title{
       font-size: 23px;
       font-weight: bold;
@@ -48,7 +53,7 @@ input.search_blog {
       text-align: justify;
       font-size: 18px;
   }
-  @media screen and (max-width:768px) {
+  @media screen and (max-width:1400px) {
       .title{
           font-size: 19px;
       }
@@ -57,5 +62,9 @@ input.search_blog {
       }
       .card_BlogDetails{
         width: 18rem;
+    }
+  
+    .square{
+      height: 5%;
     }
   }
