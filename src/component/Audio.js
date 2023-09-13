@@ -11,6 +11,9 @@ export default function Audio() {
   const slider = React.useRef(null);
   const [data, setData] = useState(DataCategory);
   let [filteredProducts,setFilteredProducts]=useState(data)
+  useEffect(()=>{
+window.scrollTo(0,0)
+  },[])
   const settings = {
     dots: false,
     infinite: true,

@@ -9,8 +9,21 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import DataCategory from "../Data/DataCategory";
 export default function IPhone() {
-  const [data, setData] = useState(DataCategory);
-let [filteredProducts,setFilteredProducts]=useState(data)
+  const [data, setData] = useState([]);
+let [filteredProducts,setFilteredProducts]=useState([])
+useEffect(() => {
+  window.scrollTo(0, 0);
+  axios.get('http://localhost:1010/product/get')
+    .then((res) => {
+      // Update the 'data' state with the fetched data
+      setData(res.data);
+    })
+    .catch((err) => {
+      console.log(`err${err}`);
+    });
+}, []); // The empty dependency array ensures that this effect runs only once when the component mounts
+
+
   const slider = React.useRef(null);
   const settings = {
     dots: false,
@@ -19,20 +32,12 @@ let [filteredProducts,setFilteredProducts]=useState(data)
     slidesToShow: 3,
     slidesToScroll: 1,
   };
-  useEffect(()=>{
-    window.scrollTo(0,0)
- axios.get('http://localhost:1010/product/get')
- .then((res)=>{
-  console.log(res.data)
- })
- .catch((err)=>{
-  console.log(`err${err}`)
- })
-        },[])
+
+        console.log(data)
         const handleClick = (productName) => {
           // Find products with titles containing the productName
           const filtered = data.filter((product) =>
-            product.title.includes(productName)
+            product.product_name.includes(productName)
           );
         setFilteredProducts(filtered)
           // Check if any products were found
@@ -77,13 +82,13 @@ let [filteredProducts,setFilteredProducts]=useState(data)
             </div>
             <div>
               {" "}
-              <button class="CARD_STYLE" tabIndex="-1" onClick={() => handleClick("iPhone 13")}>
+              <button class="CARD_STYLE" tabIndex="-1" onClick={() => handleClick("phone")}>
               iPhone 13
               </button>
             </div>
             <div>
               {" "}
-              <button class="CARD_STYLE" tabIndex="-1" onClick={() => handleClick("iPhone 12")}>
+              <button class="CARD_STYLE" tabIndex="-1" onClick={() => handleClick("phone")}>
               iPhone 12
               </button>
             </div>
@@ -117,7 +122,7 @@ let [filteredProducts,setFilteredProducts]=useState(data)
         </div>
     </div>
   </div>
-  <AllProduct filteredProducts={filteredProducts} />
+  <AllProduct filteredProducts={filteredProducts} data={data} />
     </>
   );
 }

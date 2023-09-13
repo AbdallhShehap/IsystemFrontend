@@ -19,7 +19,7 @@ import TopSellingCard from "../component/TopSellingCard.js"
 import { Link } from "react-router-dom";
 function Home() {
   return (
-    <div>
+    <div className="cont">
         <Carousel
           autoPlay
           interval="5000"

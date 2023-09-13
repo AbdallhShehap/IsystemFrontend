@@ -1,13 +1,11 @@
 const CardsData = [
-// {
-//   "title":"select"
-// },
+
   {
     "id": 1,
     "title": "AirPods Pro with MagSafe Charging Case (2021)",
     "image":require("../images/airpods.png"),
     "sliderImg":[require('../images/airpods.png'),require('../images/airpods.png'),require('../images/watch.png')],
-    "price": "JD100",
+    "price": 100,
     "oldPrice": "JD120",
     "inStock": "inStock",
     "color":["green","blue"],
@@ -21,7 +19,7 @@ const CardsData = [
     "image": require("../images/watch.png"),
     "sliderImg":[require('../images/airpods.png'),require('../images/airpods.png'),require('../images/watch.png')],
 
-    "price": "JD80",
+    "price": 80,
     "oldPrice": "JD90",
     "inStock": "inStock",
     "color":["green","blue"],
@@ -35,8 +33,8 @@ const CardsData = [
     "image": require("../images/airpods.png"),
     "sliderImg":[require('../images/airpods.png'),require('../images/airpods.png'),require('../images/watch.png')],
 
-    "price": "JD80",
-    "oldPrice": "JD90",
+    "price": 80,
+    "oldPrice": 90,
     "inStock": "inStock",
     "color":["green","blue","yellow"],
     "model":["128 GB","64 GB","256 GB"],
@@ -49,7 +47,7 @@ const CardsData = [
     "title": "AirPods Pro with MagSafe Charging Case (2023)",
     "image": require("../images/airpods.png"),
     "sliderImg":[require('../images/airpods.png'),require('../images/airpods.png'),require('../images/watch.png')],
-    "price": "JD80",
+    "price": 80,
     "oldPrice": "JD90",
     "inStock": "inStock",
     "color":["green","blue"],
@@ -64,7 +62,7 @@ const CardsData = [
     "image": require("../images/airpods.png"),
     "sliderImg":[require('../images/airpods.png'),require('../images/airpods.png'),require('../images/watch.png')],
 
-    "price": "JD80",
+    "price": 80,
     "oldPrice": "JD90",
     "inStock": "inStock",
     "color":["green","blue"],
