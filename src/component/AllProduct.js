@@ -3,6 +3,7 @@ import DataCategory from "../Data/DataCategory.js";
 // import '../assests/Cards.css'
 import "../assests/Category.css";
 function AllProduct({data=[],filteredProducts=[]}) {
+  console.log(data)
   return (
     <div>
       <div class="container text-center">
@@ -20,7 +21,7 @@ function AllProduct({data=[],filteredProducts=[]}) {
                       fontSize: "1rem",
                     }}
                   >
-                    {product.product_name}{" "}
+                    {product.title}
                   </p>
                 </div>
                 <div class="card-body">
@@ -38,7 +39,7 @@ function AllProduct({data=[],filteredProducts=[]}) {
                       </span>
                     </p>
                     <div class="d-flex justify-content-between mb-2">
-                      <p class="mb-0 inStock">{product.stock} </p>
+                      <p class="mb-0 inStock">{product.stock === 1 ? "In stock" : "Out of stock"} </p>
                     </div>{" "}
                   </div>
                 </div>
@@ -58,7 +59,7 @@ function AllProduct({data=[],filteredProducts=[]}) {
                       fontSize: "1rem",
                     }}
                   >
-                    {product.product_name}{" "}
+                    {product.title}{" "}
                   </p>
                 </div>
                 <div class="card-body">
@@ -76,7 +77,7 @@ function AllProduct({data=[],filteredProducts=[]}) {
                       </span>
                     </p>
                     <div class="d-flex justify-content-between mb-2">
-                      <p class="mb-0 inStock">{product.stock} </p>
+                      <p class="mb-0 inStock">{product.stock === 1 ? "In stock" : "Out of stock"} </p>
                     </div>{" "}
                   </div>
                 </div>

@@ -9,20 +9,20 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import DataCategory from "../Data/DataCategory";
 export default function IPhone() {
-  const [data, setData] = useState([]);
-let [filteredProducts,setFilteredProducts]=useState([])
+  const [data, setData] = useState(DataCategory);
+let [filteredProducts,setFilteredProducts]=useState(DataCategory)
 
-useEffect(() => {
-  window.scrollTo(0, 0);
-  axios.get('http://localhost:1010/product/get')
-    .then((res) => {
-      // Update the 'data' state with the fetched data
-      setData(res.data);
-    })
-    .catch((err) => {
-      console.log(`err${err}`);
-    });
-}, []); // The empty dependency array ensures that this effect runs only once when the component mounts
+// useEffect(() => {
+//   window.scrollTo(0, 0);
+//   axios.get('http://localhost:1010/product/get')
+//     .then((res) => {
+//       // Update the 'data' state with the fetched data
+//       setData(res.data);
+//     })
+//     .catch((err) => {
+//       console.log(`err${err}`);
+//     });
+// }, []); // The empty dependency array ensures that this effect runs only once when the component mounts
 
 
   const slider = React.useRef(null);
@@ -38,7 +38,7 @@ useEffect(() => {
         const handleClick = (productName) => {
           // Find products with titles containing the productName
           const filtered = data.filter((product) =>
-            product.product_name.includes(productName)
+            product.title.includes(productName)
           );
         setFilteredProducts(filtered)
           // Check if any products were found
