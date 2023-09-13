@@ -11,6 +11,7 @@ import DataCategory from "../Data/DataCategory";
 export default function IPhone() {
   const [data, setData] = useState([]);
 let [filteredProducts,setFilteredProducts]=useState([])
+
 useEffect(() => {
   window.scrollTo(0, 0);
   axios.get('http://localhost:1010/product/get')
@@ -76,31 +77,31 @@ useEffect(() => {
           <Slider {...settings} ref={slider}>
             <div>
               {" "}
-              <button class="CARD_STYLE" tabIndex="-1" onClick={() => handleClick("iPhone 14")}>
+              <button class="CARD_STYLE" tabIndex="-1" onClick={(e) => handleClick(e.target.textContent)}>
               iPhone 14
               </button>
             </div>
             <div>
               {" "}
-              <button class="CARD_STYLE" tabIndex="-1" onClick={() => handleClick("phone")}>
+              <button class="CARD_STYLE" tabIndex="-1" onClick={(e) => handleClick(e.target.textContent)}>
               iPhone 13
               </button>
             </div>
             <div>
               {" "}
-              <button class="CARD_STYLE" tabIndex="-1" onClick={() => handleClick("phone")}>
+              <button class="CARD_STYLE" tabIndex="-1" onClick={(e) => handleClick(e.target.textContent)}>
               iPhone 12
               </button>
             </div>
             <div>
               {" "}
-              <button class="CARD_STYLE" tabIndex="-1" onClick={() => handleClick("iPhone 11")}>
+              <button class="CARD_STYLE" tabIndex="-1" onClick={(e) => handleClick(e.target.textContent)}>
               iPhone 11
               </button>
             </div>
             <div>
               {" "}
-              <button class="CARD_STYLE" tabIndex="-1" onClick={() => handleClick("iPhone x")}>
+              <button class="CARD_STYLE" tabIndex="-1" onClick={(e) => handleClick(e.target.textContent)}>
               iPhone x
               </button>
             </div>
