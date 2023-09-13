@@ -10,6 +10,9 @@ import "slick-carousel/slick/slick-theme.css";
 export default function AppleTv() {
   const slider = React.useRef(null);
   const [data, setData] = useState(DataCategory);
+  useEffect(()=>{
+window.scrollTo(0,0)
+  },[])
   let [filteredProducts,setFilteredProducts]=useState(data)
   const settings = {
     dots: false,

@@ -7,19 +7,19 @@ import CardsData from "../Data/CardsData";
 import Cart from "./Cart";
 import CartItem from "./CartItem";
 import { useNavigate } from "react-router-dom";
-
+import { useCart } from "react-use-cart";
 function ProductDetails() {
   const { id } = useParams();
+  const {addItem}=useCart()
   const navigate=useNavigate()
   let [selectData, setSelectData] = useState([]);
   const [cart,setCart]=useState([])
   const [selectedColor, setSelectedColor] = useState(""); // Initialize state for selected color
 const [selectedModel,setSelectedModel]=useState("")
-// const [containerBoxClassName, setContainerBoxClassName] = useState("unselected");
 const [chosenProduct,setChosenProduct]=useState([])
 
   selectData = CardsData.find((select) => select.id == id);
-  console.log(selectData);
+  // console.log(selectData);
   useEffect(() => {
     window.scrollTo(0, 0);
     const thumbnails = document.getElementsByClassName("thumbnail");
@@ -87,11 +87,6 @@ const [chosenProduct,setChosenProduct]=useState([])
   // };
   
   // console.log(cart); // This will show the updated cart after adding items
-  const handleAddToCart = (product) => {
-    // You can add your logic to handle adding to cart here
-    // For demonstration, we'll navigate to the cart with the product data as a query parameter
-    navigate(`/cart?productId=${product.id}`);
-  };
 
   const handleColorClick = (color) => {
     setSelectedColor(color); // Update the selected color in the state
@@ -108,6 +103,12 @@ setChosenProduct((prevChosenProduct)=>[...prevChosenProduct,model])
 console.log(selectedColor)
 console.log(selectedModel)
 console.log(chosenProduct)
+
+
+// const handleAddToCart = (selectedProduct) => {
+//   // Pass the selected product to the Cart component
+//   setCart((prevCart) => [...prevCart, selectedProduct]);
+// };
   return (
     <div>
       <div className="container" style={{marginTop:"5%"}}>
@@ -225,8 +226,11 @@ console.log(chosenProduct)
             <button
               className="btn btn-primary w-100 btn_details_cart mb-1 "
               type="submit"
-              onClick={()=>handleAddToCart(selectData)}
-            >
+              onClick={()=>{
+                addItem(selectData)
+              
+              }}
+              >
               Add to Cart{" "}
             </button>
             <Link to={'/tradein'}>
@@ -266,7 +270,14 @@ console.log(chosenProduct)
           <CardSlider />
         </div>
       </div>
-      <Cart chosenProduct={chosenProduct} />
+      {/* <Cart chosenProduct={chosenProduct}   itemName={selectData.name}/> */}
+      {/* <Cart
+  chosenProduct={chosenProduct}
+  itemId={selectData.id}
+  itemName={selectData.title}    // Pass the item name
+  itemColor={selectedColor}    // Pass the selected color
+  itemModel={selectedModel}    // Pass the selected model
+/> */}
     </div>
   );
 }

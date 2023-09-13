@@ -27,7 +27,7 @@ function BlogDetails() {
             aria-describedby="basic-addon1"
           />
         </div>
-        
+        {/* <p>{id}</p> */}
       </form>
       <div
         className="square mt-5"
@@ -70,9 +70,9 @@ function BlogDetails() {
                   {data.date}
                 </small>
                 <br></br>
-                <Link to={`${data.id}`}
-                  href="#"
+                <Link to={`/blog/blogdetails/${data.id}`}
                   className="btn btn-primary"
+                  onClick={()=>window.scrollTo(0,0)}
                   style={{
                     backgroundColor: "#27579A",
                     border: "none",

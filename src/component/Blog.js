@@ -53,6 +53,7 @@ function Blog() {
 
   // Initialize the slider reference once the component has mounted
   useEffect(() => {
+    window.scrollTo(0,0)
     if (slider) {
     }
   }, [slider]);

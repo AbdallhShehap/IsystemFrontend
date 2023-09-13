@@ -76,7 +76,7 @@ window.scrollTo(0,0)
 
       <div className="row">
         <div className="col compare_title">
-          <h3 className="compare_title">Compare iPhone models</h3>
+          <h3 className="compare_title">Compare  models</h3>
         </div>
       </div>
 

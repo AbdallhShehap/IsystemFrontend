@@ -22,15 +22,16 @@ import AboutUs from "./component/AboutUs.js";
 import JoinTeam from "./component/JoinTeam.js";
 import ContactUs from "./component/ContactUs.js";
 import TradeIn from "./component/TradeIn.js";
-
+import { CartProvider } from "react-use-cart"; 
 function App() {
   return (
     <Router>
       <div className="App">
+      <CartProvider>
+
         <Routes>
           <Route path="/" element={<Layouts />}>
             {/* <Route/> */}
-            <Route path="productdetails/:id" element={<ProductDetails />} />
             <Route path="home" element={<Home />} />
             <Route path="mac" element={<IMac />} />
             <Route path="ipad" element={<IPad />} />
@@ -40,6 +41,8 @@ function App() {
             <Route path="appletv" element={<AppleTv />} />
             <Route path="accessories" element={<Accessories />} />
             <Route path="isystemcare" element={<ISystemCare />} />
+
+            <Route path="productdetails/:id" element={<ProductDetails />} />
             <Route path="cart" element={<Cart />} />
             <Route path="blog/blogdetails/:id" element={<BlogDetails />} />
             <Route path="blog" element={<Blog />} />
@@ -59,6 +62,8 @@ function App() {
           </Route>
           {/* <Route path="login" element={<Login />} /> */}
         </Routes>
+        </CartProvider>
+
       </div>
     </Router>
   );
