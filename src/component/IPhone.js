@@ -8,6 +8,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import DataCategory from "../Data/DataCategory";
+import CardSlider from "./CardSlider";
 export default function IPhone() {
   const [data, setData] = useState(DataCategory);
 let [filteredProducts,setFilteredProducts]=useState(DataCategory)
@@ -77,7 +78,7 @@ let [filteredProducts,setFilteredProducts]=useState(DataCategory)
           <Slider {...settings} ref={slider}>
             <div>
               {" "}
-              <button class="CARD_STYLE" tabIndex="-1" onClick={(e) => handleClick(e.target.textContent)}>
+              <button class="CARD_STYLE" tabIndex="-1" onClick={(e) => handleClick("iPhone 14")}>
               iPhone 14
               </button>
             </div>
@@ -127,5 +128,5 @@ let [filteredProducts,setFilteredProducts]=useState(DataCategory)
     </>
   );
 }
-const rootElement = document.getElementById("root");
-ReactDOM.render(<IPhone />, rootElement);
+// const rootElement = document.getElementById("root");
+// ReactDOM.render(<IPhone />, rootElement);

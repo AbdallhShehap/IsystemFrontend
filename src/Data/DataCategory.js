@@ -11,7 +11,7 @@ const DataCategory=[
     {
       "id": 2,
       "image": require('../images/iphonepurple.webp'),
-      "title": "iPhone 14 Plus",
+      "title": "iPhone 13 Plus",
       "price": "JD800",
       "inStock": false,
 

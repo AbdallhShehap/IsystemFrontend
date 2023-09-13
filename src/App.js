@@ -32,7 +32,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Layouts />}>
             {/* <Route/> */}
-            <Route path="home" element={<Home />} />
+            {/* <Route path="home" element={<Home />} /> */}
             <Route path="mac" element={<IMac />} />
             <Route path="ipad" element={<IPad />} />
             <Route path="iphone" element={<Carousel />} />

@@ -6,10 +6,9 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import CardsData from "../Data/CardsData";
 import { Link, useParams } from "react-router-dom";
-function CardSlider({title}) {
+function CardSlider({title,cardsData}) {
   const [slider, setSlider] = useState(null);
-  const [cardsData, setCardsData] = useState(CardsData);
-
+console.log(`hello` ,{cardsData})
   const settings = {
     dots: true,
     infinite: true,
@@ -51,11 +50,11 @@ function CardSlider({title}) {
   };
 
   // Initialize the slider reference once the component has mounted
-  useEffect(() => {
-    if (slider) {
-      // You can access the slider methods here, e.g., slider.slickNext(), slider.slickPrev()
-    }
-  }, [slider]);
+  // useEffect(() => {
+  //   if (slider) {
+  //     // You can access the slider methods here, e.g., slider.slickNext(), slider.slickPrev()
+  //   }
+  // }, [slider]);
 
   return (
     <>
@@ -68,7 +67,7 @@ function CardSlider({title}) {
             <Slider {...settings} ref={(slider) => setSlider(slider)}>
               {cardsData.map((data) => (
                 <div class="col-lg-12 col-md-12 m-1" >
-                  <div class="card ">
+                  <div class="card "key={data.id}>
                     <img
                       src={data.image}
                       class="card-img-top"

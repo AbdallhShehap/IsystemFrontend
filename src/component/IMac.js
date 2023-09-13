@@ -210,5 +210,5 @@ width={"100%"}          />
 </div>
   );
 }
-const rootElement = document.getElementById("root");
-ReactDOM.render(<IMac />, rootElement);
+// const rootElement = document.getElementById("root");
+// ReactDOM.render(<IMac />, rootElement);
