@@ -5,10 +5,11 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import BlogDetailsData from "../Data/BlogDetailsData.js";
 import { Link } from "react-router-dom";
+import axios from "axios";
 function Blog() {
   const [slider, setSlider] = useState(null);
   // const [cardsData, setCardsData] = useState(CardsData);
-  const [blogData, setBlogData] = useState(BlogDetailsData);
+  const [blogData, setBlogData] = useState([]);
   const [searchFlag,setSearchFlag]=useState(false)
   const settings = {
     dots: true,
@@ -56,6 +57,17 @@ function Blog() {
     }
   }, [slider]);
 
+  useEffect(()=>{
+    axios.get('http://localhost:1010/blog/data')
+    .then((res)=>{
+      setBlogData(res.data)
+    })
+    .catch((err)=>{
+      console.log(err)
+    })
+  },[])
+
+  console.log(blogData);
   const [searchField, setSearchField] = useState("");
 
   const handleChange = (e) => {
