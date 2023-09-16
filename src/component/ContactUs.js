@@ -11,11 +11,14 @@ function ContactUs() {
   return (
     <div style={{ marginTop: "60pt" }}>
       <img
-        src={require("../images/contact_us_bg.jpg")}
+        src={require("../images/cz.jpeg")}
         alt=""
         width={"100%"}
-        height={"700pt"}
+        height={"800pt"}
       />
+      <br></br>
+      <br></br>
+      <br></br>
       <div className="container ">
       <div className="row">
         <div className="col">

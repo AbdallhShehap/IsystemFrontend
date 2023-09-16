@@ -209,6 +209,11 @@ if(!password){
 
 };
 const validateUser = async () => {
+  console.log("validateUser called");
+  console.log("Email:", email);
+  console.log("Password:", password);
+
+  
   let emailIsValid = validateEmail(email);
   let passwordIsValid = validatePassword(password);
   console.log(email, password,);
@@ -243,6 +248,7 @@ const handlePasswordChange = (event) => {
 
 
 const submitUser = async () => {
+  // console.log("Button Clicked");
   try {
     // const username = generateUsername(firstName, lastName);
     const response =   await axios.post(
@@ -251,6 +257,7 @@ const submitUser = async () => {
         username: userName,
         email: email,
         password: password,
+        role_id: 1
       },
       {
         headers: {
@@ -275,29 +282,34 @@ const submitUser = async () => {
       }
     };
 
-
-useEffect(() => {
-  if (email && password && userName) {
-    try {
-      submitUser();
-     
-    } catch (err) {
-      console.log(err);
-    }
-  }
-}, [email,userName]);
+    useEffect(() => {
+      console.log("useEffect called with email:", email);
+      console.log("useEffect called with userName:", userName);
+      if (email && userName) {
+        try {
+          submitUser();
+        } catch (err) {
+          console.log(err);
+        }
+      }
+    }, [email, userName]);
+    
 
   return (
     <Container fluid>
-      <Row className='mt-5'>
-      <Col className='imgLogin'style={{marginTop:"6%"}} >
-      
-        <img src={require("../images/Mask_Group_2.png")}  alt="Your Image" fluid width={"100%"}height={"90%"} />
-
+      <Row className="mt-5">
+        <Col className="imgLogin" style={{ marginTop: "6%" }}>
+          <img
+            src={require("../images/Mask_Group_2.png")}
+            alt="Your Image"
+            fluid
+            width={"100%"}
+            height={"90%"}
+          />
         </Col>
 
         <Col
-        className='inputRegistration'
+          className="inputRegistration"
           style={{
             width: "30%",
             border: "1px solid ",
@@ -305,10 +317,9 @@ useEffect(() => {
             margin: "5%",
             // padding: "2%",
             // paddingTop:"7rem"
-
           }}
         >
-          <h1 style={{textAlign:"center"}}> Sign Up</h1>
+          <h1 style={{ textAlign: "center" }}> Sign Up</h1>
           <InputGroup className="mb-4 mt-5">
             <Form.Control
               placeholder="Username"
@@ -338,8 +349,13 @@ useEffect(() => {
               onChange={handlePasswordChange}
             />
           </InputGroup>
-
-          <Button variant="primary" size="lg" style={{ width: "100%" }} active onClick={validateUser}>
+          <Button
+            variant="primary"
+            size="lg"
+            style={{ width: "100%" }}
+            active
+            onClick={validateUser}
+          >
             Registration
           </Button>
         </Col>

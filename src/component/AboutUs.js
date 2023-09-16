@@ -18,7 +18,7 @@ window.scrollTo(0,0)
         </div>
         <div className="row mt-4">
             <div className="col">
-                <img src={require('../images/aboutus.webp')} alt="" width={"100%"} height={"550pt"} />
+                <img src={require('../images/Authorised Service Provider MP.jpg')} alt="" width={"100%"} height={"750pt"} />
             </div>
              </div>
              <div className="row mt-4">
@@ -29,7 +29,7 @@ iSystem has been established in 2006 and we where the first to introduce Apple A
                     </p>
                     <p>In 2016, we launched our first Apple Premium Reseller in Abdali Mall that not only elevated the Apple experience zone inside our store but was set to provide a diverse range of services that suit every consumer need along with an outstanding customer satisfaction offered by (your local Apple Experts). </p>
                 <p>We are your destination for everything Apple, we are passionate about the services besides offering a full range of accessories, We are (your Local Apple Experts).</p>
-                <p>Over the years we have grown both in size and experience. Today with 3 stores, we dont only offer our customers a variety of services, but we provide them with an outstanding customer experience delivered by your local Apple experts.
+                <p>Over the years we have grown both in size and experience. Today with 5 stores, we dont only offer our customers a variety of services, but we provide them with an outstanding customer experience delivered by your local Apple experts.
 
 Whether you wish to purchase a Mac in easy instalments plans, upgrade your iPhone for a new one with our trade in service, maximise on accessories for any Apple product, attend a workshop on features you’re interested in or request a one-to-one training from one of our experienced and knowledgable Sales Team, iSystem will provide with what you need in a friendly environment.
 
@@ -41,7 +41,7 @@ From hardware to software, iPhones, iMacs, MacBook, Apple Watch and iPads, our s
                 <li>Workshops:</li>
                 <p>What we intend to do with these workshops is help our customers understand and use our products to their fullest. From teaching them how to draw on iPad to taking amazing picture with iPhone and much more, we are targeting all of our users. Adding iMovie Workshops, and Garage Band to the list, for our future musicians and film makers. </p>
               <li>Convenience:</li>
-              <p>We have 3 stores in Amman, and we are growing each year and our locations are very well distributed to keep the experience as easy as possible, besides having our online shop, allowing our customers to always reach us.</p>
+              <p>We have 5 stores in Amman, and we are growing each year and our locations are very well distributed to keep the experience as easy as possible, besides having our online shop, allowing our customers to always reach us.</p>
               <li>Services:</li>
               <p>We are an Authorized Apple Service Provider, we always put extra effort in giving out the best customer service possible. iSystem is not only here to sell the products, we will teach you how to use the products, and help to fix any problems you may face.
 

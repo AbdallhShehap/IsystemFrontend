@@ -6,12 +6,15 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import CardsData from "../Data/CardsData";
 import { Link, useParams } from "react-router-dom";
+import axios from 'axios'
+
+
 function CardSlider({title}) {
   const [slider, setSlider] = useState(null);
   const [cardsData, setCardsData] = useState(CardsData);
 
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 4,
@@ -57,6 +60,29 @@ function CardSlider({title}) {
     }
   }, [slider]);
 
+  useEffect(() => {
+    if (slider) {
+      // You can access the slider methods here, e.g., slider.slickNext(), slider.slickPrev()
+   
+    }
+
+  console.log("Fetching data...");
+    window.scrollTo(0, 0);
+    axios.get('http://localhost:1010/productdetails/getproductdetails')
+    .then((res) => {
+        const dataWithImages = res.data.map(data => ({
+          ...data,
+          image_main: `data:image/jpeg;base64,${data.image_base64}`
+        }));
+        console.log("Data nnnnnnnns:", dataWithImages);
+        setCardsData(dataWithImages);
+      })
+      .catch((err) => {
+        console.log(`Error: ${err}`);
+      });
+  }, [slider]);
+
+
   return (
     <>
       <div class="container">
@@ -69,11 +95,11 @@ function CardSlider({title}) {
               {cardsData.map((data) => (
                 <div class="col-lg-12 col-md-12 m-1" >
                   <div class="card ">
-                    <img
-                      src={data.image}
-                      class="card-img-top"
-                      alt="Laptop"
-                    />
+                  <img
+                src={`data:image/jpeg;base64,${data.image_base64}`}
+                alt={data.product_name}
+                className="card-img-top"
+              />
                     <div class="d-flex justify-content-between p-3">
                       <p class="lead mb-0 card_title">{data.title}</p>
                     </div>

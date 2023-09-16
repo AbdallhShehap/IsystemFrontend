@@ -47,14 +47,28 @@ function Home() {
             </div>
           </div> */}
  <div>
+            <img src={require('../images/1q.jpeg')} alt="" height={"100%"} />
+          </div>
+               {/* 1 */}
+          <div>
+            <img src={require('../images/2q.jpeg')} alt="" height={"100%"} />
+          </div>
+          <div>
+            <img src={require('../images/3q.jpeg')} alt="" height={"100%"} />
+          </div>
+
+          <div>
+            <img src={require('../images/4q.jpeg')} alt="" height={"100%"} />
+          </div>
+
+          <div>
             <img src={require('../images/Trade-In MP.jpg')} alt="" height={"100%"} />
           </div>
+
           <div>
             <img src={require('../images/Switchers MP.jpg')} alt="" height={"100%"}/>
           </div>
-          <div>
-            <img src={require('../images/Authorised Service Provider MP.jpg')} alt="" height={"100%"} />
-          </div>
+        
          
           <div>
             <img src={require('../images/Do more on iPad MP.jpg')} alt="" height={"100%"} />
@@ -107,7 +121,7 @@ function Home() {
                     <Image src={appleCare_icon} fluid width={"35px"} />
                   </div>
                   <h5 className="card-title card_title_topCategories">
-                    Apple care{" "}
+                    iSystem Care{" "}
                   </h5>
                   {/* <p className="card-text desc_of_topCategories">
                   Automate and track emails to individuals or g organization and

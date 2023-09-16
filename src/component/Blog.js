@@ -3,7 +3,6 @@ import Image from "react-bootstrap/Image";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import BlogDetailsData from "../Data/BlogDetailsData.js";
 import { Link } from "react-router-dom";
 import axios from "axios";
 function Blog() {
@@ -61,26 +60,47 @@ function Blog() {
   useEffect(()=>{
     axios.get('http://localhost:1010/blog/data')
     .then((res)=>{
-      setBlogData(res.data)
+      const dataWithImages = res.data.map(data => ({
+        ...data,
+        image_blog: `data:image/jpeg;base64,${data.image_base64}`
+      }));
+      
+      console.log("Data with images:", dataWithImages);
+      setBlogData(dataWithImages)
+      console.log("Data with images:", dataWithImages);
     })
     .catch((err)=>{
       console.log(err)
     })
   },[])
+  console.log("Blog Data:", blogData);
 
-  console.log(blogData);
+
   const [searchField, setSearchField] = useState("");
 
   const handleChange = (e) => {
-    setSearchFlag(true)
+    setSearchFlag(true);
     setSearchField(e.target.value);
+    console.log("Search Field:", e.target.value);
   };
-  const filteredBlog = blogData.filter((blog) => {
-    return (
-      blog.title.toLowerCase().includes(searchField.toLowerCase()) ||
-      blog.desc.toLowerCase().includes(searchField.toLowerCase())
-    );
-  });
+  
+
+  const [filteredBlogData, setFilteredBlogData] = useState([]);
+
+  // Update the filtered data whenever the searchField changes
+  useEffect(() => {
+    if (searchField) {
+      const filteredData = blogData.filter((data) =>
+        data.title.toLowerCase().includes(searchField.toLowerCase())
+      );
+      setFilteredBlogData(filteredData);
+    } else {
+      // If the search input is empty, show all data
+      setFilteredBlogData(blogData);
+    }
+  }, [searchField, blogData]);
+
+  
   return (
     <>
     <div className="blog_container">
@@ -177,24 +197,34 @@ function Blog() {
                 
           ))}
             </Slider> */}
-            {searchFlag ?  <Slider {...settings} ref={(slider) => setSlider(slider)}>
-              {filteredBlog.map((data) => (
-                <div key={data.id}>
-                <div class="col-lg-12 col-md-12 m-1" >
-                  <div className='row'>
-                  <div
+            {searchFlag ? (
+  <Slider {...settings} ref={(slider) => setSlider(slider)}>
+    {filteredBlogData.map((data) => (
+      <div key={data.blog_id}>
+        <div class="col-lg-12 col-md-12 m-1">
+          <div className="row">
+            <div
               className="card mx-auto"
-              style={{ width: "25rem", border: "none", textAlign: "left" }}
-              key={data.id}
+              style={{
+                width: "25rem",
+                border: "none",
+                textAlign: "left",
+              }}
+              key={data.blog_id}
             >
-              <img src={data.image} className="card-img-top" alt={data.title} />
+            <img src={data.image_blog} className="card-img-top" alt={data.title} />
+
               <div className="card-body">
                 <p className="card-text">{data.title}</p>
-                <small className="card-title blog_title" style={{ color: "#BEBEBE" }}>
+                <small
+                  className="card-title blog_title"
+                  style={{ color: "#BEBEBE" }}
+                >
                   {data.date}
                 </small>
                 <br></br>
-                <Link to={`blogdetails/${data.id}`}
+                <Link
+                  to={`blogdetails/${data.blog_id}`}
                   href="#"
                   className="btn btn-primary"
                   style={{
@@ -207,16 +237,14 @@ function Blog() {
                 </Link>
               </div>
             </div>
-                  </div>
-              
-                </div>
-                </div>
-                
-                ))}
-                  </Slider> 
-                : 
-                  <Slider {...settings} ref={(slider) => setSlider(slider)}>
-                  {blogData
+          </div>
+        </div>
+      </div>
+    ))}
+  </Slider>
+) : (
+  <Slider {...settings} ref={(slider) => setSlider(slider)}>
+                  {filteredBlogData
                     .reduce((rows, item, index) => {
                       if (index % 2 === 0) rows.push([]);
                       rows[rows.length - 1].push(item);
@@ -236,13 +264,10 @@ function Blog() {
                                 textAlign: "left",
                                 height:"25rem"
                               }}
-                              key={data.id}
+                              key={data.blog_id}
                             >
-                              <img
-                                src={data.image}
-                                className="card-img-top blog_img"
-                                alt={data.title}
-                              />
+                            <img src={data.image_blog} className="card-img-top" alt={data.title} />
+
                               <div className="card-body">
                                 <p className="card-text blog_title">{data.title}</p>
                                 <small
@@ -253,7 +278,7 @@ function Blog() {
                                 </small>
                                 <br></br>
                                 <Link
-                                  to={`blogdetails/${data.id}`}
+                                  to={`blogdetails/${data.blog_id}`}
                                   href="#"
                                   className="btn btn-primary"
                                   style={{
@@ -271,8 +296,9 @@ function Blog() {
                         ))}
                       </div>
                     ))}
-                </Slider>
-           }
+                </Slider>)}
+
+ 
             
             </div>
 
@@ -304,3 +330,57 @@ function Blog() {
 }
 
 export default Blog;
+
+
+
+
+
+
+
+
+// import React, { useEffect, useState } from "react";
+// import Image from "react-bootstrap/Image";
+// import { Link, useParams } from "react-router-dom";
+// import axios from "axios";
+
+// function BlogDetails() {
+//   const [details, setDetails] = useState([]);
+//   const { id } = useParams();
+//   const [selectedBlog, setSelectedBlog] = useState(null);
+
+//   useEffect(() => {
+//     window.scrollTo(0, 0);
+//   }, []);
+
+//   useEffect(() => {
+//     axios.get(`http://localhost:1010/blog/data/${id}`)
+//       .then((res) => {
+//         const dataWithImages = res.data.map((data) => ({
+//           ...data,
+//           image_blog: `data:image/jpeg;base64,${data.image_base64}`,
+//         }));
+
+//         console.log("Data with images:", dataWithImages);
+//         setDetails(dataWithImages);
+
+//         // Set the selected blog here
+//         const foundBlog = dataWithImages.find((blog) => blog.id == id);
+//         setSelectedBlog(foundBlog);
+//       })
+//       .catch((err) => {
+//         console.log(err);
+//       });
+//   }, [id]);
+
+//   if (!selectedBlog) {
+//     return <div>Loading...</div>;
+//   }
+
+//   return (
+//     <div className="container">
+//       {/* Your code for displaying the selected blog */}
+//     </div>
+//   );
+// }
+
+// export default BlogDetails;

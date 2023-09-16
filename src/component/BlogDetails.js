@@ -3,21 +3,55 @@ import BlogDetailsData from "../Data/BlogDetailsData.js";
 import Image from "react-bootstrap/Image";
 import '../assests/BlogDetails.css'
 import { Link, useParams } from "react-router-dom";
-
+import axios from "axios";
 
 
 
 function BlogDetails() {
-  const [details, setDetails] = useState(BlogDetailsData.slice(0, 3));
-  let {id}=useParams();
-  let [selectedBlog,setSelectedBlog]=useState([]);
-  selectedBlog=BlogDetailsData.find((blog)=>blog.id==id)
-  console.log(selectedBlog)
+  const [details, setDetails] = useState([]);
+  const { id } = useParams();
+  const [selectedBlog, setSelectedBlog] = useState(null);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+
   useEffect(()=>{
-    window.scrollTo(0,0)
-  },[])
+    axios.get(`http://localhost:1010/blog/data/${id}`)
+    .then((res)=>{
+      console.log("API Response:", res.data);
+
+      const dataWithImages = [res.data].map(data => ({
+        ...data,
+        image_blog: `data:image/jpeg;base64,${data.image_base64}`
+      }));
+      
+      console.log("Data with images:", dataWithImages);
+      setDetails(dataWithImages)
+      console.log("Data with images:", dataWithImages);
+
+      const foundBlog = dataWithImages.find((blog) => blog.id == id);
+      if (foundBlog) {
+        setSelectedBlog(foundBlog);
+      } else {
+        // Handle the case where no matching blog is found
+        console.log("No blog found for ID:", id);
+      }
+    })
+    .catch((err)=>{
+      console.log("API Error:", err);
+    })
+  },[id])
+
+  if (!selectedBlog) {
+    return <div>Loading...</div>;
+  }
+
+
   return (
     <div class="container">
+      
       <form class="container-fluid  form_container">
         <div class="input-group">
           <input
@@ -35,7 +69,7 @@ function BlogDetails() {
         <div>
        
           <Image
-            src={selectedBlog.image}
+           src={selectedBlog.image_base64}
             fluid
             style={{ float: "left", margin: "2px",paddingRight:"13px",height:"300px",width:"550px",borderRadius:"50px"}}
           />
@@ -44,7 +78,7 @@ function BlogDetails() {
          {selectedBlog.title}
         </h3>
         <p className="paragraph">
-         {selectedBlog.desc}
+         {selectedBlog.data}
         </p>
       </div>
       <div className="row also_blog">
@@ -63,7 +97,7 @@ function BlogDetails() {
               style={{ border: "none", textAlign: "left" }}
               key={data.id}
             >
-              <img src={require('../images/appleEvents.png')} className="card-img-top blog_img" alt={data.title}  />
+              <img src={data.image_base64} className="card-img-top blog_img" alt={data.title}  />
               <div className="card-body">
                 <p className="card-text blog_title">{data.title}</p>
                 <small className="card-title" style={{ color: "#BEBEBE" }}>

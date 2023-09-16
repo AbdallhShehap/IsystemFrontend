@@ -223,6 +223,7 @@ console.log(chosenProduct)
               <p className="model_space">{selectData.model[2]}</p>
               <p className="model_space">{selectData.model[3]}</p> */}
             </div>
+            <Link to={'/cart'}>
             <button
               className="btn btn-primary w-100 btn_details_cart mb-1 "
               type="submit"
@@ -233,6 +234,8 @@ console.log(chosenProduct)
               >
               Add to Cart{" "}
             </button>
+            
+            </Link>
             <Link to={'/tradein'}>
             <button
               className="btn btn-primary w-100 btn_details_trade mb-1"
