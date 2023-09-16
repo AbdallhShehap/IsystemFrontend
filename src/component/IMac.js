@@ -3,6 +3,7 @@ import "../assests/Iphone.css";
 import { Component } from "react";
 import ReactDOM from "react-dom";
 import DataCategory from "../Data/DataCategory";
+import CardMacc from "../Data/CardMacc";
 import AllProduct from "./AllProduct";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -61,7 +62,7 @@ console.log(data);
           }
         };
   return (
-    <>
+    <div>
             <div  >
               
               <img
@@ -249,8 +250,8 @@ width={"100%"}          />
 
    
    
-    </>
+    </div>
   );
 }
-const rootElement = document.getElementById("root");
-ReactDOM.render(<IMac />, rootElement);
+// const rootElement = document.getElementById("root");
+// ReactDOM.render(<IMac />, rootElement);

@@ -254,5 +254,5 @@ console.log(data);
     </>
   );
 }
-const rootElement = document.getElementById("root");
-ReactDOM.render(<Accessories />, rootElement);
+// const rootElement = document.getElementById("root");
+// ReactDOM.render(<Accessories />, rootElement);

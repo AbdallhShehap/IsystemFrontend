@@ -259,5 +259,5 @@ window.scrollTo(0,0)
    </>
   );
 }
-const rootElement = document.getElementById("root");
-ReactDOM.render(<AppleTv />, rootElement);
+// const rootElement = document.getElementById("root");
+// ReactDOM.render(<AppleTv />, rootElement);

@@ -12,7 +12,7 @@ import axios from 'axios'
 function CardSlider({title}) {
   const [slider, setSlider] = useState(null);
   const [cardsData, setCardsData] = useState(CardsData);
-
+console.log("topselling",cardsData)
   const settings = {
     dots: false,
     infinite: true,
@@ -54,11 +54,11 @@ function CardSlider({title}) {
   };
 
   // Initialize the slider reference once the component has mounted
-  useEffect(() => {
-    if (slider) {
-      // You can access the slider methods here, e.g., slider.slickNext(), slider.slickPrev()
-    }
-  }, [slider]);
+  // useEffect(() => {
+  //   if (slider) {
+  //     // You can access the slider methods here, e.g., slider.slickNext(), slider.slickPrev()
+  //   }
+  // }, [slider]);
 
   useEffect(() => {
     if (slider) {

@@ -262,5 +262,5 @@ export default function IPad() {
     </>
   );
 }
-const rootElement = document.getElementById("root");
-ReactDOM.render(<IPad />, rootElement);
+// const rootElement = document.getElementById("root");
+// ReactDOM.render(<IPad />, rootElement);

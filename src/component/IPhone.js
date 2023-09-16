@@ -8,6 +8,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import DataCategory from "../Data/DataCategory";
+import CardSlider from "./CardSlider";
 export default function IPhone() {
   const [data, setData] = useState([]);
 let [filteredProducts,setFilteredProducts]=useState([])

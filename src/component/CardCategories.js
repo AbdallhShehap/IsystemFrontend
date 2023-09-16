@@ -13,7 +13,7 @@ export default function CardCategories() {
       <Row>
         <Col xs={12} >
          <Link to="">
-            <img src={require("../images/Watch Section.jpg")} width="100%" style={{borderRadius:"30px"}}/>
+            <img src={require("../images/iphone15Titanum.jpeg")} width="100%" style={{borderRadius:"30px"}}/>
 
          </Link>
         </Col>
@@ -47,7 +47,7 @@ export default function CardCategories() {
 
       <Col xs={12} md={12} lg={7} >
       <Link to="">
-        <img src={require("../images/Accessories Section.jpg")} width="100%" height="100%" style={{borderRadius:"30px"}}/>
+        <img src={require("../images/Mac Section.jpg")} width="100%" height="100%" style={{borderRadius:"30px"}}/>
        </Link>
         </Col>
 
@@ -64,14 +64,37 @@ export default function CardCategories() {
 
         <Col xs={12} md={12} lg={6}  >
         <Link to="">
-        <img src={require("../images/Mac Section.jpg")} className='' width="100%" style={{borderRadius:"30px"}}/>
+        <img src={require("../images/iphone15.jpeg")} className='' width="100%" style={{borderRadius:"30px"}}/>
         </Link>
         </Col>
 
 
 
       </Row>
+      <Row>
+      <Col xs={12} md={12} lg={6}  className='mb-1'>
+      <Link to="">
+        <img  src={require("../images/watchSmarter.jpeg")} className='mr-5' width="87%" height="100%" style={{borderRadius:"30px"}}/>
+        </Link>
+        </Col>
 
+        <Col xs={12} md={12} lg={6}  >
+        <Link to="">
+        <img src={require("../images/Accessories Section.jpg")} className='' width="100%" style={{borderRadius:"30px"}}/>
+        </Link>
+        </Col>
+
+
+
+      </Row>
+      <Row>
+        <Col xs={12} >
+         <Link to="">
+            <img src={require("../images/Watch Section.jpg")} width="100%" style={{borderRadius:"30px"}}/>
+
+         </Link>
+        </Col>
+      </Row>
     </Container>
     </div>
   )

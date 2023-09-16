@@ -1,17 +1,17 @@
 
 
-const DataCategory=[
+const CardMacc=[
     {
       "id": 1,
-      "image":require('../images/iphoneyellow.jpg'),
-      "title": "iPhone 14 ",
-      "price": "JD600.99",
+      "image":require('../images/macbook.webp'),
+      "title": "imac ",
+      "price": "JD890",
       "inStock": true,
     },
     {
       "id": 2,
-      "image": require('../images/iphonepurple.webp'),
-      "title": "iPhone 13 Plus",
+      "image": require('../images/macbookapple.webp'),
+      "title": "iMac",
       "price": "JD800",
       "inStock": false,
 
@@ -19,9 +19,9 @@ const DataCategory=[
     },
     {
       "id": 3,
-      "image": require('../images/iphoneBlack.webp'),
-      "title": "iPhone 14 Pro      ",
-      "price": "JD915",
+      "image": require('../images/macbook.webp'),
+      "title": "16-inch MacBook Pro Apple M2 Max chip     ",
+      "price": "JD3915",
       "inStock": true,
 
     },
@@ -51,4 +51,4 @@ const DataCategory=[
       
     // },
   ]
-export default DataCategory;  
+export default CardMacc;  

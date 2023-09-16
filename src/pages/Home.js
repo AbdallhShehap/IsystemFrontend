@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import "../assests/Home.css";
 import dollar from "../images/dollar.png";
 import Card from "react-bootstrap/Card";
@@ -17,7 +17,10 @@ import CardSlider from "../component/CardSlider.js";
 import CardCategories from "../component/CardCategories";
 import TopSellingCard from "../component/TopSellingCard.js"
 import { Link } from "react-router-dom";
+import CardsData from "../Data/CardsData";
 function Home() {
+  const [cardsData, setCardsData] = useState(CardsData);
+// console.log(`home`,{cardsData})
   return (
     <div className="cont">
         <Carousel
@@ -29,23 +32,7 @@ function Home() {
           showStatus={false}
           className="sliderHome "
         >
-          {/* <div >
-            <img src={backgroundIphone} alt="" className="background_slider" />
-            <div className="container_btn_background">
-              <button
-                type="button"
-                className="btn btn-outline-dark  btn_preOrder"
-              >
-                Pre Order
-              </button>
-              <button
-                type="button"
-                className="btn btn-outline-dark btn_learnmore "
-              >
-                Learn More
-              </button>
-            </div>
-          </div> */}
+       
  <div>
             <img src={require('../images/1q.jpeg')} alt="" height={"100%"} />
           </div>
@@ -151,7 +138,7 @@ function Home() {
       <br></br>
       <br></br>
       <br></br>
-      <CardSlider title="Special Offers"/>
+      <CardSlider title="Special Offers" cardsData={cardsData}/>
       <br></br>
       <br></br>
       {/* <br></br> */}
