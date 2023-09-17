@@ -63,7 +63,7 @@ function CardSlider({title}) {
       console.log("Fetching data...");
       window.scrollTo(0, 0);
       
-      axios.get('https://clownfish-app-3ufki.ondigitalocean.app/productdetails/getproductdetails')
+      axios.get('https://octopus-app-2-dubk2.ondigitalocean.app/productdetails/getproductdetails')
         .then((res) => {
           const dataWithImages = res.data.map(data => ({
             ...data,

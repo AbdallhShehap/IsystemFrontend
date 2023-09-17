@@ -17,7 +17,7 @@ export default function IPad() {
   
   useEffect(() => {
     window.scrollTo(0, 0);
-    axios.get('http://localhost:1010/productdetails/getproductdetailsipad')
+    axios.get('https://octopus-app-2-dubk2.ondigitalocean.app/productdetails/getproductdetailsipad')
       .then((res) => {
     const dataWithImages = res.data.map(data => ({
             ...data,
@@ -130,7 +130,7 @@ export default function IPad() {
             </div>
             <div>
               {" "}
-              <button class="CARD_STYLE" tabIndex="-1"        onClick={() => handleClick("iPhone 14")}
+              <button class="CARD_STYLE" tabIndex="-1"        onClick={(e) => handleClick(e.target.textContent)}
 >
                 iPad{" "}
               </button>
@@ -208,7 +208,7 @@ export default function IPad() {
                 </div>
               ))
             : (
-              <p>not valued</p>
+              <p>Product not valid</p>
             )}
         </div>
       </div>
