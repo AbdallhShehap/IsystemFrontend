@@ -84,7 +84,7 @@ console.log(data);
                   <div>
                     {" "}
                     <button class="CARD_STYLE" tabIndex="-1" onClick={(e) => handleClick(e.target.textContent)}>
-                    iPhone 14
+                    iphone 14
                     </button>
                   </div>
                   <div>

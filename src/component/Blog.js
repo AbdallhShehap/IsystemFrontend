@@ -112,7 +112,7 @@ function Blog() {
     </div>
       <div className="container">
         <div className="row">
-          <h3 className="mt-5 mb-4 ">Our Blog</h3>
+          <h3 className="mt-5 mb-4" >Our Blog</h3>
           <form>
             <div className="input-group  ms-4">
               <input

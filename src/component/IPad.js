@@ -25,6 +25,8 @@ export default function IPad() {
           }));
           console.log("Data with images:", dataWithImages);
                 setData(dataWithImages);
+                      setFilteredProducts(dataWithImages); // Initialize filteredProducts with all products
+
       })
       .catch((err) => {
         console.log(`err${err}`);
@@ -45,20 +47,16 @@ export default function IPad() {
   useEffect(()=>{
     window.scrollTo(0,0)
         },[])
+
+        
         const handleClick = (productName) => {
           // Find products with titles containing the productName
           const filtered = data.filter((product) =>
-            product.title.includes(productName)
+            product.product_name.includes(productName)
           );
-        setFilteredProducts(filtered)
-          // Check if any products were found
-          if (filteredProducts.length > 0) {
-            console.log('Selected Products:', filteredProducts);
-            // You can do something with the selected product data here
-          } else {
-            console.log('Products not found');
-          }
+          setFilteredProducts(filtered);
         };
+        
   return (
     <>
             <div  className="legend-container">
@@ -90,42 +88,42 @@ export default function IPad() {
           <Slider {...settings} ref={slider}>
             <div>
               {" "}
-              <button class="CARD_STYLE" tabIndex="-1"        onClick={() => handleClick("iPhone 14")}
+              <button class="CARD_STYLE" tabIndex="-1" onClick={(e) => handleClick(e.target.textContent)}
 >
               iPad 5.2
               </button>
             </div>
             <div>
               {" "}
-              <button class="CARD_STYLE" tabIndex="-1"        onClick={() => handleClick("iPhone 14")}
+              <button class="CARD_STYLE" tabIndex="-1"         onClick={(e) => handleClick(e.target.textContent)}
 >
-              iPad 3.1
+              ipad3
               </button>
             </div>
             <div>
               {" "}
-              <button class="CARD_STYLE" tabIndex="-1"        onClick={() => handleClick("iPhone 14")}
+              <button class="CARD_STYLE" tabIndex="-1"        onClick={(e) => handleClick(e.target.textContent)}
 >
               iPad 6.1
               </button>
             </div>
             <div>
               {" "}
-              <button class="CARD_STYLE" tabIndex="-1"        onClick={() => handleClick("iPhone 14")}
+              <button class="CARD_STYLE" tabIndex="-1"        onClick={(e) => handleClick(e.target.textContent)}
 >
-              iPad,2
+              iPad2
               </button>
             </div>
             <div>
               {" "}
-              <button class="CARD_STYLE" tabIndex="-1"        onClick={() => handleClick("iPhone 14")}
+              <button class="CARD_STYLE" tabIndex="-1"        onClick={(e) => handleClick(e.target.textContent)}
 >
                 iMac
               </button>
             </div>
             <div>
               {" "}
-              <button class="CARD_STYLE" tabIndex="-1"        onClick={() => handleClick("iPhone 14")}
+              <button class="CARD_STYLE" tabIndex="-1"        onClick={(e) => handleClick(e.target.textContent)}
 >
                 watch
               </button>
@@ -161,8 +159,8 @@ export default function IPad() {
 
    <div class="container text-center">
         <div class="row">
-          {data.length > 0
-            ? data.map((product) => (
+          {filteredProducts.length > 0
+            ? filteredProducts.map((product) => (
                 <div class="col-md-6 col-lg-4 mb-4 mb-lg-4 " key={product.p_id}>
                   <div class="card">
                     <img
@@ -209,49 +207,9 @@ export default function IPad() {
                   </div>
                 </div>
               ))
-            : data.map((product) => (
-                <div class="col-md-6 col-lg-4 mb-4 mb-lg-4 " key={product.p_id}>
-                  <div class="card">
-                    <img src={product.image} class="card-img-top" />
-                    <div class="d-flex justify-content-between ps-3 pt-3">
-                      <p
-                        class="lead mb-0 card_title category_title"
-                        style={{
-                          textAlign: "center",
-                          fontWeight: "bold",
-                          fontSize: "1rem",
-                        }}
-                      >
-                        {product.product_name}{" "}
-                      </p>
-                    </div>
-                    <div class="card-body">
-                      <div class="d-flex justify-content-between">
-                        <p
-                          className="small price"
-                          style={{ color: "#C6C6C6", fontSize: "14px " }}
-                        >
-                          Starting at{" "}
-                          <span
-                            style={{
-                              color: "red",
-                              fontWeight: "bold",
-                              fontSize: "17px",
-                            }}
-                          >
-                            {product.price}
-                          </span>
-                        </p>
-                        <div class="d-flex justify-content-between mb-2">
-                          <p class="mb-0 inStock">
-                            {product.stock === 1 ? "In stock" : "Out of stock"}{" "}
-                          </p>{" "}
-                        </div>{" "}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
+            : (
+              <p>not valued</p>
+            )}
         </div>
       </div>
 
