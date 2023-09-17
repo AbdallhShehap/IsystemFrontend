@@ -6,7 +6,7 @@ import "../assests/Carts.css";
 import Image from "react-bootstrap/Image";
 
 const CartItem = ({ item, updateQuantity,updateItemQuantity,removeItem,selectedModel }) => {
-  const {  quantity, price ,color,model} = item;
+  const {  quantity, price ,color,model,product_name,color_name} = item;
 
   // const [quantityy, setQuantity] = useState("");
 
@@ -34,7 +34,7 @@ const handleDelete=()=>{
             {/* <Image src={img} fluid className="mx-auto d-block" /> */}
           </Col>
 
-          <Col xs={12} xl={3} md={4} className="item-name  product_info"><br/>{color}<br/>{model}</Col>
+          <Col xs={12} xl={3} md={4} className="item-name  product_info"><br/>{product_name}<br/>{color_name}</Col>
           <br></br>
           <br></br>
 

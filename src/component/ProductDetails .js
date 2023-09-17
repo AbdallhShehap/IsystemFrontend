@@ -19,7 +19,8 @@ function ProductDetails() {
 const [selectedModel,setSelectedModel]=useState("")
 const [chosenProduct,setChosenProduct]=useState([])
 const [details,setDetails]=useState([])
-let dataWithImages;
+const [color,setColor]=useState([])
+
 useEffect(() => {
     window.scrollTo(0, 0);
     const thumbnails = document.getElementsByClassName("thumbnail");
@@ -89,7 +90,7 @@ useEffect(() => {
   window.scrollTo(0, 0);
   const fetchData = async () => {
     try {
-      const response = await axios.get(`ttps://jellyfish-app-6rwoy.ondigitalocean.app/productdetails/getproductdetails/${id}`); // Replace with your actual API endpoint
+      const response = await axios.get(`https://jellyfish-app-6rwoy.ondigitalocean.app/productdetails/getproductdetails/${id}`); // Replace with your actual API endpoint
       if (response.data) {
         setDetails(response.data); // Assuming your API returns the product details in the response data
         console.log("details",details)
@@ -102,10 +103,30 @@ useEffect(() => {
   };
 
   fetchData();
+
 }, [id]);
-
+console.log("deta",details)
 // selectData = dataWithImages.find((select) => select.id == id);
+useEffect(() => {
+  console.log("Fetching data...");
+  window.scrollTo(0, 0);
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(`https://jellyfish-app-6rwoy.ondigitalocean.app/color/getproductdetails`); // Replace with your actual API endpoint
+      if (response.data) {
+        setColor(response.data); // Assuming your API returns the product details in the response data
+        console.log("color",details)
+      } else {
+        // Handle the case where the product with the given ID was not found
+      }
+    } catch (error) {
+      // Handle any errors that occurred during the Axios request
+    }
+  };
 
+  fetchData();
+  
+}, [id]);
   return (
     <div>
       <div className="container" style={{marginTop:"5%"}}>
@@ -175,25 +196,25 @@ useEffect(() => {
 
           <div className="col-lg-5 product_details">
             {" "}
-            <h4>{selectData.title}</h4>{" "}
-            <p className="price">{selectData.price}</p>
+            <h4>{details.product_name}</h4>{" "}
+            <p className="price">{details.price}JD</p>
             <h5 className="">Color</h5>
             {/* <div className="container_box">
               <img src={selectData.colorImg[0]} alt="" className="color" />
               <img src={selectData.colorImg[1]} alt="" className="color" />
           
-            </div>
+            </div> */}
             <div className="container_box">
-             {selectData.color.map((colorOption, index) => (
+             {color.map((colorOption, index) => (
           <p
-            key={index}
+            key={color.color_id}
             className={`color ${selectedColor === colorOption ? "selected" : ""}`}
             onClick={() => handleColorClick(colorOption)}
           >
-            {colorOption}
+            {colorOption.color_name}
           </p>
         ))}
-            </div> */}
+            </div>
      
 
 
@@ -210,8 +231,12 @@ useEffect(() => {
               className="btn btn-primary w-100 btn_details_cart mb-1 "
               type="submit"
               onClick={()=>{
-                addItem(selectData)
-              
+                addItem({
+                  id: details.p_id, // Make sure selectData has an id property
+                  price: details.price, // Make sure selectData has a price property
+                  product_name:details.product_name,
+                  color_name:details.color_name
+                });              
               }}
               >
               Add to Cart{" "}

@@ -58,7 +58,7 @@ function Blog() {
   }, [slider]);
 
   useEffect(()=>{
-    axios.get('ttps://jellyfish-app-6rwoy.ondigitalocean.app/blog/data')
+    axios.get('https://jellyfish-app-6rwoy.ondigitalocean.app/blog/data')
     .then((res)=>{
       const dataWithImages = res.data.map(data => ({
         ...data,

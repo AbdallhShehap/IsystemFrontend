@@ -87,7 +87,7 @@ const validateUser = async () => {
     console.log("gvvvvhvhvb");
       try{
       const response = await axios.post(
-        "ttps://jellyfish-app-6rwoy.ondigitalocean.app/login",
+        "https://jellyfish-app-6rwoy.ondigitalocean.app/login",
         {
           email: email,
           password: password,

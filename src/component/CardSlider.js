@@ -63,7 +63,7 @@ function CardSlider({title}) {
       console.log("Fetching data...");
       window.scrollTo(0, 0);
       
-      axios.get('ttps://jellyfish-app-6rwoy.ondigitalocean.app/productdetails/getproductdetails')
+      axios.get('https://jellyfish-app-6rwoy.ondigitalocean.app/productdetails/getproductdetails')
         .then((res) => {
           const dataWithImages = res.data.map(data => ({
             ...data,

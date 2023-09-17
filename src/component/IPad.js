@@ -17,7 +17,7 @@ export default function IPad() {
   
   useEffect(() => {
     window.scrollTo(0, 0);
-    axios.get('ttps://jellyfish-app-6rwoy.ondigitalocean.app/productdetails/getproductdetailsipad')
+    axios.get('https://jellyfish-app-6rwoy.ondigitalocean.app/productdetails/getproductdetailsipad')
       .then((res) => {
     const dataWithImages = res.data.map(data => ({
             ...data,

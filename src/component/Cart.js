@@ -17,7 +17,7 @@ function Cart({ chosenProduct, itemName, itemColor, itemModel }) {
     // Add more items as needed
   ]);
   const {items,updateItemQuantity,removeItem,cartTotal}=useCart()
-  console.log(items)
+  console.log("item",items)
   const location=useLocation()
 
 useEffect(()=>{
@@ -51,7 +51,7 @@ useEffect(()=>{
               <div className="cart">
                 {items.map((item) => (
                   <CartItem
-                    key={item.id}
+                    key={item.p_id}
                     item={item}
                     
                     // updateQuantity={updateQuantity}

@@ -221,6 +221,7 @@ const validateUser = async () => {
 
   if (emailIsValid) {
     setEmailFlag(true);
+    
   } else {
     setEmailFlag(false);
   }
@@ -252,7 +253,7 @@ const submitUser = async () => {
   try {
     // const username = generateUsername(firstName, lastName);
     const response =   await axios.post(
-      "ttps://jellyfish-app-6rwoy.ondigitalocean.app/signup",
+      "https://jellyfish-app-6rwoy.ondigitalocean.app/signup",
       {
         username: userName,
         email: email,
@@ -266,7 +267,7 @@ const submitUser = async () => {
       }
     );
     const result = await response.data;
-        console.log(result);
+        console.log("resu",result.status);
         if (result.status === "error") {
           console.log(result.message);
           setUserFlag(false);
@@ -274,7 +275,7 @@ const submitUser = async () => {
         if (result.status === "success") {
           console.log(result.token);
           setUserFlag(true);
-    
+    console.log("hello")
           navigate("/compare");
         }
       } catch (err) {
@@ -288,6 +289,7 @@ const submitUser = async () => {
       if (email && userName) {
         try {
           submitUser();
+          
         } catch (err) {
           console.log(err);
         }
