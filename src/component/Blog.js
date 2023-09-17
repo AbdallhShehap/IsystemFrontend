@@ -112,7 +112,7 @@ function Blog() {
     </div>
       <div className="container">
         <div className="row">
-          <h3 className="mt-5 mb-4 ms-5">Our Blog</h3>
+          <h3 className="mt-5 mb-4 ">Our Blog</h3>
           <form>
             <div className="input-group  ms-4">
               <input
@@ -129,76 +129,10 @@ function Blog() {
         <div className="row">
           <div class="card-slider">
             <div className="row">
-              
-            {/* <Slider {...settings} ref={(slider) => setSlider(slider)}>
-              {filteredPersons.map((data) => (
-                <div key={data.id}>
-                <div class="col-lg-12 col-md-12 m-1" >
-                  <div className='row'>
-                  <div
-              className="card mx-auto"
-              style={{ width: "25rem", border: "none", textAlign: "left" }}
-              key={data.id}
-            >
-              <img src={data.image} className="card-img-top" alt={data.title} />
-              <div className="card-body">
-                <p className="card-text">{data.title}</p>
-                <small className="card-title" style={{ color: "#BEBEBE" }}>
-                  {data.date}
-                </small>
-                <br></br>
-                <Link to={`blogdetails/${data.id}`}
-                  href="#"
-                  className="btn btn-primary"
-                  style={{
-                    backgroundColor: "#27579A",
-                    border: "none",
-                    marginTop: "2%",
-                  }}
-                >
-                  Read More{" "}
-                </Link>
-              </div>
-            </div>
-                  </div>
-              
-                </div>
-                <div class="col-lg-12 col-md-12 m-1" >
-                  <div className='row'>
-                  <div
-              className="card mx-auto"
-              style={{ width: "25rem", border: "none", textAlign: "left" }}
-              key={data.id}
-            >
-              <img src={data.image} className="card-img-top" alt={data.title}  />
-              <div className="card-body">
-                <p className="card-text">{data.title}</p>
-                <small className="card-title" style={{ color: "#BEBEBE" }}>
-                  {data.date}
-                </small>
-                <br></br>
-                <Link to={`blogdetails/${data.id}`}
-                  href="#"
-                  className="btn btn-primary"
-                  style={{
-                    backgroundColor: "#27579A",
-                    border: "none",
-                    marginTop: "2%",
-                  }}
-                >
-                  Read More{" "}
-                </Link>
-              </div>
-            </div>
-                  </div>
-              
-                </div>
-                </div>
-                
-          ))}
-            </Slider> */}
+
             {searchFlag ? (
   <Slider {...settings} ref={(slider) => setSlider(slider)}>
+
     {filteredBlogData.map((data) => (
       <div key={data.blog_id}>
         <div class="col-lg-12 col-md-12 m-1">

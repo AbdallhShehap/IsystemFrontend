@@ -71,60 +71,8 @@ width: 100%;
 .container_btn_background {
   display: flex;
 }
-.btn_preOrder {
-  border-radius:25px;
-  border-color: #707070;
 
-  position: absolute;
-  top: 62%;
-  left: 10%;
-  transform: translate(-50%, -50%);
-  z-index: 1;
-  color: #fff;
-  -webkit-border-radius:25px;
-  -moz-border-radius:25px;
-  -ms-border-radius:25px;
-  -o-border-radius:25px;
-  width: 8%;
-}
-.btn_learnmore {
-  border-radius:25px;
-border-color: #707070;
-  position: absolute;
-  top: 62%; /* Adjust the vertical position */
-  left: 19%; /* Adjust the horizontal position */
-  transform: translate(-50%, -50%); /* Center the button */
-  z-index: 1; /* Place the button above the image */
-  color: #fff;
-  width: 8%;
 
-}
-
-@media screen and (max-width: 510px) {
-  .btn_preOrder {
-    top: 80%;
-    left: 15%;
-    margin-top: 4%;
-    width: fit-content;
-    font-size: x-small;
-  }
-  .btn_learnmore{
-    margin-top: 2%;
-    width: fit-content;
-    left: 15%;
-    font-size: x-small;
-
-  }
-  .cont{
-    width: 100%;
-  }
-  /* .background_slider{
-    width: 10px;
-  } */
-/* .sliderHome{
-  width: 100%;
-} */
-}
 @media screen and (min-width:511px) and (max-width:1139px){
   .btn_preOrder {
     top: 57%;

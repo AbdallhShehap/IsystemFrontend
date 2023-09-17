@@ -23,7 +23,7 @@ function CardSlider({title}) {
     arrows: false, // Disable the default arrows
     responsive: [
       {
-        breakpoint: 600,
+        breakpoint: 900,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
@@ -60,25 +60,24 @@ function CardSlider({title}) {
     }, [slider]);
   
     useEffect(() => {
-      if (slider) {
-        // You can access the slider methods here, e.g., slider.slickNext(), slider.slickPrev()
-     
-      }
-    console.log("Fetching data...");
-    window.scrollTo(0, 0);
-    axios.get('http://localhost:1010/productdetails/getproductdetails')
-    .then((res) => {
-        const dataWithImages = res.data.map(data => ({
-          ...data,
-          image_main: `data:image/jpeg;base64,${data.image_base64}`
-        }));
-        console.log("Data nnnnnnnns:", dataWithImages);
-        setCardsData(dataWithImages);
-      })
-      .catch((err) => {
-        console.log(`Error: ${err}`);
-      });
-  }, [slider]);
+      console.log("Fetching data...");
+      window.scrollTo(0, 0);
+      
+      axios.get('https://clownfish-app-3ufki.ondigitalocean.app/productdetails/getproductdetails')
+        .then((res) => {
+          const dataWithImages = res.data.map(data => ({
+            ...data,
+            // Ensure you handle the image_base64 correctly
+            image_main: `data:image/jpeg;base64,${data.image_base64}`
+          }));
+          console.log("Data with images:", dataWithImages);
+          setCardsData(dataWithImages); // Update the state to display images
+        })
+        .catch((err) => {
+          console.log(`Error: ${err}`);
+        });
+    }, []);
+    
 
 
   
@@ -89,13 +88,13 @@ function CardSlider({title}) {
           <h2 className="title_card">{title}</h2>
           <Slider {...settings} ref={(slider) => setSlider(slider)}>
             {cardsData.map((data) => (
-              <div className="col-lg-12 col-md-6 m-1" key={data.p_id}>
-                <div className="card">
-                  <img
-                    src={`data:image/jpeg;base64,${data.image_base64}`}
-                    alt={data.product_name}
-                    className="card-img-top"
-                  />
+ <div className="col-lg-12 col-md-12 col-sm-12">
+
+                <div className="card" key={data.p_id}>
+                 
+ <img src={data.image_main} alt={data.product_name} />
+
+
                   <div className="d-flex justify-content-between p-3">
                     <p className="lead mb-0 card_title">{data.product_name}</p>
                   </div>
@@ -135,6 +134,7 @@ function CardSlider({title}) {
                   </div>
                 </div>
               </div>
+
             ))}
           </Slider>
           <div

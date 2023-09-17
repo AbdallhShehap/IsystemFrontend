@@ -22,7 +22,7 @@ function Home() {
   const [cardsData, setCardsData] = useState(CardsData);
 // console.log(`home`,{cardsData})
   return (
-    <div className="cont">
+    <div className="cont ">
         <Carousel
           autoPlay
           interval="5000"

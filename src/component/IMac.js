@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../assests/Iphone.css";
 import { Component } from "react";
 import ReactDOM from "react-dom";
@@ -11,31 +11,28 @@ import "slick-carousel/slick/slick-theme.css";
 import axios from "axios";
 
 export default function IMac() {
-
   const slider = React.useRef(null);
   const [data, setData] = useState([]);
-let [filteredProducts,setFilteredProducts]=useState([])
+  let [filteredProducts, setFilteredProducts] = useState([]);
 
-
-useEffect(() => {
-  window.scrollTo(0, 0);
-  axios.get('http://localhost:1010/productdetails/getproductdetailsimac')
-    .then((res) => {
-  const dataWithImages = res.data.map(data => ({
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    axios
+      .get("http://localhost:1010/productdetails/getproductdetailsimac")
+      .then((res) => {
+        const dataWithImages = res.data.map((data) => ({
           ...data,
-          image_main: `data:image/jpeg;base64,${data.image_base64}`
+          image_main: `data:image/jpeg;base64,${data.image_base64}`,
         }));
         console.log("Data with images:", dataWithImages);
-              setData(dataWithImages);
-    })
-    .catch((err) => {
-      console.log(`err${err}`);
-    });
-}, []);
+        setData(dataWithImages);
+      })
+      .catch((err) => {
+        console.log(`err${err}`);
+      });
+  }, []);
 
-console.log(data);
-
-
+  console.log(data);
 
   const settings = {
     dots: false,
@@ -44,36 +41,35 @@ console.log(data);
     slidesToShow: 3,
     slidesToScroll: 1,
   };
-  useEffect(()=>{
-    window.scrollTo(0,0)
-        },[])
-        const handleClick = (productName) => {
-          // Find products with titles containing the productName
-          const filtered = data.filter((product) =>
-            product.title.includes(productName)
-          );
-        setFilteredProducts(filtered)
-          // Check if any products were found
-          if (filteredProducts.length > 0) {
-            console.log('Selected Products:', filteredProducts);
-            // You can do something with the selected product data here
-          } else {
-            console.log('Products not found');
-          }
-        };
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  const handleClick = (productName) => {
+    // Find products with titles containing the productName
+    const filtered = data.filter((product) =>
+      product.title.includes(productName)
+    );
+    setFilteredProducts(filtered);
+    // Check if any products were found
+    if (filteredProducts.length > 0) {
+      console.log("Selected Products:", filteredProducts);
+      // You can do something with the selected product data here
+    } else {
+      console.log("Products not found");
+    }
+  };
   return (
     <div>
-            <div  >
-              
-              <img
-                src={require("../images/Mac Section.jpg")}
-                alt=""
-// height={"740px"}    
-width={"100%"}          />
-            </div>{" "}
-      <div >
-    
-        <div className="row slider_box" >
+      <div className="legend-container">
+        <img
+          src={require("../images/Mac Section.jpg")}
+          alt=""
+          // height={"740px"}
+          width={"100%"}
+        />
+      </div>{" "}
+      <div>
+        <div className="row slider_box">
           <div className="col-lg-1 ">
             {" "}
             <a
@@ -90,69 +86,94 @@ width={"100%"}          />
               <Slider {...settings} ref={slider}>
                 <div>
                   {" "}
-                  <button class="CARD_STYLE" tabIndex="-1"onClick={() => handleClick("iPhone 14")}>
-                  iMac 2.5
+                  <button
+                    class="CARD_STYLE"
+                    tabIndex="-1"
+                    onClick={() => handleClick("iPhone 14")}
+                  >
+                    iMac 2.5
                   </button>
                 </div>
                 <div>
                   {" "}
-                  <button class="CARD_STYLE" tabIndex="-1" onClick={() => handleClick("iPhone 14")}>
-                  iMac 3.5
+                  <button
+                    class="CARD_STYLE"
+                    tabIndex="-1"
+                    onClick={() => handleClick("iPhone 14")}
+                  >
+                    iMac 3.5
                   </button>
                 </div>
                 <div>
                   {" "}
-                  <button class="CARD_STYLE" tabIndex="-1"onClick={() => handleClick("iPhone 14")}>
-                  iMac 5.2
+                  <button
+                    class="CARD_STYLE"
+                    tabIndex="-1"
+                    onClick={() => handleClick("iPhone 14")}
+                  >
+                    iMac 5.2
                   </button>
                 </div>
                 <div>
                   {" "}
-                  <button class="CARD_STYLE" tabIndex="-1"onClick={() => handleClick("iPhone 14")}>
-                  iMac19,2
+                  <button
+                    class="CARD_STYLE"
+                    tabIndex="-1"
+                    onClick={() => handleClick("iPhone 14")}
+                  >
+                    iMac19,2
                   </button>
                 </div>
                 <div>
                   {" "}
-                  <button class="CARD_STYLE" tabIndex="-1"onClick={() => handleClick("iPhone 14")}>
+                  <button
+                    class="CARD_STYLE"
+                    tabIndex="-1"
+                    onClick={() => handleClick("iPhone 14")}
+                  >
                     iMac
                   </button>
                 </div>
                 <div>
                   {" "}
-                  <button class="CARD_STYLE" tabIndex="-1" onClick={() => handleClick("iPhone 14")}>
+                  <button
+                    class="CARD_STYLE"
+                    tabIndex="-1"
+                    onClick={() => handleClick("iPhone 14")}
+                  >
                     watch
                   </button>
                 </div>
                 <div>
                   {" "}
-                  <button class="CARD_STYLE" tabIndex="-1"onClick={() => handleClick("iPhone 14")}>
+                  <button
+                    class="CARD_STYLE"
+                    tabIndex="-1"
+                    onClick={() => handleClick("iPhone 14")}
+                  >
                     iPad{" "}
                   </button>
                 </div>
               </Slider>
             </div>
-            </div>
+          </div>
 
-            <div className="col-lg-1 ">
-              {" "}
-              <a
-                className="btn btn-primary mb-3 arrow_slider hide_btn"
-                role="button"
-                data-slide="next"
-                onClick={() => slider.current.slickNext()}
-              >
-                <i className="fa fa-arrow-right"></i>
-              </a>
-            </div>
+          <div className="col-lg-1 ">
+            {" "}
+            <a
+              className="btn btn-primary mb-3 arrow_slider hide_btn"
+              role="button"
+              data-slide="next"
+              onClick={() => slider.current.slickNext()}
+            >
+              <i className="fa fa-arrow-right"></i>
+            </a>
+          </div>
         </div>
       </div>
-        {/* <AllProduct filteredProducts={filteredProducts} /> */}
-   
-        {/* start */}
-
-      
-        <div class="container text-center">
+      {/* <AllProduct filteredProducts={filteredProducts} /> */}
+      {/* start */}
+      <div class="container text-center">
         <div class="row">
           {data.length > 0
             ? data.map((product) => (
@@ -193,8 +214,12 @@ width={"100%"}          />
                           </span>
                         </p>
                         <div class="d-flex justify-content-between mb-2">
-                          <p className={`mb-0 ${product.stock === 1 ? 'inStock' : 'outOfStock'}`}>
-                            {product.stock === 1 ? "In stock" : "Out of stock"  }{" "}
+                          <p
+                            className={`mb-0 ${
+                              product.stock === 1 ? "inStock" : "outOfStock"
+                            }`}
+                          >
+                            {product.stock === 1 ? "In stock" : "Out of stock"}{" "}
                           </p>
                         </div>{" "}
                       </div>
@@ -247,9 +272,6 @@ width={"100%"}          />
               ))}
         </div>
       </div>
-
-   
-   
     </div>
   );
 }

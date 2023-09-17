@@ -35,7 +35,7 @@ function Layouts() {
       <header>
         <Navbar
           variant="dark"
-          expand="md"
+          expand="xl"
           collapseOnSelect
           className="main_nav fixed-top"
         >

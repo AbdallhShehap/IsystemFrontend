@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import "../assests/Cards.css";
 import Slider from "react-slick";
@@ -9,13 +8,13 @@ import { Link, useParams } from "react-router-dom";
 import axios from 'axios'
 
 
-function CardSlider({title}) {
+function TopSellingCard({title}) {
   const [slider, setSlider] = useState(null);
-  const [cardsData, setCardsData] = useState(CardsData);
-console.log("topselling",cardsData)
+  const [cardsData, setCardsData] = useState([]);
+
   const settings = {
     dots: false,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
@@ -24,7 +23,7 @@ console.log("topselling",cardsData)
     arrows: false, // Disable the default arrows
     responsive: [
       {
-        breakpoint: 600,
+        breakpoint: 900,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
@@ -53,22 +52,21 @@ console.log("topselling",cardsData)
     }
   };
 
-  // Initialize the slider reference once the component has mounted
-  // useEffect(() => {
-  //   if (slider) {
-  //     // You can access the slider methods here, e.g., slider.slickNext(), slider.slickPrev()
-  //   }
-  // }, [slider]);
-
-  useEffect(() => {
-    if (slider) {
-      // You can access the slider methods here, e.g., slider.slickNext(), slider.slickPrev()
-   
-    }
-
-  console.log("Fetching data...");
+    // Initialize the slider reference once the component has mounted
+    useEffect(() => {
+      if (slider) {
+        // You can access the slider methods here, e.g., slider.slickNext(), slider.slickPrev()
+      }
+    }, [slider]);
+  
+    useEffect(() => {
+      if (slider) {
+        // You can access the slider methods here, e.g., slider.slickNext(), slider.slickPrev()
+     
+      }
+    console.log("Fetching data...");
     window.scrollTo(0, 0);
-    axios.get('http://localhost:1010/productdetails/getproductdetails')
+    axios.get('https://clownfish-app-3ufki.ondigitalocean.app/productdetails/getproductdetails')
     .then((res) => {
         const dataWithImages = res.data.map(data => ({
           ...data,
@@ -83,62 +81,66 @@ console.log("topselling",cardsData)
   }, [slider]);
 
 
+  
   return (
     <>
-      <div class="container">
-        <div class="card-slider">
-          {/* <div class="col-lg-12 col-md-3"> */}
+      <div className="container">
+        <div className="card-slider">
           <h2 className="title_card">{title}</h2>
-          <div className="row">
-
-            <Slider {...settings} ref={(slider) => setSlider(slider)}>
-              {cardsData.map((data) => (
-                <div class="col-lg-12 col-md-12 m-1" >
-                  <div class="card ">
+          <Slider {...settings} ref={(slider) => setSlider(slider)}>
+            {cardsData.map((data) => (
+ <div className="col-lg-12 col-md-12 col-sm-12">
+ <div className="card"  key={data.p_id}>
                   <img
-                src={`data:image/jpeg;base64,${data.image_base64}`}
-                alt={data.product_name}
-                className="card-img-top"
-              />
-                    <div class="d-flex justify-content-between p-3">
-                      <p class="lead mb-0 card_title">{data.title}</p>
+                    src={`data:image/jpeg;base64,${data.image_base64}`}
+                    alt={data.product_name}
+                    className="card-img-top"
+                  />
+                  <div className="d-flex justify-content-between p-3">
+                    <p className="lead mb-0 card_title">{data.product_name}</p>
+                  </div>
+                  <div className="card-body">
+                    <div className="d-flex justify-content-between">
+                      <p className="small text-danger">{data.price}</p>
+                      <p className="small oldPrice">{data.old_price}</p>
                     </div>
-                    <div class="card-body">
-                      <div class="d-flex justify-content-between">
-                        <p class="small text-danger">{data.price}</p>
-                        <p class="small oldPrice">{data.oldPrice}</p>
-                      </div>
-                      <div class="d-flex justify-content-between mb-2">
-                        <p class="mb-0 inStock">{data.inStock} </p>
-                      </div>
-                      <div class="d-flex justify-content-between mb-3 ">
-                      <Link to={`productdetails/${data.id}`} className="w-100">
+                    <div className="d-flex justify-content-between mb-2">
+                      <p class="mb-0 inStock">
+                        {data.stock === 1 ? "In stock" : "Out of stock"}{" "}
+                      </p>
+                    </div>
+                    <div className="d-flex justify-content-between mb-3">
+                      <Link
+                        to={`productdetails/${data.p_id}`}
+                        className="w-100"
+                      >
                         <button
-                          class="btn btn-outline-primary w-100 more_info_btn"
+                          className="btn btn-outline-primary w-100 more_info_btn"
                           type="button"
                         >
                           More Info
                         </button>
-                        </Link>
-                        <button type="button" class="btn btn-danger ms-2">
-                        <Link to={'cart'} >
+                      </Link>
+                      <button type="button" className="btn btn-danger ms-2">
+                        <Link to={"cart"}>
                           {" "}
                           <img
                             src={require("../images/cart.png")}
-                            class="card-img-top"
+                            className="card-img-top"
                             alt="Laptop"
                           />
                         </Link>
-                        </button>
-                      </div>
+                      </button>
                     </div>
                   </div>
                 </div>
-              ))}
-            </Slider>
-          </div>
-          {/* </div> */}
-          <div className="col-md-12 col-sm-12 col_btn_prevNext" style={{marginTop:"10px"}}>
+              </div>
+            ))}
+          </Slider>
+          <div
+            className="col-md-12 col-sm-12 col_btn_prevNext"
+            style={{ marginTop: "10px" }}
+          >
             <button
               onClick={goToPrevSlide}
               className="btn btn-primary mb-3  slider_home custom_btn_margin1"
@@ -160,4 +162,6 @@ console.log("topselling",cardsData)
   );
 }
 
-export default CardSlider;
+export default TopSellingCard;
+
+
