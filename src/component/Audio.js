@@ -19,7 +19,7 @@ let [filteredProducts,setFilteredProducts]=useState([])
 
 useEffect(() => {
   window.scrollTo(0, 0);
-  axios.get('http://localhost:1010/productdetails/getproductdetailsaudio')
+  axios.get('ttps://jellyfish-app-6rwoy.ondigitalocean.app/productdetails/getproductdetailsaudio')
     .then((res) => {
   const dataWithImages = res.data.map(data => ({
           ...data,

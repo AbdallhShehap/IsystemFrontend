@@ -8,6 +8,7 @@ import Cart from "./Cart";
 import CartItem from "./CartItem";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "react-use-cart";
+import axios from "axios";
 function ProductDetails() {
   const { id } = useParams();
   const {addItem}=useCart()
@@ -17,10 +18,9 @@ function ProductDetails() {
   const [selectedColor, setSelectedColor] = useState(""); // Initialize state for selected color
 const [selectedModel,setSelectedModel]=useState("")
 const [chosenProduct,setChosenProduct]=useState([])
-
-  selectData = CardsData.find((select) => select.id == id);
-  // console.log(selectData);
-  useEffect(() => {
+const [details,setDetails]=useState([])
+let dataWithImages;
+useEffect(() => {
     window.scrollTo(0, 0);
     const thumbnails = document.getElementsByClassName("thumbnail");
     const activeImages = document.getElementsByClassName("active");
@@ -67,26 +67,7 @@ const [chosenProduct,setChosenProduct]=useState([])
       });
     };
   }, []);
-  // const handleCart = (product) => {
-  //   // Create a copy of the current cart
-  //   const updatedCart = [...cart];
-  
-  //   // Check if the product is already in the cart based on some identifier (e.g., product id)
-  //   const existingProduct = updatedCart.find((item) => item.id === product.id);
-  
-  //   if (existingProduct) {
-  //     // If the product is already in the cart, update its quantity
-  //     existingProduct.quantity += 1;
-  //   } else {
-  //     // If the product is not in the cart, add it
-  //     updatedCart.push({ ...product, quantity: 1 });
-  //   }
-  
-  //   // Update the cart state with the new cart
-  //   setCart(updatedCart);
-  // };
-  
-  // console.log(cart); // This will show the updated cart after adding items
+ 
 
   const handleColorClick = (color) => {
     setSelectedColor(color); // Update the selected color in the state
@@ -103,12 +84,28 @@ setChosenProduct((prevChosenProduct)=>[...prevChosenProduct,model])
 console.log(selectedColor)
 console.log(selectedModel)
 console.log(chosenProduct)
+useEffect(() => {
+  console.log("Fetching data...");
+  window.scrollTo(0, 0);
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(`ttps://jellyfish-app-6rwoy.ondigitalocean.app/productdetails/getproductdetails/${id}`); // Replace with your actual API endpoint
+      if (response.data) {
+        setDetails(response.data); // Assuming your API returns the product details in the response data
+        console.log("details",details)
+      } else {
+        // Handle the case where the product with the given ID was not found
+      }
+    } catch (error) {
+      // Handle any errors that occurred during the Axios request
+    }
+  };
 
+  fetchData();
+}, [id]);
 
-// const handleAddToCart = (selectedProduct) => {
-//   // Pass the selected product to the Cart component
-//   setCart((prevCart) => [...prevCart, selectedProduct]);
-// };
+// selectData = dataWithImages.find((select) => select.id == id);
+
   return (
     <div>
       <div className="container" style={{marginTop:"5%"}}>
@@ -117,9 +114,9 @@ console.log(chosenProduct)
        
             <div id="content-wrapper">
               <div class="column mb-5">
-                <div className="d-flex justify-content-center">
-                  <img id="featured" src={selectData.image} alt="" />
-                </div>
+                {/* <div className="d-flex justify-content-center">
+                  <img id="featured" src={selectData.image_main} alt="" />
+                </div> */}
 
                 <div id="slide-wrapper">
                   <button
@@ -132,7 +129,7 @@ console.log(chosenProduct)
                     <i className="fa fa-arrow-left "></i>
                   </button>
                   <div id="slider">
-                    <img
+                    {/* <img
                       className="thumbnail active"
                       src={selectData.sliderImg[0]}
                     />
@@ -143,7 +140,7 @@ console.log(chosenProduct)
                     <img
                       className="thumbnail"
                       src={selectData.sliderImg[2]}
-                    />
+                    /> */}
 
                     <img
                       className="thumbnail"
@@ -197,27 +194,12 @@ console.log(chosenProduct)
           </p>
         ))}
             </div> */}
-        <div className="container_box">
-  {selectData.color.map((colorOption, index) => (
-    <div key={index} className={`color-option ${selectedColor === colorOption ? "selected" : ""}`} onClick={() => handleColorClick(colorOption)}>
-      <img src={selectData.colorImg[index]} alt="" className="color" />
-      <p>{colorOption}</p>
-    </div>
-  ))}
-</div>
+     
 
 
             <h5 className="">Model</h5>
             <div className="container_box">
-            {selectData.model.map((modelOption, index) => (
-          <p
-            key={index}
-            className={`model_space ${selectedModel === modelOption ? "selected" : ""}`}
-            onClick={() => handleModel(modelOption)}
-          >
-            {modelOption}
-          </p>
-        ))}
+          
               {/* <p className="model_space">{selectData.model[0]}</p>
               <p className="model_space">{selectData.model[1]}</p>
               <p className="model_space">{selectData.model[2]}</p>

@@ -18,7 +18,7 @@ function BlogDetails() {
 
 
   useEffect(()=>{
-    axios.get(`http://localhost:1010/blog/data/${id}`)
+    axios.get(`ttps://jellyfish-app-6rwoy.ondigitalocean.app/blog/data/${id}`)
     .then((res)=>{
       console.log("API Response:", res.data);
 

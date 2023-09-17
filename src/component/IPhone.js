@@ -15,7 +15,7 @@ let [filteredProducts,setFilteredProducts]=useState([])
 
 useEffect(() => {
   window.scrollTo(0, 0);
-  axios.get('https://octopus-app-2-dubk2.ondigitalocean.app/productdetails/getproductdetailsiphone')
+  axios.get('ttps://jellyfish-app-6rwoy.ondigitalocean.app/productdetails/getproductdetailsiphone')
     .then((res) => {
   const dataWithImages = res.data.map(data => ({
           ...data,
