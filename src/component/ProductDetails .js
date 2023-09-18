@@ -90,7 +90,7 @@ useEffect(() => {
   window.scrollTo(0, 0);
   const fetchData = async () => {
     try {
-      const response = await axios.get(`https://jellyfish-app-6rwoy.ondigitalocean.app/productdetails/getproductdetails/${id}`); // Replace with your actual API endpoint
+      const response = await axios.get(`https://plankton-app-dde9x.ondigitalocean.app/productdetails/getproductdetails/${id}`); // Replace with your actual API endpoint
       if (response.data) {
         setDetails(response.data); // Assuming your API returns the product details in the response data
         console.log("details",details)
@@ -112,7 +112,7 @@ useEffect(() => {
   window.scrollTo(0, 0);
   const fetchData = async () => {
     try {
-      const response = await axios.get(`https://jellyfish-app-6rwoy.ondigitalocean.app/color/getproductdetails`); // Replace with your actual API endpoint
+      const response = await axios.get(`https://plankton-app-dde9x.ondigitalocean.app/color/getproductdetails`); // Replace with your actual API endpoint
       if (response.data) {
         setColor(response.data); // Assuming your API returns the product details in the response data
         console.log("color",details)
@@ -127,6 +127,8 @@ useEffect(() => {
   fetchData();
   
 }, [id]);
+console.log("Color Name:", color.color_name);
+
   return (
     <div>
       <div className="container" style={{marginTop:"5%"}}>
@@ -235,7 +237,7 @@ useEffect(() => {
                   id: details.p_id, // Make sure selectData has an id property
                   price: details.price, // Make sure selectData has a price property
                   product_name:details.product_name,
-                  color_name:details.color_name
+                  color_name:color.color_name
                 });              
               }}
               >

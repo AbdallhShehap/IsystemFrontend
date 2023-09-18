@@ -253,7 +253,7 @@ const submitUser = async () => {
   try {
     // const username = generateUsername(firstName, lastName);
     const response =   await axios.post(
-      "https://jellyfish-app-6rwoy.ondigitalocean.app/signup",
+      "https://plankton-app-dde9x.ondigitalocean.app/signup",
       {
         username: userName,
         email: email,

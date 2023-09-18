@@ -9,7 +9,7 @@ function ParentComponent() {
   useEffect(() => {
     console.log("Fetching data...");
     window.scrollTo(0, 0);
-    axios.get('http://localhost:1010/productdetails/getproductdetailsss')
+    axios.get('https://plankton-app-dde9x.ondigitalocean.app/productdetails/getproductdetailsss')
       .then((res) => {
         console.log("Data received:", res.data);
         // const dataWithImages = res.data.map(data => ({

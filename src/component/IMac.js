@@ -13,12 +13,12 @@ import axios from "axios";
 export default function IMac() {
   const slider = React.useRef(null);
   const [data, setData] = useState([]);
-  let [filteredProducts, setFilteredProducts] = useState([]);
+  let [filteredProducts,setFilteredProducts]=useState([])
 
   useEffect(() => {
     window.scrollTo(0, 0);
     axios
-      .get("https://jellyfish-app-6rwoy.ondigitalocean.app/productdetails/getproductdetailsimac")
+      .get("https://plankton-app-dde9x.ondigitalocean.app/productdetails/getproductdetailsimac")
       .then((res) => {
         const dataWithImages = res.data.map((data) => ({
           ...data,
@@ -33,13 +33,7 @@ export default function IMac() {
         console.log(`err${err}`);
       });
   }, []);
-  const handleClick = (productName) => {
-    // Find products with titles containing the productName
-    const filtered = data.filter((product) =>
-      product.product_name.includes(productName)
-    );
-    setFilteredProducts(filtered);
-  };
+ 
   console.log(data);
 
   const settings = {
@@ -53,6 +47,14 @@ export default function IMac() {
     window.scrollTo(0, 0);
   }, []);
 
+    
+  const handleClick = (productName) => {
+    // Find products with titles containing the productName
+    const filtered = data.filter((product) =>
+      product.product_name.includes(productName)
+    );
+    setFilteredProducts(filtered);
+  };
   return (
     <div>
       <div className="legend-container">
@@ -84,8 +86,7 @@ export default function IMac() {
                   <button
                     class="CARD_STYLE"
                     tabIndex="-1"
-                    onClick={(e) => handleClick(e.target.textContent)}
-                  >
+                    onClick={(e) => handleClick(e.target.textContent)}                  >
                     iMac 2.5
                   </button>
                 </div>
@@ -94,7 +95,7 @@ export default function IMac() {
                   <button
                     class="CARD_STYLE"
                     tabIndex="-1"
-                    onClick={(e) => handleClick(e.target.textContent)}                  >
+                    onClick={(e) => handleClick(e.target.textContent)}            >
                     iMac 3.5
                   </button>
                 </div>
@@ -103,7 +104,7 @@ export default function IMac() {
                   <button
                     class="CARD_STYLE"
                     tabIndex="-1"
-                    onClick={(e) => handleClick(e.target.textContent)}                  >
+                    onClick={(e) => handleClick(e.target.textContent)}             >
                     iMac 5.2
                   </button>
                 </div>
@@ -112,7 +113,7 @@ export default function IMac() {
                   <button
                     class="CARD_STYLE"
                     tabIndex="-1"
-                    onClick={(e) => handleClick(e.target.textContent)}                  >
+                    onClick={(e) => handleClick(e.target.textContent)}            >
                     iMac19,2
                   </button>
                 </div>
@@ -121,7 +122,7 @@ export default function IMac() {
                   <button
                     class="CARD_STYLE"
                     tabIndex="-1"
-                    onClick={(e) => handleClick(e.target.textContent)}                  >
+                    onClick={(e) => handleClick(e.target.textContent)}                 >
                     iMac
                   </button>
                 </div>
@@ -130,7 +131,7 @@ export default function IMac() {
                   <button
                     class="CARD_STYLE"
                     tabIndex="-1"
-                    onClick={(e) => handleClick(e.target.textContent)}                  >
+                    onClick={(e) => handleClick(e.target.textContent)}                >
                     watch
                   </button>
                 </div>
@@ -139,7 +140,7 @@ export default function IMac() {
                   <button
                     class="CARD_STYLE"
                     tabIndex="-1"
-                    onClick={(e) => handleClick(e.target.textContent)}                  >
+                    onClick={(e) => handleClick(e.target.textContent)}               >
                     iPad{" "}
                   </button>
                 </div>
@@ -163,7 +164,7 @@ export default function IMac() {
       {/* <AllProduct filteredProducts={filteredProducts} /> */}
       {/* start */}
       <div class="container text-center">
-        <div class="row">
+      <div class="row">
           {filteredProducts.length > 0
             ? filteredProducts.map((product) => (
                 <div class="col-md-6 col-lg-4 mb-4 mb-lg-4 " key={product.p_id}>
@@ -203,12 +204,8 @@ export default function IMac() {
                           </span>
                         </p>
                         <div class="d-flex justify-content-between mb-2">
-                          <p
-                            className={`mb-0 ${
-                              product.stock === 1 ? "inStock" : "outOfStock"
-                            }`}
-                          >
-                            {product.stock === 1 ? "In stock" : "Out of stock"}{" "}
+                          <p className={`mb-0 ${product.stock === 1 ? 'inStock' : 'outOfStock'}`}>
+                            {product.stock === 1 ? "In stock" : "Out of stock"  }{" "}
                           </p>
                         </div>{" "}
                       </div>
@@ -216,7 +213,7 @@ export default function IMac() {
                   </div>
                 </div>
               ))
-            :  (
+            : (
               <p>Product not valid</p>
             )}
         </div>
