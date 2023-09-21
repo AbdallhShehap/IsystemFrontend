@@ -137,7 +137,7 @@ function ProductDetails() {
                 <div className="d-flex justify-content-center">
                   <img
                     id="featured"
-                    src={require("../images/iphonepurple.webp")}
+                    src={require("../images/iphoneBlack.webp")}
                     alt=""
                   />
                 </div>
