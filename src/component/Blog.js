@@ -58,7 +58,7 @@ function Blog() {
   }, [slider]);
 
   useEffect(()=>{
-    axios.get('http://localhost:1010/blog/data')
+    axios.get('https://monkfish-app-wyvrc.ondigitalocean.app/blog/data')
     .then((res)=>{
       const dataWithImages = res.data.map(data => ({
         ...data,

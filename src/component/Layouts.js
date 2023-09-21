@@ -42,7 +42,7 @@ function Layouts() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://plankton-app-dde9x.ondigitalocean.app/productdetails/getproductdetails`
+          `https://monkfish-app-wyvrc.ondigitalocean.app/productdetails/getproductdetails`
         );
         setProducts(response.data);
         console.log("products", products); // Log the updated data

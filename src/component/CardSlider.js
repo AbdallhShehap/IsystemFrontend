@@ -65,7 +65,7 @@ function CardSlider({title}) {
       console.log("Fetching data...");
       window.scrollTo(0, 0);
       
-      axios.get('http://localhost:1010/productdetails/getproductdetails')
+      axios.get('https://monkfish-app-wyvrc.ondigitalocean.app/productdetails/getproductdetails')
         .then((res) => {
           const dataWithImages = res.data.map(data => ({
             ...data,

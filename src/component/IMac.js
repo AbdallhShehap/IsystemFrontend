@@ -19,7 +19,7 @@ export default function IMac() {
   useEffect(() => {
     window.scrollTo(0, 0);
     axios
-      .get("https://plankton-app-dde9x.ondigitalocean.app/productdetails/getproductdetailsimac")
+      .get("https://monkfish-app-wyvrc.ondigitalocean.app/productdetails/getproductdetailsimac")
       .then((res) => {
         const dataWithImages = res.data.map((data) => ({
           ...data,

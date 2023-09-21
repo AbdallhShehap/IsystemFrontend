@@ -18,7 +18,7 @@ function BlogDetails() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:1010/blog/data`)
+      .get(`https://monkfish-app-wyvrc.ondigitalocean.app/blog/data`)
       .then((res) => {
         console.log("API Response:", res.data);
 
@@ -39,7 +39,7 @@ function BlogDetails() {
 
 useEffect(() => {
   axios
-    .get(`http://localhost:1010/blog/data/${id}`)
+    .get(`https://monkfish-app-wyvrc.ondigitalocean.app/blog/data/${id}`)
     .then((res) => {
       console.log("API Response:", res.data);
       

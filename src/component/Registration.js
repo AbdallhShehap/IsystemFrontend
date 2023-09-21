@@ -253,12 +253,12 @@ const submitUser = async () => {
   try {
     // const username = generateUsername(firstName, lastName);
     const response =   await axios.post(
-      "http://localhost:1010/signup",
+      "https://monkfish-app-wyvrc.ondigitalocean.app/signup",
       {
         username: userName,
         email: email,
         password: password,
-        role_id: 1
+        role_id: 2
       },
       {
         headers: {

@@ -87,7 +87,7 @@ function ProductDetails() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://plankton-app-dde9x.ondigitalocean.app/productdetails/getproductdetails/${id}`
+          `https://monkfish-app-wyvrc.ondigitalocean.app/productdetails/getproductdetails/${id}`
         ); // Replace with your actual API endpoint
         if (response.data) {
           setDetails(response.data); // Assuming your API returns the product details in the response data
@@ -110,7 +110,7 @@ function ProductDetails() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:1010/color/getproductdetails`
+          `https://monkfish-app-wyvrc.ondigitalocean.app/color/getproductdetails`
         ); // Replace with your actual API endpoint
         if (response.data) {
           setColor(response.data); // Assuming your API returns the product details in the response data

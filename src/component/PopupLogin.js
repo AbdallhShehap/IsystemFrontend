@@ -48,11 +48,11 @@ const handleEmailChange = (event) => {
 const handlePasswordChange = (event) => {
   setPassword(event.target.value);
 };
-const validateEmail = (email) => {
-  const pattern = /^[^\s@]+@[^\s@]+.[^\s@]+$/;
+// const validateEmail = (email) => {
+//   const pattern = /^[^\s@]+@[^\s@]+.[^\s@]+$/;
 
-  return pattern.test(email);
-};
+//   return pattern.test(email);
+// };
 
 const validatePassword = (password) => {
 if(!password){
@@ -62,18 +62,22 @@ if(!password){
 }
 
 };
+const handleFormSubmit = (event) => {
+  event.preventDefault(); // Prevent the default form submission behavior
+  validateUser();
+};
 const validateUser = async () => {
-  let emailIsValid = validateEmail(email);
+  // let emailIsValid = validateEmail(email);
   let passwordIsValid = validatePassword(password);
   // console.log(email, password,);
   setUserFlag(true);
 
-  if (emailIsValid  && passwordIsValid ) {
+  if ( passwordIsValid ) {
     setEmailFlag(true);
     setPasswordFlag(true);
-    navigate("/compare");
-    handleClose()
+    submitUser()
   } else {
+    handleOpen()
     setEmailFlag(false);
     setPasswordFlag(false);
   }
@@ -86,7 +90,7 @@ const validateUser = async () => {
   const submitUser = async () => {
       try{
       const response = await axios.post(
-        "http://localhost:1010/login",
+        "https://monkfish-app-wyvrc.ondigitalocean.app/login",
         {
           email: email,
           password: password,
@@ -104,7 +108,10 @@ const validateUser = async () => {
       if (result.status === "success") {
         console.log(result.token);
         setUserFlag(true);
-          
+        handleClose()
+
+        navigate("/");
+
        
       }
     } catch (err) {
@@ -116,12 +123,7 @@ const validateUser = async () => {
 
 
 
- useEffect(() => {
-    if (email && password) {
-      submitUser();
-      
-    }
-  }, [email,password]);
+   
 
   const location = useLocation();
   const isRegistrationPage = location.pathname === "/registration" ;
@@ -149,7 +151,7 @@ const validateUser = async () => {
           <Typography variant="h6" component="h2">
             Login
           </Typography>
-          <form style={formStyle} action="#">
+          <form style={formStyle} action="#" onSubmit={handleFormSubmit}>
             <input
               type="text"
               placeholder="Email address"
@@ -170,7 +172,10 @@ const validateUser = async () => {
 
               <a href="#">Forgot password?</a>
             </p>
-            <Button type="submit" variant="contained" color="primary" onClick={validateUser}>
+            {userFlag === false && (
+              <p style={{ color: 'red' }}>Incorrect email or password. Please try again.</p>
+            )}
+            <Button type="submit" variant="contained" color="primary" >
               Login
             </Button>
             <Link to="/registration"  onClick={handleClose} >
