@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import { Navbar, Nav, Container, Form, Row, Col } from "react-bootstrap";
 import { FaShoppingCart, FaUser, FaSearch } from "react-icons/fa";
 import logoApple from "../images/logoApple.png";
@@ -24,11 +24,49 @@ import Button from "@mui/material/Button";
 import Subscribe from "./Subscribe";
 import Home from "../pages/Home";
 import EnhancedModal from "./PopupLogin";
+import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
 function Layouts() {
   const location = useLocation();
   const isHomePage = location.pathname === "/" || location.pathname === "/home";
   const isRegistrationPage = location.pathname === "/registration";
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+  const navigate=useNavigate();
+  const [products, setProducts] = useState([]);
+  const [isDropdownVisible, setIsDropdownVisible] = useState(true);
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `https://plankton-app-dde9x.ondigitalocean.app/productdetails/getproductdetails`
+        );
+        setProducts(response.data);
+        console.log("products", products); // Log the updated data
+      } catch (error) {
+        // Handle any errors that occurred during the Axios request
+      }
+    };
+  
+    fetchData();
+    // if fetch not return product from db put in dependancy arr [products]
+  }, []);
+  
+  const handleInputChange = (event) => {
+    const query = event.target.value;
+    setSearchQuery(query);
+setIsDropdownVisible(true)
+    // Filter the products based on the search query
+    const filteredResults = products.filter((product) =>
+      product.product_name.toLowerCase().includes(query.toLowerCase())
+    );
+
+    setSearchResults(filteredResults);
+    
+  };
 
   return (
     <>
@@ -101,10 +139,42 @@ function Layouts() {
                   </Nav.Link>
                 </LinkContainer>
               </Nav>
-              <form class="nosubmit">
-                <input class="nosubmit" type="search" />
-              </form>
-
+              {/* <form class="nosubmit">
+                <input class="nosubmit" type="search" onChange={handleChange}/>
+              </form> */}
+  <div className="navbar__search">
+        <span>
+          {/* <FaSistrix /> */}
+        </span>
+        <input
+        class="nosubmit"
+          type="text"
+          placeholder=""
+          value={searchQuery}
+          onChange={handleInputChange}
+        />
+        {searchQuery && (
+          <ul className= {isDropdownVisible ? "search_dropdown" :"hidedropdown"}>
+            {searchResults.length > 0 ? (
+              searchResults.map((product) => (
+                <li key={product.p_id} onClick={()=>{navigate(`/productdetails/${product.p_id}`)
+                console.log(product.p_id)
+                window.location.reload()
+                setIsDropdownVisible(false)
+                setSearchQuery(" ")
+                window.scrollTo(0, 0);
+                
+                }}>
+                  <img src={require('../images/iphonepurple.webp')} alt={product.productName} />
+                  {product.product_name}
+                </li>
+              ))
+            ) : (
+              <li>No products found.</li>
+            )}
+          </ul>
+        )}
+      </div>
               <Nav className="ml-auto">
                 <LinkContainer to="/cart" style={{ fontSize: "12px" }}>
                   <Nav.Link className="cart-link">
@@ -114,13 +184,23 @@ function Layouts() {
                     </span>
                   </Nav.Link>
                 </LinkContainer>
+         
 
                 {/* import the componnat */}
                 <EnhancedModal
                   onClose={() => {
                     console.log("Modal closed");
                   }}
+                  
                 />
+<div class="btn-group dropstart">
+<img src={require('../images/caret-down.png')} alt="" height={"30%"} width={"80%"} className=" dropdown-toggle arrow_login" type="button" data-bs-toggle="dropdown" aria-expanded="false" />
+
+  <ul class="dropdown-menu">
+  <li ><Link class="dropdown-item" to={'/profile'}>Profile</Link></li>
+
+  </ul>
+</div>
               </Nav>
             </Navbar.Collapse>
           </Container>

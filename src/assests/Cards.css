@@ -52,6 +52,9 @@ body{
 .more_info_btn:hover{
 background-color: #27579A;
 }
+.outofstock_btn{
+  border-color: #525252;
+}
 .cart_link{
   height: 500px;
 }

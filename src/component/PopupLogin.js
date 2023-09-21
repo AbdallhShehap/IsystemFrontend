@@ -84,10 +84,9 @@ const validateUser = async () => {
 };
 
   const submitUser = async () => {
-    console.log("gvvvvhvhvb");
       try{
       const response = await axios.post(
-        "https://plankton-app-dde9x.ondigitalocean.app/login",
+        "http://localhost:1010/login",
         {
           email: email,
           password: password,
@@ -104,7 +103,6 @@ const validateUser = async () => {
       }
       if (result.status === "success") {
         console.log(result.token);
-        console.log("ndckdjnvc c");
         setUserFlag(true);
           
        

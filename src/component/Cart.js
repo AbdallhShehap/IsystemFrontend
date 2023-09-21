@@ -7,26 +7,35 @@ import Col from "react-bootstrap/Col";
 import { useCart } from "react-use-cart";
 import { useState } from "react";
 import CartItem from "./CartItem";
-import { useLocation } from "react-router-dom";
+import { useLocation,useNavigate } from "react-router-dom";
 import ProductDetails from "./ProductDetails ";
+import Checkout from "./Checkout";
+
 function Cart({ chosenProduct, itemName, itemColor, itemModel }) {
-  const [cartItems, setCartItems] = useState([
-    { id: 1, img:require('../images/iPhone_14_Pro_Silver_Pure_Back_iPhone_14_Pro_Silver.png'),color:"white",model:"256 GB",name: "Product 2", quantity: 2, price: 24.99 },
-    { id: 2,img:require('../images/iPhone_14_Pro_Silver_Pure_Back_iPhone_14_Pro_Silver.png'),color:"black",model:"128 GB", name: "Product 1", quantity: 1, price: 10.99 },
-    { id: 3, img:require('../images/iPhone_14_Pro_Silver_Pure_Back_iPhone_14_Pro_Silver.png'),color:"white",model:"256 GB",name: "Product 2", quantity: 2, price: 24.99 },
-    // Add more items as needed
-  ]);
+  const navigate=useNavigate();
+  const TAX_RATE = 0.16; // 16% tax rate
+
+  // const [total, setTotal] = useState(0);
+
   const {items,updateItemQuantity,removeItem,cartTotal}=useCart()
   console.log("item",items)
-  const location=useLocation()
 
 useEffect(()=>{
   window.scrollTo(0, 0);
 
 }
 ,[])
+const subtotal = items.reduce((acc, item) => {
+  return acc + item.price * item.quantity;
+}, 0);
+const taxAmount = subtotal * TAX_RATE;
+const total = subtotal + taxAmount;
+
+const handleCheckout=()=>{
+  navigate("/checkout", { state: { cartItems: items,total:total } });
 
 
+}
   return (
     <>
       <Container fluid="md">
@@ -68,7 +77,7 @@ useEffect(()=>{
             <span>Prices: ${(cartTotal).toFixed(2)} </span>
             <div className="cart-total">Tax: ${(cartTotal * 0.16).toFixed(2)}</div>
             <div className="cart-total">
-              Total: $ {(cartTotal + cartTotal * 0.16).toFixed(2)}
+              Total: $ {total}
             </div>
             <hr></hr>
             <p>
@@ -87,7 +96,7 @@ useEffect(()=>{
               </button>
             </div>
             <br></br>
-            <button type="submit" class="btn btn-primary  btn-block mb-3" style={{backgroundColor:"#27579A"}}>
+            <button type="submit" class="btn btn-primary  btn-block mb-3"  style={{backgroundColor:"#27579A"}} onClick={handleCheckout}>
               Proceed to checkout
             </button>
           </div>

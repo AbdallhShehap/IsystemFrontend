@@ -58,7 +58,7 @@ function Blog() {
   }, [slider]);
 
   useEffect(()=>{
-    axios.get('https://plankton-app-dde9x.ondigitalocean.app/blog/data')
+    axios.get('http://localhost:1010/blog/data')
     .then((res)=>{
       const dataWithImages = res.data.map(data => ({
         ...data,
@@ -103,6 +103,8 @@ function Blog() {
   
   return (
     <>
+    <div className="w-100 overflow-x-hidden overflow-y-hidden">
+
     <div className="blog_container">
 
       <Image
@@ -130,11 +132,11 @@ function Blog() {
           <div class="card-slider">
             <div className="row">
 
-            {searchFlag ? (
+            {searchField && searchFlag ? (
   <Slider {...settings} ref={(slider) => setSlider(slider)}>
 
     {filteredBlogData.map((data) => (
-      <div key={data.blog_id}>
+      <div key={data.id_blogs}>
         <div class="col-lg-12 col-md-12 m-1">
           <div className="row">
             <div
@@ -144,7 +146,7 @@ function Blog() {
                 border: "none",
                 textAlign: "left",
               }}
-              key={data.blog_id}
+              key={data.id_blogs}
             >
             <img src={data.image_blog} className="card-img-top" alt={data.title} />
 
@@ -158,7 +160,7 @@ function Blog() {
                 </small>
                 <br></br>
                 <Link
-                  to={`blogdetails/${data.blog_id}`}
+                  to={`blogdetails/${data.id_blogs}`}
                   href="#"
                   className="btn btn-primary"
                   style={{
@@ -187,7 +189,7 @@ function Blog() {
                     .map((row, rowIndex) => (
                       <div className="row" key={rowIndex}>
                         {row.map((data) => (
-                          <div key={data.id} className="col-lg-12 col-md-12 m-1">
+                          <div key={data.id_blogs} className="col-lg-12 col-md-12 m-1">
                                              <div className='row'>
   
                             <div
@@ -198,7 +200,7 @@ function Blog() {
                                 textAlign: "left",
                                 height:"25rem"
                               }}
-                              key={data.blog_id}
+                              key={data.id_blogs}
                             >
                             <img src={data.image_blog} className="card-img-top" alt={data.title} />
 
@@ -212,7 +214,7 @@ function Blog() {
                                 </small>
                                 <br></br>
                                 <Link
-                                  to={`blogdetails/${data.blog_id}`}
+                                  to={`blogdetails/${data.id_blogs}`}
                                   href="#"
                                   className="btn btn-primary"
                                   style={{
@@ -259,6 +261,7 @@ function Blog() {
           </div>
         </div>
       </div>
+      </div>
     </>
   );
 }
@@ -270,51 +273,3 @@ export default Blog;
 
 
 
-
-
-// import React, { useEffect, useState } from "react";
-// import Image from "react-bootstrap/Image";
-// import { Link, useParams } from "react-router-dom";
-// import axios from "axios";
-
-// function BlogDetails() {
-//   const [details, setDetails] = useState([]);
-//   const { id } = useParams();
-//   const [selectedBlog, setSelectedBlog] = useState(null);
-
-//   useEffect(() => {
-//     window.scrollTo(0, 0);
-//   }, []);
-
-//   useEffect(() => {
-//     axios.get(`http://localhost:1010/blog/data/${id}`)
-//       .then((res) => {
-//         const dataWithImages = res.data.map((data) => ({
-//           ...data,
-//           image_blog: `data:image/jpeg;base64,${data.image_base64}`,
-//         }));
-
-//         console.log("Data with images:", dataWithImages);
-//         setDetails(dataWithImages);
-
-//         // Set the selected blog here
-//         const foundBlog = dataWithImages.find((blog) => blog.id == id);
-//         setSelectedBlog(foundBlog);
-//       })
-//       .catch((err) => {
-//         console.log(err);
-//       });
-//   }, [id]);
-
-//   if (!selectedBlog) {
-//     return <div>Loading...</div>;
-//   }
-
-//   return (
-//     <div className="container">
-//       {/* Your code for displaying the selected blog */}
-//     </div>
-//   );
-// }
-
-// export default BlogDetails;

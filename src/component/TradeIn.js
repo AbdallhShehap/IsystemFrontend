@@ -1,9 +1,24 @@
 import React, { useEffect, useState } from "react";
 import "../assests/TradeIn.css";
 import { Link } from "@mui/material";
+import axios from "axios";
 function TradeIn() {
+  const [iphone,setIphone]=useState([])
   useEffect(() => {
     window.scrollTo(0, 0);
+//     axios.get('https://plankton-app-dde9x.ondigitalocean.app/productdetails/getproductdetailsiphone')
+//     .then((res) => {
+//   const dataWithImages = res.data.map(data => ({
+//           ...data,
+//           image_main: `data:image/jpeg;base64,${data.image_base64}`
+//         }));
+//         console.log("Data with images:", dataWithImages);
+//         setIphone(dataWithImages);
+// console.log("iphone",iphone)
+//     })
+//     .catch((err) => {
+//       console.log(`err${err}`);
+//     });
   }, []);
   const [activeTab, setActiveTab] = useState("active"); // Initialize active tab state
 
@@ -12,7 +27,7 @@ function TradeIn() {
     setActiveTab(tab);
   };
   return (
-    <div className="container margin">
+    <div className="container margin w-100 overflow-x-hidden overflow-y-hidden">
       <div className=" container_trade">
         <div className="apple_tradein">
           <h3>Apple Trade In</h3>

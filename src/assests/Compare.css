@@ -29,9 +29,23 @@ background-color: #27579A;
 /* / */
 
 @media screen and (max-width:768px) {
+
   .card_info{
     width: 100%;
   }
+  .compare_title{
+    margin-top: 12%;
+
+  }
 }
 /* Compare.css */
-
+@media screen and (max-width:1099px) {
+  .container_compare{
+    margin-top: 5%;
+  }
+}
+@media screen and (min-width:992px) and (max-width:1399px) {
+  .card_info{
+    width: 230px;
+  }
+}

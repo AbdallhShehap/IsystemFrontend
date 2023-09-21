@@ -8,6 +8,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 
 export default function Watch() {
@@ -58,6 +59,8 @@ const handleClick = (productName) => {
    
   return (
     <>
+    <div className="w-100 overflow-x-hidden overflow-y-hidden">
+
             <div className="legend-container" >
               
               <img
@@ -158,6 +161,7 @@ const handleClick = (productName) => {
           {filteredProducts.length > 0
             ? filteredProducts.map((product) => (
                 <div class="col-md-6 col-lg-4 mb-4 mb-lg-4 " key={product.p_id}>
+                  <Link to={`productdetails/${product.p_id}`} style={{textDecoration:"none"}}>
                   <div class="card">
                     <img
                       src={`data:image/jpeg;base64,${product.image_base64}`} // Assuming it's base64 encoded
@@ -190,7 +194,7 @@ const handleClick = (productName) => {
                               fontSize: "17px",
                             }}
                           >
-                            {product.price}
+                            {product.price} JD
                           </span>
                         </p>
                         <div class="d-flex justify-content-between mb-2">
@@ -201,6 +205,8 @@ const handleClick = (productName) => {
                       </div>
                     </div>
                   </div>
+                  </Link>
+
                 </div>
               ))
             :  (
@@ -208,7 +214,7 @@ const handleClick = (productName) => {
             )}
         </div>
       </div>
-   
+      </div>
     </>
   );
 }

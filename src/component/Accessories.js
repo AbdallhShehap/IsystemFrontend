@@ -4,9 +4,7 @@ import { Component } from "react";
 import ReactDOM from "react-dom";
 // import ReactCardCarousel from "react-card-carousel";
 import axios from "axios";
-
-
-// import "swiper/swiper-bundle.css";
+import { Link } from "react-router-dom";
 import AllProduct from "./AllProduct";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -60,13 +58,13 @@ console.log(data);
   };
   return (
     <>
-            <div  >
+    <div className="w-100 overflow-x-hidden overflow-y-hidden">
+            <div>
               
               <img
                 src={require("../images/Accessories Section.jpg")}
                 alt=""
-                height={"840px"}    
-                width={"100%"}                
+                width={"100%"}
               />
             </div>{" "}
             <div >
@@ -155,6 +153,8 @@ console.log(data);
           {filteredProducts.length > 0
             ? filteredProducts.map((product) => (
                 <div class="col-md-6 col-lg-4 mb-4 mb-lg-4 " key={product.p_id}>
+                                    <Link to={`productdetails/${product.p_id}`}style={{textDecoration:"none"}}>
+
                   <div class="card">
                     <img
                       src={`data:image/jpeg;base64,${product.image_base64}`} // Assuming it's base64 encoded
@@ -187,7 +187,7 @@ console.log(data);
                               fontSize: "17px",
                             }}
                           >
-                            {product.price}
+                            {product.price} JD
                           </span>
                         </p>
                         <div class="d-flex justify-content-between mb-2">
@@ -198,6 +198,7 @@ console.log(data);
                       </div>
                     </div>
                   </div>
+                  </Link>
                 </div>
               ))
             :  (
@@ -205,7 +206,7 @@ console.log(data);
             )}
         </div>
       </div>
-   
+      </div>
     </>
   );
 }

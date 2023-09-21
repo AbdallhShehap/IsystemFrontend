@@ -17,3 +17,12 @@
     text-align: center;
     font-size: 17pt;
 }
+@media screen and (max-width:768px) {
+    .installment_title{
+        font-size: 18px;
+    }
+    .payment_steps{
+        font-size: 18px;
+
+    }
+}

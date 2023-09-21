@@ -72,7 +72,7 @@ window.scrollTo(0,0)
 
   return (
     <>
-      <div className="container-fluid">
+      <div className="container-fluid container_compare">
 
       <div className="row">
         <div className="col compare_title">

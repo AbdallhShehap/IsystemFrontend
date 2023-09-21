@@ -11,17 +11,17 @@ import { useCart } from "react-use-cart";
 import axios from "axios";
 function ProductDetails() {
   const { id } = useParams();
-  const {addItem}=useCart()
-  const navigate=useNavigate()
+  const { addItem } = useCart();
+  const navigate = useNavigate();
   let [selectData, setSelectData] = useState([]);
-  const [cart,setCart]=useState([])
+  const [cart, setCart] = useState([]);
   const [selectedColor, setSelectedColor] = useState(""); // Initialize state for selected color
-const [selectedModel,setSelectedModel]=useState("")
-const [chosenProduct,setChosenProduct]=useState([])
-const [details,setDetails]=useState([])
-const [color,setColor]=useState([])
+  const [selectedModel, setSelectedModel] = useState("");
+  const [chosenProduct, setChosenProduct] = useState([]);
+  const [details, setDetails] = useState([]);
+  const [color, setColor] = useState([]);
 
-useEffect(() => {
+  useEffect(() => {
     window.scrollTo(0, 0);
     const thumbnails = document.getElementsByClassName("thumbnail");
     const activeImages = document.getElementsByClassName("active");
@@ -68,78 +68,79 @@ useEffect(() => {
       });
     };
   }, []);
- 
 
   const handleColorClick = (color) => {
     setSelectedColor(color); // Update the selected color in the state
     setChosenProduct((prevChosenProduct) => [...prevChosenProduct, color]);
-      // setContainerBoxClassName("selected"); // Apply the 'selected' class to the container
-
+    // setContainerBoxClassName("selected"); // Apply the 'selected' class to the container
   };
   const handleModel = (model) => {
     setSelectedModel(model); // Update the selected color in the state
-setChosenProduct((prevChosenProduct)=>[...prevChosenProduct,model])
-
-
+    setChosenProduct((prevChosenProduct) => [...prevChosenProduct, model]);
   };
-console.log(selectedColor)
-console.log(selectedModel)
-console.log(chosenProduct)
-useEffect(() => {
-  console.log("Fetching data...");
-  window.scrollTo(0, 0);
-  const fetchData = async () => {
-    try {
-      const response = await axios.get(`https://plankton-app-dde9x.ondigitalocean.app/productdetails/getproductdetails/${id}`); // Replace with your actual API endpoint
-      if (response.data) {
-        setDetails(response.data); // Assuming your API returns the product details in the response data
-        console.log("details",details)
-      } else {
-        // Handle the case where the product with the given ID was not found
+  console.log(selectedColor);
+  console.log(selectedModel);
+  console.log(chosenProduct);
+  useEffect(() => {
+    console.log("Fetching data...");
+    window.scrollTo(0, 0);
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `https://plankton-app-dde9x.ondigitalocean.app/productdetails/getproductdetails/${id}`
+        ); // Replace with your actual API endpoint
+        if (response.data) {
+          setDetails(response.data); // Assuming your API returns the product details in the response data
+          console.log("details", details);
+        } else {
+          // Handle the case where the product with the given ID was not found
+        }
+      } catch (error) {
+        // Handle any errors that occurred during the Axios request
       }
-    } catch (error) {
-      // Handle any errors that occurred during the Axios request
-    }
-  };
+    };
 
-  fetchData();
-
-}, [id]);
-console.log("deta",details)
-// selectData = dataWithImages.find((select) => select.id == id);
-useEffect(() => {
-  console.log("Fetching data...");
-  window.scrollTo(0, 0);
-  const fetchData = async () => {
-    try {
-      const response = await axios.get(`https://plankton-app-dde9x.ondigitalocean.app/color/getproductdetails`); // Replace with your actual API endpoint
-      if (response.data) {
-        setColor(response.data); // Assuming your API returns the product details in the response data
-        console.log("color",details)
-      } else {
-        // Handle the case where the product with the given ID was not found
+    fetchData();
+  }, [id]);
+  console.log("deta", details);
+  // selectData = dataWithImages.find((select) => select.id == id);
+  useEffect(() => {
+    console.log("Fetching data...");
+    window.scrollTo(0, 0);
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:1010/color/getproductdetails`
+        ); // Replace with your actual API endpoint
+        if (response.data) {
+          setColor(response.data); // Assuming your API returns the product details in the response data
+          console.log("color", details);
+        } else {
+          // Handle the case where the product with the given ID was not found
+        }
+      } catch (error) {
+        // Handle any errors that occurred during the Axios request
       }
-    } catch (error) {
-      // Handle any errors that occurred during the Axios request
-    }
-  };
+    };
 
-  fetchData();
-  
-}, [id]);
-console.log("Color Name:", color.color_name);
+    fetchData();
+  }, [id]);
+  console.log("Color Name:", selectedColor.color_name);
 
   return (
     <div>
-      <div className="container" style={{marginTop:"5%"}}>
+      <div className="container" style={{ marginTop: "5%" }}>
         <div className="row">
-          <div className="col-lg-7 mt-5 " >
-       
+          <div className="col-lg-7 mt-5 ">
             <div id="content-wrapper">
               <div class="column mb-5">
-                {/* <div className="d-flex justify-content-center">
-                  <img id="featured" src={selectData.image_main} alt="" />
-                </div> */}
+                <div className="d-flex justify-content-center">
+                  <img
+                    id="featured"
+                    src={require("../images/iphonepurple.webp")}
+                    alt=""
+                  />
+                </div>
 
                 <div id="slide-wrapper">
                   <button
@@ -198,70 +199,80 @@ console.log("Color Name:", color.color_name);
 
           <div className="col-lg-5 product_details">
             {" "}
-            <h4>{details.product_name}</h4>{" "}
+            <p style={{ fontSize: "22pt", fontWeight: "bold" }}>
+              {details.product_name}
+            </p>
             <p className="price">{details.price}JD</p>
-            <h5 className="">Color</h5>
+            <h5 className="colorAndModel_text">
+              Color {selectedColor.color_name}
+            </h5>
             {/* <div className="container_box">
-              <img src={selectData.colorImg[0]} alt="" className="color" />
-              <img src={selectData.colorImg[1]} alt="" className="color" />
-          
+              <img src={require('../images/blue.png')} alt="" className="color" />
+              <img src={require('../images/blue.png')} alt="" className="color" />
+              <img src={require('../images/blue.png')} alt="" className="color" />
+
             </div> */}
             <div className="container_box">
-             {color.map((colorOption, index) => (
-          <p
-            key={color.color_id}
-            className={`color ${selectedColor === colorOption ? "selected" : ""}`}
-            onClick={() => handleColorClick(colorOption)}
-          >
-            {colorOption.color_name}
-          </p>
-        ))}
+              {color.map((colorOption, index) => (
+                <p
+                  key={color.color_id}
+                  className={`color ${
+                    selectedColor === colorOption ? "selectedOption" : ""
+                  }`}
+                >
+                  <img
+                    src={require("../images/blue_1.png")}
+                    alt=""
+                    className="img_color"
+                    onClick={() => handleColorClick(colorOption)}
+                  ></img>
+
+                  {/* {colorOption.color_name} */}
+                </p>
+              ))}
             </div>
-     
-
-
-            <h5 className="">Model</h5>
+            <h5 className="colorAndModel_text">Model</h5>
             <div className="container_box">
-          
-              {/* <p className="model_space">{selectData.model[0]}</p>
-              <p className="model_space">{selectData.model[1]}</p>
-              <p className="model_space">{selectData.model[2]}</p>
-              <p className="model_space">{selectData.model[3]}</p> */}
+              <p className="model_space">64 GB</p>
+              <p className="model_space">128 GB</p>
+              <p className="model_space">256 GB</p>
+              <p className="model_space">526 GB</p>
             </div>
-            <Link to={'/cart'}>
-            <button
-              className="btn btn-primary w-100 btn_details_cart mb-1 "
-              type="submit"
-              onClick={()=>{
-                addItem({
-                  id: details.p_id, // Make sure selectData has an id property
-                  price: details.price, // Make sure selectData has a price property
-                  product_name:details.product_name,
-                  color_name:color.color_name
-                });              
-              }}
+            {selectedColor && (
+              <Link to={"/cart"}>
+                <button
+                  className="btn btn-primary w-100 btn_details_cart mb-1 "
+                  type="submit"
+                  onClick={() => {
+                    addItem({
+                      id: details.p_id,
+                      price: details.price, // Make sure selectData has a price property
+                      product_name: details.product_name,
+                      color_name: selectedColor.color_name,
+                      model_name: selectedModel.model_name,
+                    });
+                  }}
+                >
+                  Add to Cart{" "}
+                </button>
+              </Link>
+            )}
+            <Link to={"/tradein"}>
+              <button
+                className="btn btn-primary w-100 btn_details_trade mb-1"
+                type="submit"
               >
-              Add to Cart{" "}
-            </button>
-            
+                Trade In
+              </button>
             </Link>
-            <Link to={'/tradein'}>
-            <button
-              className="btn btn-primary w-100 btn_details_trade mb-1"
-              type="submit"
-            >
-              Trade In
-            </button>
+            <Link to={"/installmentplan"}>
+              <button
+                className="btn btn-primary w-100 btn_details_trade mb-1"
+                type="submit"
+              >
+                Installment
+              </button>
             </Link>
-<Link to={'/installmentplan'}>
-            <button
-              className="btn btn-primary w-100 btn_details_trade mb-1"
-              type="submit"
-            >
-              Installment
-            </button>
-            </Link>
-
           </div>
         </div>
       </div>
@@ -278,18 +289,8 @@ console.log("Color Name:", color.color_name);
         </div>
       </div>
       <div className="row">
-        <div className="col">
-          <CardSlider />
-        </div>
+        <div className="col"></div>
       </div>
-      {/* <Cart chosenProduct={chosenProduct}   itemName={selectData.name}/> */}
-      {/* <Cart
-  chosenProduct={chosenProduct}
-  itemId={selectData.id}
-  itemName={selectData.title}    // Pass the item name
-  itemColor={selectedColor}    // Pass the selected color
-  itemModel={selectedModel}    // Pass the selected model
-/> */}
     </div>
   );
 }

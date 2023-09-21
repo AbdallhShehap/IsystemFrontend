@@ -6,11 +6,13 @@ import "slick-carousel/slick/slick-theme.css";
 import CardsData from "../Data/CardsData";
 import { Link, useParams } from "react-router-dom";
 import axios from 'axios'
+import { useCart } from "react-use-cart";
 
 
 function TopSellingCard({title}) {
   const [slider, setSlider] = useState(null);
   const [cardsData, setCardsData] = useState([]);
+  const {addItem}=useCart()
 
   const settings = {
     dots: false,
@@ -110,7 +112,7 @@ function TopSellingCard({title}) {
                       </p>
                     </div>
                     <div className="d-flex justify-content-between mb-3">
-                      <Link
+                    {data.stock == 1 ?  <Link
                         to={`productdetails/${data.p_id}`}
                         className="w-100"
                       >
@@ -120,17 +122,30 @@ function TopSellingCard({title}) {
                         >
                           More Info
                         </button>
-                      </Link>
-                      <button type="button" className="btn btn-danger ms-2">
+                      </Link> :
+                       <button
+                       className="btn btn-outline-primary w-100 "
+                       type="button"
+                       disabled
+                       style={{borderColor:"#838282",color:"#838282"}}
+                     >
+Out of stock                     </button> }
                         <Link to={"cart"}>
+                      <button type="button" className="btn btn-danger ms-2 h-100" onClick={()=>{
+                addItem({
+                  id: data.p_id, // Make sure selectData has an id property
+                  price: data.price, // Make sure selectData has a price property
+                  product_name:data.product_name,
+                });              
+              }}>
                           {" "}
                           <img
                             src={require("../images/cart.png")}
                             className="card-img-top"
                             alt="Laptop"
                           />
-                        </Link>
                       </button>
+                        </Link>
                     </div>
                   </div>
                 </div>

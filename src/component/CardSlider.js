@@ -6,11 +6,13 @@ import "slick-carousel/slick/slick-theme.css";
 import CardsData from "../Data/CardsData";
 import { Link, useParams } from "react-router-dom";
 import axios from 'axios'
+import { useCart } from "react-use-cart";
 
 
 function CardSlider({title}) {
   const [slider, setSlider] = useState(null);
   const [cardsData, setCardsData] = useState([]);
+  const {addItem}=useCart()
 
   const settings = {
     dots: false,
@@ -63,7 +65,7 @@ function CardSlider({title}) {
       console.log("Fetching data...");
       window.scrollTo(0, 0);
       
-      axios.get('https://plankton-app-dde9x.ondigitalocean.app/productdetails/getproductdetails')
+      axios.get('http://localhost:1010/productdetails/getproductdetails')
         .then((res) => {
           const dataWithImages = res.data.map(data => ({
             ...data,
@@ -92,7 +94,7 @@ function CardSlider({title}) {
 
                 <div className="card" key={data.p_id}>
                  
- <img src={data.image_main} alt={data.product_name} />
+ <img src={require('../images/iphoneBlack.webp')} alt={data.product_name} />
 
 
                   <div className="d-flex justify-content-between p-3">
@@ -100,8 +102,8 @@ function CardSlider({title}) {
                   </div>
                   <div className="card-body">
                     <div className="d-flex justify-content-between">
-                      <p className="small text-danger">{data.price}</p>
-                      <p className="small oldPrice">{data.old_price}</p>
+                      <p className="small text-danger">{data.price} JD</p>
+                      <p className="small oldPrice">{data.old_price} JD</p>
                     </div>
                     <div className="d-flex justify-content-between mb-2">
                       <p class="mb-0 inStock">
@@ -109,7 +111,7 @@ function CardSlider({title}) {
                       </p>
                     </div>
                     <div className="d-flex justify-content-between mb-3">
-                      <Link
+                      {data.stock == 1 ?  <Link
                         to={`productdetails/${data.p_id}`}
                         className="w-100"
                       >
@@ -119,17 +121,31 @@ function CardSlider({title}) {
                         >
                           More Info
                         </button>
-                      </Link>
-                      <button type="button" className="btn btn-danger ms-2">
+                      </Link> :
+                       <button
+                       className="btn btn-outline-primary w-100 "
+                       type="button"
+                       disabled
+                       style={{borderColor:"#838282",color:"#838282"}}
+                     >
+Out of stock                     </button> }
+                    
                         <Link to={"cart"}>
+                      <button type="button" className="btn btn-danger ms-2 h-100"  onClick={()=>{
+                addItem({
+                  id: data.p_id, // Make sure selectData has an id property
+                  price: data.price, // Make sure selectData has a price property
+                  product_name:data.product_name,
+                });              
+              }}>
                           {" "}
                           <img
                             src={require("../images/cart.png")}
                             className="card-img-top"
                             alt="Laptop"
                           />
-                        </Link>
                       </button>
+                        </Link>
                     </div>
                   </div>
                 </div>

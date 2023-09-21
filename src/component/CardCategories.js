@@ -72,17 +72,18 @@ export default function CardCategories() {
 
       </Row>
       <Row>
-      <Col xs={12} md={12} lg={6}  className='mb-1'>
-      <Link to="">
-        <img  src={require("../images/watchSmarter.jpeg")} className='mr-5' width="87%" height="100%" style={{borderRadius:"30px"}}/>
-        </Link>
-        </Col>
-
-        <Col xs={12} md={12} lg={6}  >
+      <Col xs={12} md={12} lg={6}  >
         <Link to="">
         <img src={require("../images/Accessories Section.jpg")} className='' width="100%" style={{borderRadius:"30px"}}/>
         </Link>
         </Col>
+      <Col xs={12} md={12} lg={6}  className='mb-1'>
+      <Link to="">
+        <img  src={require("../images/watchSmarter.jpeg")} className='mr-5 mt-1' width="87%" height="100%" style={{borderRadius:"30px"}}/>
+        </Link>
+        </Col>
+
+       
 
 
 
@@ -90,7 +91,7 @@ export default function CardCategories() {
       <Row>
         <Col xs={12} >
          <Link to="">
-            <img src={require("../images/Watch Section.jpg")} width="100%" style={{borderRadius:"30px"}}/>
+            <img src={require("../images/Watch Section.jpg")} className='mt-1' width="100%" style={{borderRadius:"30px"}}/>
 
          </Link>
         </Col>

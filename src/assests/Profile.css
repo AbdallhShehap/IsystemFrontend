@@ -1,0 +1,16 @@
+.profile_img {
+    vertical-align: middle;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+
+}
+.box_profile{
+    display: grid;
+    justify-content: center;
+    border: 2px solid #000;
+    
+}
+.arrow_login{
+    margin-top: 95%;
+}

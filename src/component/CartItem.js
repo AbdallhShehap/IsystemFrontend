@@ -6,7 +6,7 @@ import "../assests/Carts.css";
 import Image from "react-bootstrap/Image";
 
 const CartItem = ({ item, updateQuantity,updateItemQuantity,removeItem,selectedModel }) => {
-  const {  quantity, price ,color,model,product_name,color_name} = item;
+  const {  quantity, price ,color,model,product_name,color_name,model_name} = item;
 
   // const [quantityy, setQuantity] = useState("");
 
@@ -34,7 +34,7 @@ const handleDelete=()=>{
             {/* <Image src={img} fluid className="mx-auto d-block" /> */}
           </Col>
 
-          <Col xs={12} xl={3} md={4} className="item-name  product_info"><br/>{product_name}<br/>{color_name}</Col>
+          <Col xs={12} xl={3} md={4} className="item-name  product_info"><br/>{product_name}<br/>{color_name}<br/>{model_name}</Col>
           <br></br>
           <br></br>
 
@@ -70,7 +70,7 @@ const handleDelete=()=>{
             </button>
           </Col>
 
-          <Col xl={1}className="item-price mt-4 text-center"><p>JD {price} </p></Col>
+          <Col xl={1}className="item-price mt-4 text-center"><p>JD{price} </p></Col>
           {/* or this
           <Col xl={1}className="item-price mt-4 text-center">${price.toFixed(2)}</Col> */}
 

@@ -1,5 +1,5 @@
 import React from "react";
-
+import '../assests/Compare.css'
 function CompareCard({ selected, selected2,selected3,selected4 }) {
   return (
     <div>

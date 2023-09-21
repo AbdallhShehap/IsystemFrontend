@@ -209,14 +209,14 @@ if(!password){
 
 };
 const validateUser = async () => {
-  console.log("validateUser called");
-  console.log("Email:", email);
-  console.log("Password:", password);
+  // console.log("validateUser called");
+  // console.log("Email:", email);
+  // console.log("Password:", password);
 
   
   let emailIsValid = validateEmail(email);
   let passwordIsValid = validatePassword(password);
-  console.log(email, password,);
+  // console.log(email, password,);
   setUserFlag(true);
 
   if (emailIsValid) {
@@ -253,7 +253,7 @@ const submitUser = async () => {
   try {
     // const username = generateUsername(firstName, lastName);
     const response =   await axios.post(
-      "https://plankton-app-dde9x.ondigitalocean.app/signup",
+      "http://localhost:1010/signup",
       {
         username: userName,
         email: email,
@@ -275,7 +275,7 @@ const submitUser = async () => {
         if (result.status === "success") {
           console.log(result.token);
           setUserFlag(true);
-    console.log("hello")
+    // console.log("hello")
           navigate("/compare");
         }
       } catch (err) {
@@ -284,8 +284,8 @@ const submitUser = async () => {
     };
 
     useEffect(() => {
-      console.log("useEffect called with email:", email);
-      console.log("useEffect called with userName:", userName);
+      // console.log("useEffect called with email:", email);
+      // console.log("useEffect called with userName:", userName);
       if (email && userName) {
         try {
           submitUser();
@@ -347,6 +347,7 @@ const submitUser = async () => {
               placeholder="Password"
               aria-label="Password"
               aria-describedby="basic-addon1"
+              type='password'
               value={password}
               onChange={handlePasswordChange}
             />

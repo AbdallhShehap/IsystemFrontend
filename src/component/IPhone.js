@@ -1,39 +1,42 @@
-import React, { useEffect ,useState} from "react";
+import React, { useEffect, useState } from "react";
 import "../assests/Iphone.css";
 import { Component } from "react";
 import ReactDOM from "react-dom";
-import axios from "axios";
+import DataCategory from "../Data/DataCategory";
+import CardMacc from "../Data/CardMacc";
 import AllProduct from "./AllProduct";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import DataCategory from "../Data/DataCategory";
-import CardSlider from "./CardSlider";
-export default function IPhone() {
-  const [data, setData] = useState([]);
-let [filteredProducts,setFilteredProducts]=useState([])
+import axios from "axios";
+import { Link } from "react-router-dom";
 
-useEffect(() => {
-  window.scrollTo(0, 0);
-  axios.get('https://plankton-app-dde9x.ondigitalocean.app/productdetails/getproductdetailsiphone')
-    .then((res) => {
-  const dataWithImages = res.data.map(data => ({
+export default function IMac() {
+  const slider = React.useRef(null);
+  const [data, setData] = useState([]);
+  let [filteredProducts,setFilteredProducts]=useState([])
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    axios
+      .get("https://plankton-app-dde9x.ondigitalocean.app/productdetails/getproductdetailsiphone")
+      .then((res) => {
+        const dataWithImages = res.data.map((data) => ({
           ...data,
-          image_main: `data:image/jpeg;base64,${data.image_base64}`
+          image_main: `data:image/jpeg;base64,${data.image_base64}`,
         }));
         console.log("Data with images:", dataWithImages);
-              setData(dataWithImages);
-              setFilteredProducts(dataWithImages); // Initialize filteredProducts with all products
+        setData(dataWithImages);
+        setFilteredProducts(dataWithImages); // Initialize filteredProducts with all products
 
-    })
-    .catch((err) => {
-      console.log(`err${err}`);
-    });
-}, []);
+      })
+      .catch((err) => {
+        console.log(`err${err}`);
+      });
+  }, []);
+ 
+  console.log(data);
 
-console.log(data);
-
-  const slider = React.useRef(null);
   const settings = {
     dots: false,
     infinite: true,
@@ -41,7 +44,11 @@ console.log(data);
     slidesToShow: 3,
     slidesToScroll: 1,
   };
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
+    
   const handleClick = (productName) => {
     // Find products with titles containing the productName
     const filtered = data.filter((product) =>
@@ -49,90 +56,121 @@ console.log(data);
     );
     setFilteredProducts(filtered);
   };
-        return (
-          <>
-                  <div className="legend-container">
-                    <img
-                      src={require("../images/iphonesection.jpeg")}
-                      alt=""
-                      height={"670px"}    
-                      width={"100%"}   />
-                  </div>{" "}
-                  <div >
-          
-          <div className="row slider_box" >
-            <div className="col-lg-1 ">
-              {" "}
-              <a
-                className="btn btn-primary mb-3 arrow_slider hide_btn"
-                role="button"
-                data-slide="prev"
-                onClick={() => slider.current.slickPrev()}
-              >
-                <i className="fa fa-arrow-left "></i>
-              </a>
-            </div>
-            <div className="col-lg-9">
-              <div className="slider-container">
-                <Slider {...settings} ref={slider}>
-                  <div>
-                    {" "}
-                    <button class="CARD_STYLE" tabIndex="-1" onClick={(e) => handleClick(e.target.textContent)}>
+  return (
+    <div className="w-100 overflow-x-hidden overflow-y-hidden">
+      <div className="legend-container">
+        <img
+          src={require("../images/iphonesection.jpeg")}
+          alt=""
+          width={"100%"}                
+
+          // height={"740px"}
+        />
+      </div>{" "}
+      <div>
+        <div className="row slider_box">
+          <div className="col-lg-1 ">
+            {" "}
+            <a
+              className="btn btn-primary mb-3 arrow_slider hide_btn"
+              role="button"
+              data-slide="prev"
+              onClick={() => slider.current.slickPrev()}
+            >
+              <i className="fa fa-arrow-left "></i>
+            </a>
+          </div>
+          <div className="col-lg-9">
+            <div className="slider-container">
+              <Slider {...settings} ref={slider}>
+                <div>
+                  {" "}
+                  <button
+                    class="CARD_STYLE"
+                    tabIndex="-1"
+                    onClick={(e) => handleClick(e.target.textContent)}                  >
                     iphone 14
-                    </button>
-                  </div>
-                  <div>
-                    {" "}
-                    <button class="CARD_STYLE" tabIndex="-1" onClick={(e) => handleClick(e.target.textContent)}>
+                  </button>
+                </div>
+                <div>
+                  {" "}
+                  <button
+                    class="CARD_STYLE"
+                    tabIndex="-1"
+                    onClick={(e) => handleClick(e.target.textContent)}            >
                     iPhone 13
-                    </button>
-                  </div>
-                  <div>
-                    {" "}
-                    <button class="CARD_STYLE" tabIndex="-1" onClick={(e) => handleClick(e.target.textContent)}>
+                  </button>
+                </div>
+                <div>
+                  {" "}
+                  <button
+                    class="CARD_STYLE"
+                    tabIndex="-1"
+                    onClick={(e) => handleClick(e.target.textContent)}             >
                     iPhone 12
-                    </button>
-                  </div>
-                  <div>
-                    {" "}
-                    <button class="CARD_STYLE" tabIndex="-1" onClick={(e) => handleClick(e.target.textContent)}>
+                  </button>
+                </div>
+                <div>
+                  {" "}
+                  <button
+                    class="CARD_STYLE"
+                    tabIndex="-1"
+                    onClick={(e) => handleClick(e.target.textContent)}            >
                     iPhone 11
-                    </button>
-                  </div>
-                  <div>
-                    {" "}
-                    <button class="CARD_STYLE" tabIndex="-1" onClick={(e) => handleClick(e.target.textContent)}>
+                  </button>
+                </div>
+                <div>
+                  {" "}
+                  <button
+                    class="CARD_STYLE"
+                    tabIndex="-1"
+                    onClick={(e) => handleClick(e.target.textContent)}                 >
                     iPhone x
-                    </button>
-                  </div>
-                  
-                </Slider>
-              </div>
-              </div>
-      
-              <div className="col-lg-1 ">
-                {" "}
-                <a
-                  className="btn btn-primary mb-3 arrow_slider hide_btn"
-                  role="button"
-                  data-slide="next"
-                  onClick={() => slider.current.slickNext()}
-                >
-                  <i className="fa fa-arrow-right"></i>
-                </a>
-              </div>
+                  </button>
+                </div>
+                <div>
+                  {" "}
+                  <button
+                    class="CARD_STYLE"
+                    tabIndex="-1"
+                    onClick={(e) => handleClick(e.target.textContent)}                >
+                    watch
+                  </button>
+                </div>
+                <div>
+                  {" "}
+                  <button
+                    class="CARD_STYLE"
+                    tabIndex="-1"
+                    onClick={(e) => handleClick(e.target.textContent)}               >
+                    iPad{" "}
+                  </button>
+                </div>
+              </Slider>
+            </div>
+          </div>
+
+          <div className="col-lg-1 ">
+            {" "}
+            <a
+              className="btn btn-primary mb-3 arrow_slider hide_btn"
+              role="button"
+              data-slide="next"
+              onClick={() => slider.current.slickNext()}
+            >
+              <i className="fa fa-arrow-right"></i>
+            </a>
           </div>
         </div>
-        {/* <AllProduct  data={data} /> */}
-
-
-            {/* // start  */}
-
-            <div class="container text-center">
-        <div class="row">
+      </div>
+      {/* <AllProduct filteredProducts={filteredProducts} /> */}
+      {/* start */}
+      <div class="container text-center">
+      <div class="row">
           {filteredProducts.length > 0
             ? filteredProducts.map((product) => (
                 <div class="col-md-6 col-lg-4 mb-4 mb-lg-4 " key={product.p_id}>
+                  <Link to={`productdetails/${product.p_id}`}style={{textDecoration:"none"}}>
                   <div class="card">
                     <img
                       src={`data:image/jpeg;base64,${product.image_base64}`} // Assuming it's base64 encoded
@@ -165,7 +203,7 @@ console.log(data);
                               fontSize: "17px",
                             }}
                           >
-                            {product.price}
+                            {product.price} JD
                           </span>
                         </p>
                         <div class="d-flex justify-content-between mb-2">
@@ -176,20 +214,16 @@ console.log(data);
                       </div>
                     </div>
                   </div>
+                  </Link>
                 </div>
               ))
-            :  (
+            : (
               <p>Product not valid</p>
             )}
         </div>
       </div>
-
-
-
-
-
-          </>
-        );
-      }
-      const rootElement = document.getElementById("root");
-      ReactDOM.render(<IPhone />, rootElement);
+    </div>
+  );
+}
+// const rootElement = document.getElementById("root");
+// ReactDOM.render(<IMac />, rootElement);

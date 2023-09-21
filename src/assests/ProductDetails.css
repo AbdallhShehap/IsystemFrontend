@@ -1,26 +1,39 @@
 .price{
-    font-weight: bold;
+    /* font-weight: bold; */
     font-size: 22px;
 }
 .color {
-    /* width: 30px; */
-    height: 30px;
-    /* border: 2px solid red;  */
-    /* border-radius: 50%; */
+    width: 30px;
+   
     margin: 2%;
-  }
+    height:25px;
+ 
+}
+.img_color{
+    margin: 2%;
+    height:25px;
+}
   .container_box{
     display: flex;
-margin-bottom: 2%;
+margin-bottom: 5%;
 font-size: 14px;
 
+}
+.colorAndModel_text{
+    font-weight: bold;
 }
 .color-option {
     margin: 2%;
 }
-.selected {
-    border: 1px solid #668ABC;
-  }
+.selectedOption  {
+    border: 2px solid #668ABC;
+    border-radius: 80px;
+    padding-bottom: 5%;
+    -webkit-border-radius: 80px;
+    -moz-border-radius: 80px;
+    -ms-border-radius: 80px;
+    -o-border-radius: 80px;
+}
   
   .unselected {
     border: none; /* No border for unselected items */
@@ -30,21 +43,8 @@ font-size: 14px;
     margin: 3%;
 
 }
-/* .model_space:hover{
-border: 1px solid #668ABC ;} */
-.Deep_Purple{
-    background-color: #62596A;
 
-}
-.Silver{
-    background-color: #EFF1F1;
-}
-.Space_Black{
-    background-color: #403D3B;
-}
-.Gold{
-    background-color: #F6EAD2;
-}
+
   .btn_productDetails{
     background-color: #27579A;
  
