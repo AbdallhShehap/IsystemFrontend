@@ -36,13 +36,14 @@ function Layouts() {
   const navigate=useNavigate();
   const [products, setProducts] = useState([]);
   const [isDropdownVisible, setIsDropdownVisible] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Add this state variable
 
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://monkfish-app-wyvrc.ondigitalocean.app/productdetails/getproductdetails`
+          `http://localhost:1010/productdetails/getproductdetails`
         );
         setProducts(response.data);
         console.log("products", products); // Log the updated data
@@ -80,7 +81,12 @@ setIsDropdownVisible(true)
           <Container fluid>
             <LinkContainer to="/">
               <Navbar.Brand className="brand">
-                <img src={require('../images/iSystem logo -04.png')} alt="" className="logo" height={"55px"}/>
+                <img
+                  src={require("../images/iSystem logo -04.png")}
+                  alt=""
+                  className="logo"
+                  height={"55px"}
+                />
               </Navbar.Brand>
             </LinkContainer>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -142,39 +148,47 @@ setIsDropdownVisible(true)
               {/* <form class="nosubmit">
                 <input class="nosubmit" type="search" onChange={handleChange}/>
               </form> */}
-  <div className="navbar__search">
-        <span>
-          {/* <FaSistrix /> */}
-        </span>
-        <input
-        class="nosubmit"
-          type="text"
-          placeholder=""
-          value={searchQuery}
-          onChange={handleInputChange}
-        />
-        {searchQuery && (
-          <ul className= {isDropdownVisible ? "search_dropdown" :"hidedropdown"}>
-            {searchResults.length > 0 ? (
-              searchResults.map((product) => (
-                <li key={product.p_id} onClick={()=>{navigate(`/productdetails/${product.p_id}`)
-                console.log(product.p_id)
-                window.location.reload()
-                setIsDropdownVisible(false)
-                setSearchQuery(" ")
-                window.scrollTo(0, 0);
-                
-                }}>
-                  <img src={require('../images/iphonepurple.webp')} alt={product.productName} />
-                  {product.product_name}
-                </li>
-              ))
-            ) : (
-              <li>No products found.</li>
-            )}
-          </ul>
-        )}
-      </div>
+              <div className="navbar__search">
+                <span>{/* <FaSistrix /> */}</span>
+                <input
+                  class="nosubmit"
+                  type="text"
+                  placeholder=""
+                  value={searchQuery}
+                  onChange={handleInputChange}
+                />
+                {searchQuery && (
+                  <ul
+                    className={
+                      isDropdownVisible ? "search_dropdown" : "hidedropdown"
+                    }
+                  >
+                    {searchResults.length > 0 ? (
+                      searchResults.map((product) => (
+                        <li
+                          key={product.p_id}
+                          onClick={() => {
+                            navigate(`/productdetails/${product.p_id}`);
+                            console.log(product.p_id);
+                            window.location.reload();
+                            setIsDropdownVisible(false);
+                            setSearchQuery(" ");
+                            window.scrollTo(0, 0);
+                          }}
+                        >
+                          <img
+                            src={require("../images/iphonepurple.webp")}
+                            alt={product.productName}
+                          />
+                          {product.product_name}
+                        </li>
+                      ))
+                    ) : (
+                      <li>No products found.</li>
+                    )}
+                  </ul>
+                )}
+              </div>
               <Nav className="ml-auto">
                 <LinkContainer to="/cart" style={{ fontSize: "12px" }}>
                   <Nav.Link className="cart-link">
@@ -184,23 +198,41 @@ setIsDropdownVisible(true)
                     </span>
                   </Nav.Link>
                 </LinkContainer>
-         
 
                 {/* import the componnat */}
                 <EnhancedModal
                   onClose={() => {
                     console.log("Modal closed");
                   }}
-                  
+                  isLoggedIn={isLoggedIn} // Pass the isLoggedIn state to EnhancedModal
+                  setIsLoggedIn={setIsLoggedIn}
                 />
-<div class="btn-group dropstart">
-<img src={require('../images/caret-down.png')} alt="" height={"30%"} width={"80%"} className=" dropdown-toggle arrow_login" type="button" data-bs-toggle="dropdown" aria-expanded="false" />
-
-  <ul class="dropdown-menu">
-  <li ><Link class="dropdown-item" to={'/profile'}>Profile</Link></li>
-
-  </ul>
-</div>
+                {isLoggedIn && ( // Check if the user is logged in
+                  <div class="btn-group dropstart">
+                    <img
+                      src={require("../images/caret-down.png")}
+                      alt=""
+                      height={"30%"}
+                      width={"80%"}
+                      className=" dropdown-toggle arrow_login"
+                      type="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="true"
+                    />
+                    <ul class="dropdown-menu">
+                      <li>
+                        <Link class="dropdown-item" to={"/profile"}>
+                          Profile
+                        </Link>
+                      </li>
+                      <li>
+                        <Link class="dropdown-item" to={"/profile"}>
+                          Orders
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+                )}
               </Nav>
             </Navbar.Collapse>
           </Container>
@@ -234,7 +266,7 @@ setIsDropdownVisible(true)
                   Shipping & Return Policy{" "}
                 </a> */}
                 <br></br>
-                <Link to={'contactus'} className="text-reset">
+                <Link to={"contactus"} className="text-reset">
                   Contact Us
                 </Link>
               </MDBCol>
@@ -252,21 +284,22 @@ setIsDropdownVisible(true)
                 {/* <a href="#!" className="text-reset">
                   iSystem Care{" "}
                 </a> */}
-                   <Link to={'compare'}  className="text-reset">
+                <Link to={"compare"} className="text-reset">
                   Compare{" "}
                 </Link>
                 <br></br>
               </MDBCol>
               <MDBCol md="3" lg="2" xl="2" className="mx-auto mb-4">
                 <h6 className=" fw-bold mb-4 footer_title">Our Categories</h6>
-                <Link to={'ipad'} className="text-reset">
-iPad                </Link>
+                <Link to={"ipad"} className="text-reset">
+                  iPad{" "}
+                </Link>
                 <br></br>
-                <Link to={'mac'} className="text-reset">
+                <Link to={"mac"} className="text-reset">
                   Mac
                 </Link>
                 <br></br>
-                <Link to={'iphone'} className="text-reset">
+                <Link to={"iphone"} className="text-reset">
                   iPhone
                 </Link>
               </MDBCol>
@@ -279,9 +312,26 @@ iPad                </Link>
                   molestiae obcaecati rem quaerat deserunt.
                 </p> */}
                 <div className="social_media_icon">
-                 <Link to={'https://www.youtube.com/channel/UCjuoIbmRGSdkk8dTcE54D8g'} style={{marginRight:"6%"}}><Image src={youtube} fluid width={"23px"} /></Link> 
-                  <Link to={'https://www.facebook.com/isystemjordan'} style={{marginRight:"6%"}}><Image src={facebook} fluid width={"23px"} /></Link>
-                  <Link to={'https://www.instagram.com/isystemjordan/'} style={{marginRight:"6%"}}><Image src={instagram} fluid width={"23px"} /></Link>
+                  <Link
+                    to={
+                      "https://www.youtube.com/channel/UCjuoIbmRGSdkk8dTcE54D8g"
+                    }
+                    style={{ marginRight: "6%" }}
+                  >
+                    <Image src={youtube} fluid width={"23px"} />
+                  </Link>
+                  <Link
+                    to={"https://www.facebook.com/isystemjordan"}
+                    style={{ marginRight: "6%" }}
+                  >
+                    <Image src={facebook} fluid width={"23px"} />
+                  </Link>
+                  <Link
+                    to={"https://www.instagram.com/isystemjordan/"}
+                    style={{ marginRight: "6%" }}
+                  >
+                    <Image src={instagram} fluid width={"23px"} />
+                  </Link>
                 </div>
               </MDBCol>
             </MDBRow>

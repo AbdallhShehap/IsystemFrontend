@@ -26,11 +26,15 @@ import TradeIn from "./component/TradeIn.js";
 import { CartProvider } from "react-use-cart"; 
 import Checkout from "./component/Checkout.js";
 import Profile from "./component/Profile.js";
+import { UserProvider } from "./component/UserContext.js";
+
 function App() {
+  
   return (
     
     <Router>
       <div className="App">
+        <UserProvider>
       <CartProvider>
 
         <Routes>
@@ -83,7 +87,7 @@ function App() {
           {/* <Route path="login" element={<Login />} /> */}
         </Routes>
         </CartProvider>
-
+        </UserProvider>
       </div>
     </Router>
   );

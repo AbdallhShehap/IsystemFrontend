@@ -20,7 +20,7 @@ export default function AppleTv() {
   
   useEffect(() => {
     window.scrollTo(0, 0);
-    axios.get('https://monkfish-app-wyvrc.ondigitalocean.app/productdetails/getproductdetailsappletv')
+    axios.get(`http://localhost:1010/productdetails/getproductdetailsbycategory/16`)
       .then((res) => {
     const dataWithImages = res.data.map(data => ({
             ...data,

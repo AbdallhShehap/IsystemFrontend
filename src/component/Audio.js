@@ -20,7 +20,7 @@ let [filteredProducts,setFilteredProducts]=useState([])
 
 useEffect(() => {
   window.scrollTo(0, 0);
-  axios.get('https://monkfish-app-wyvrc.ondigitalocean.app/productdetails/getproductdetailsaudio')
+  axios.get('http://localhost:1010/productdetails/getproductdetailsbycategory/7')
     .then((res) => {
   const dataWithImages = res.data.map(data => ({
           ...data,

@@ -11,7 +11,7 @@
 
 // export default function Registration() {
   
-// const [userName, setUserName] = useState("");
+// const [username, setUserName] = useState("");
 // const [password, setPassword] = useState("");
 // const [email, setEmail] = useState("");
 // const [userFlag,setUserFlag]=useState(true)
@@ -76,7 +76,7 @@
 //     const response =  await axios.post(
 //       "http://localhost:9090/signup",
 //       {
-//         username: userName,
+//         username: username,
 //         email: email,
 //         password: password,
 //       },
@@ -103,12 +103,12 @@
 //   }
 // };
 // useEffect(() => {
-//   if (email && password && userName) {
+//   if (email && password && username) {
 //     submitUser();
     
  
 //   }
-// }, [email,userName ,password]);
+// }, [email,username ,password]);
 
 //   return (
 //     <Container fluid>
@@ -137,7 +137,7 @@
 //               placeholder="Username"
 //               aria-label="Username"
 //               aria-describedby="basic-addon1"
-//               value={userName}
+//               value={username}
 //               onChange={handleUserNameChange}
 //             />
 //           </InputGroup>
@@ -182,10 +182,11 @@ import Col from 'react-bootstrap/Col';
 import axios from 'axios';
 import "../assests/Registration.css"
 import { useNavigate } from 'react-router-dom';
+import { useUserContext } from '../component/UserContext.js'
 
 export default function Registration() {
-  
-const [userName, setUserName] = useState("");
+  const { setUserData } = useUserContext();
+const [username, setUserName] = useState("");
 const [password, setPassword] = useState("");
 const [email, setEmail] = useState("");
 const [userFlag,setUserFlag]=useState(true)
@@ -219,18 +220,23 @@ const validateUser = async () => {
   // console.log(email, password,);
   setUserFlag(true);
 
-  if (emailIsValid) {
+  if (emailIsValid && passwordIsValid) {
     setEmailFlag(true);
+    setPasswordFlag(true);
+    submitUser();
+
     
   } else {
     setEmailFlag(false);
+    setPasswordFlag(false);
+
   }
 
-  if (passwordIsValid) {
-    setPasswordFlag(true);
-  } else {
-    setPasswordFlag(false);
-  }
+  // if (passwordIsValid) {
+  //   setPasswordFlag(true);
+  // } else {
+  //   setPasswordFlag(false);
+  // }
 
 
 };
@@ -253,9 +259,9 @@ const submitUser = async () => {
   try {
     // const username = generateUsername(firstName, lastName);
     const response =   await axios.post(
-      "https://monkfish-app-wyvrc.ondigitalocean.app/signup",
+      "http://localhost:1010/signup",
       {
-        username: userName,
+        username: username,
         email: email,
         password: password,
         role_id: 2
@@ -270,31 +276,34 @@ const submitUser = async () => {
         console.log("resu",result.status);
         if (result.status === "error") {
           console.log(result.message);
+
           setUserFlag(false);
         }
         if (result.status === "success") {
           console.log(result.token);
+          setUserData({ username, email });
           setUserFlag(true);
+
     // console.log("hello")
-          navigate("/compare");
+          navigate("/profile");
         }
       } catch (err) {
         console.log(err.message);
       }
     };
 
-    useEffect(() => {
-      // console.log("useEffect called with email:", email);
-      // console.log("useEffect called with userName:", userName);
-      if (email && userName) {
-        try {
-          submitUser();
+    // useEffect(() => {
+    //   // console.log("useEffect called with email:", email);
+    //   // console.log("useEffect called with username:", username);
+    //   if (email && username) {
+    //     try {
+    //       submitUser();
           
-        } catch (err) {
-          console.log(err);
-        }
-      }
-    }, [email, userName]);
+    //     } catch (err) {
+    //       console.log(err);
+    //     }
+    //   }
+    // }, [email, username]);
     
 
   return (
@@ -327,7 +336,7 @@ const submitUser = async () => {
               placeholder="Username"
               aria-label="Username"
               aria-describedby="basic-addon1"
-              value={userName}
+              value={username}
               onChange={handleUserNameChange}
             />
           </InputGroup>

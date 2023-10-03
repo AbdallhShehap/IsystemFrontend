@@ -1,21 +1,60 @@
 import React, { useState } from "react";
 import "../assests/Checkout.css";
 import { useLocation } from "react-router-dom";
-
+import axios from "axios";
 function Checkout() {
   const [openDelivery, setOpenDelivery] = useState(false);
   const [openPayment, setOpenPayment] = useState(false);
   const [openReview, setOpenReview] = useState(false);
   const location = useLocation();
-  const { cartItems,total } = location.state;
+  const { cartItems, total } = location.state;
+  const [First_name, setFirst_name] = useState("");
+  const [Last_name, setLast_name] = useState("");
+  const [Phone, setPhone] = useState("");
+  const [Email, setEmail] = useState("");
+  const [Address, setAddress] = useState("");
+  const [City, setCity] = useState("");
+  const [Country, setCountry] = useState("");
+  const [Zip_Postal_code, setZip_Postal_code] = useState("");
+  const [Delivery_Method, setDelivery_Method] = useState("");
+  const [add, setAdd] = useState([]);
+  const [selectedDeliveryMethod, setSelectedDeliveryMethod] = useState(""); // State to hold the selected delivery method
 
+  // Function to handle radio button selection
+  const handleDeliveryMethodChange = (event) => {
+    setSelectedDeliveryMethod(event.target.value);
+  };
   console.log("item", cartItems);
-  console.log("total",total)
+  console.log("total", total);
   const handleDelivery = () => {
     setOpenDelivery(true);
   };
   const handlePayment = () => {
     setOpenPayment(true);
+  };
+  const handlePost = async () => {
+    const cardItemJson = JSON.stringify(cartItems);
+
+    try {
+      const response = axios.post("http://localhost:1010/order/add", {
+        First_name,
+        Last_name,
+        Phone,
+        Email,
+        Address,
+        City,
+        Country,
+        Zip_Postal_code,
+        Delivery_Method: selectedDeliveryMethod,
+        Carditem: cardItemJson, // Convert to JSON string
+        total: parseFloat(total),
+      });
+      console.log(response.data);
+      // Call the onSave callback with the data
+      setAdd(response.data);
+    } catch (error) {
+      console.log(`Error fetching post data  ${error}`);
+    }
   };
   const handleReview = () => {
     setOpenReview(true);
@@ -41,6 +80,8 @@ function Checkout() {
                     <div>
                       <h6 class="my-0">{item.product_name}</h6>
                       <small class="text-muted">{item.color_name}</small>
+                      <br />
+                      <small class="text-muted">{item.model_name}</small>
                     </div>
                     <span class="text-muted">{item.price}</span>
                   </li>
@@ -84,9 +125,12 @@ function Checkout() {
                       class="form-control"
                       id="firstName"
                       placeholder=""
-                      value=""
                       required
+                      onChange={(e) => {
+                        setFirst_name(e.target.value);
+                      }}
                     />
+                   
                     <div class="invalid-feedback">
                       Valid first name is required.
                     </div>
@@ -98,8 +142,10 @@ function Checkout() {
                       class="form-control"
                       id="lastName"
                       placeholder=""
-                      value=""
                       required
+                      onChange={(e) => {
+                        setLast_name(e.target.value);
+                      }}
                     />
                     <div class="invalid-feedback">
                       Valid last name is required.
@@ -112,8 +158,10 @@ function Checkout() {
                       class="form-control"
                       id="lastName"
                       placeholder=""
-                      value=""
                       required
+                      onChange={(e) => {
+                        setPhone(e.target.value);
+                      }}
                     />
                     <div class="invalid-feedback">Valid phone is required.</div>
                   </div>
@@ -124,8 +172,10 @@ function Checkout() {
                       class="form-control"
                       id="lastName"
                       placeholder=""
-                      value=""
                       required
+                      onChange={(e) => {
+                        setEmail(e.target.value);
+                      }}
                     />
                     <div class="invalid-feedback">
                       Please enter a valid email address for shipping updates.
@@ -143,8 +193,10 @@ function Checkout() {
                       class="form-control"
                       id="firstName"
                       placeholder=""
-                      value=""
                       required
+                      onChange={(e) => {
+                        setAddress(e.target.value);
+                      }}
                     />
                     <div class="invalid-feedback">
                       Valid Address is required.
@@ -157,8 +209,10 @@ function Checkout() {
                       class="form-control"
                       id="lastName"
                       placeholder=""
-                      value=""
                       required
+                      onChange={(e) => {
+                        setCity(e.target.value);
+                      }}
                     />
                     <div class="invalid-feedback">Valid City is required.</div>
                   </div>
@@ -171,9 +225,16 @@ function Checkout() {
                       class="custom-select d-block w-100"
                       id="country"
                       required
+                      onChange={(e) => {
+                        setCountry(e.target.value);
+                      }}
+                      value={Country}
                     >
                       <option value="">Choose...</option>
                       <option>United States</option>
+                      <option>Jordan</option>
+                      <option>Kuwait</option>
+                      <option>Egypt</option>
                     </select>
                     <div class="invalid-feedback">
                       Please select a valid country.
@@ -188,6 +249,9 @@ function Checkout() {
                       id="zip"
                       placeholder=""
                       required
+                      onChange={(e) => {
+                        setZip_Postal_code(e.target.value);
+                      }}
                     />
                     <div class="invalid-feedback">Zip code required.</div>
                   </div>
@@ -212,8 +276,14 @@ function Checkout() {
                           <input
                             class="form-check-input"
                             type="radio"
-                            name="flexRadioDefault"
-                            id="flexRadioDefault1"
+                            name="deliveryMethod"
+                            id="shippingAmman1"
+                            value="Shipping-Amman (1-2 Working Days)"
+                            onChange={handleDeliveryMethodChange}
+                            checked={
+                              selectedDeliveryMethod ===
+                              "Shipping-Amman (1-2 Working Days)"
+                            }
                           />
                           <label
                             class="form-check-label"
@@ -231,8 +301,14 @@ function Checkout() {
                           <input
                             class="form-check-input"
                             type="radio"
-                            name="flexRadioDefault"
-                            id="flexRadioDefault1"
+                            name="deliveryMethod"
+                            id="shippingAmman3"
+                            value="Shipping-Amman (3 Working Days)"
+                            onChange={handleDeliveryMethodChange}
+                            checked={
+                              selectedDeliveryMethod ===
+                              "Shipping-Amman (3 Working Days)"
+                            }
                           />
                           <label
                             class="form-check-label"
@@ -253,8 +329,14 @@ function Checkout() {
                           <input
                             class="form-check-input"
                             type="radio"
-                            name="flexRadioDefault"
-                            id="flexRadioDefault1"
+                            name="deliveryMethod"
+                            id="storePickup"
+                            value="Store Pickup (Mecca St., Amman, 11185, Jordan)"
+                            onChange={handleDeliveryMethodChange}
+                            checked={
+                              selectedDeliveryMethod ===
+                              "Store Pickup (Mecca St., Amman, 11185, Jordan)"
+                            }
                           />
                           <label
                             class="form-check-label"
@@ -353,7 +435,7 @@ function Checkout() {
                         marginBottom: "3%",
                       }}
                       type="button"
-                      onClick={handlePayment}
+                      onClick={handlePost}
                     >
                       Place Order & Pay
                     </button>

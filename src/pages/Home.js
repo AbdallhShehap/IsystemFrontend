@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState, useEffect } from "react";
 import "../assests/Home.css";
 import dollar from "../images/dollar.png";
 import Card from "react-bootstrap/Card";
@@ -15,63 +15,109 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from "react-responsive-carousel";
 import CardSlider from "../component/CardSlider.js";
 import CardCategories from "../component/CardCategories";
-import TopSellingCard from "../component/TopSellingCard.js"
+import TopSellingCard from "../component/TopSellingCard.js";
 import { Link } from "react-router-dom";
 import CardsData from "../Data/CardsData";
+import axios from "axios";
 function Home() {
   const [cardsData, setCardsData] = useState(CardsData);
-// console.log(`home`,{cardsData})
+  const [add, setAdd] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:1010/homeslider/gethomeslider"
+        );
+        setAdd(response.data);
+      } catch (error) {
+        console.log(`Error getting Blog from frontend: ${error}`);
+      }
+    };
+
+    fetchData();
+  }, []);
   return (
     <div className="cont ">
-        <Carousel
-          autoPlay
-          interval="5000"
-          transitionTime="2000"
-          infiniteLoop
-          showThumbs={false}
-          showStatus={false}
-          className="sliderHome "
-        >
-       
- <div>
-            <img src={require('../images/1q.jpeg')} alt="" height={"100%"} />
-          </div>
-               {/* 1 */}
-          <div>
-            <img src={require('../images/2q.jpeg')} alt="" height={"100%"} />
-          </div>
-          <div>
-            <img src={require('../images/3q.jpeg')} alt="" height={"100%"} />
-          </div>
+      <Carousel
+        autoPlay
+        interval="5000"
+        transitionTime="2000"
+        infiniteLoop
+        showThumbs={false}
+        showStatus={false}
+        className="sliderHome "
+      >
+        {add &&
+          Array.isArray(add) &&
+          add.map((img, index) => (
+            <div key={img.id}>
+              <img
+                src={`http://localhost:1010/${img.image_slider}`}
+                alt="img"
+                height={"100%"} 
+             
+              />
+            </div>
+          ))}
 
-          <div>
-            <img src={require('../images/4q.jpeg')} alt="" height={"100%"} />
-          </div>
+        {/* <div>
+          <img src={require("../images/1q.jpeg")} alt="" height={"100%"} />
+        </div>
+        {/* 1 */}
+        {/* <div>
+          <img src={require("../images/2q.jpeg")} alt="" height={"100%"} />
+        </div>
+        <div>
+          <img src={require("../images/3q.jpeg")} alt="" height={"100%"} />
+        </div>
 
-          <div>
-            <img src={require('../images/Trade-In MP.jpg')} alt="" height={"100%"} />
-          </div>
+        <div>
+          <img src={require("../images/4q.jpeg")} alt="" height={"100%"} />
+        </div>
 
-          <div>
-            <img src={require('../images/Switchers MP.jpg')} alt="" height={"100%"}/>
-          </div>
-        
-         
-          <div>
-            <img src={require('../images/Do more on iPad MP.jpg')} alt="" height={"100%"} />
-          </div>
-          <div>
-            <img src={require('../images/Why Apple Watch MP.jpg')} alt="" height={"100%"} />
-          </div>
-          <div>
-            <img src={require('../images/Mac does that MP.jpg')} alt="" height={"100%"}/>
-          </div>
-        </Carousel>
+        <div>
+          <img
+            src={require("../images/Trade-In MP.jpg")}
+            alt=""
+            height={"100%"}
+          />
+        </div>
 
-        <div className="container-fluid text-center">
-          <div className="row">
-            <div className="col col_top_categories">
-              <Link to={'installmentplan'} style={{textDecoration:"none"}}>
+        <div>
+          <img
+            src={require("../images/Switchers MP.jpg")}
+            alt=""
+            height={"100%"}
+          />
+        </div>
+
+        <div>
+          <img
+            src={require("../images/Do more on iPad MP.jpg")}
+            alt=""
+            height={"100%"}
+          />
+        </div>
+        <div>
+          <img
+            src={require("../images/Why Apple Watch MP.jpg")}
+            alt=""
+            height={"100%"}
+          />
+        </div>
+        <div>
+          <img
+            src={require("../images/Mac does that MP.jpg")}
+            alt=""
+            height={"100%"}
+          />
+        </div>  */}
+      </Carousel>
+
+      <div className="container-fluid text-center">
+        <div className="row">
+          <div className="col col_top_categories">
+            <Link to={"installmentplan"} style={{ textDecoration: "none" }}>
               <div className="card mx-auto card_topCategories installment">
                 <div className="card-body">
                   <div className="icon-wrapper">
@@ -82,10 +128,10 @@ function Home() {
                   </h2>
                 </div>
               </div>
-              </Link>
-            </div>
-            <div className="col col_top_categories">
-              <Link to={"contactus"} style={{textDecoration:"none"}}>
+            </Link>
+          </div>
+          <div className="col col_top_categories">
+            <Link to={"contactus"} style={{ textDecoration: "none" }}>
               <div className="card mx-auto card_topCategories our_location">
                 <div className="card-body">
                   <div className="icon-wrapper">
@@ -99,26 +145,26 @@ function Home() {
                 </p> */}
                 </div>
               </div>
-              </Link>
-            </div>
-            <div className="col col_top_categories">
-              <div className="card mx-auto card_topCategories apple_care">
-                <div className="card-body">
-                  <div className="icon-wrapper">
-                    <Image src={appleCare_icon} fluid width={"35px"} />
-                  </div>
-                  <h5 className="card-title card_title_topCategories">
-                    iSystem Care{" "}
-                  </h5>
-                  {/* <p className="card-text desc_of_topCategories">
+            </Link>
+          </div>
+          <div className="col col_top_categories">
+            <div className="card mx-auto card_topCategories apple_care">
+              <div className="card-body">
+                <div className="icon-wrapper">
+                  <Image src={appleCare_icon} fluid width={"35px"} />
+                </div>
+                <h5 className="card-title card_title_topCategories">
+                  iSystem Care{" "}
+                </h5>
+                {/* <p className="card-text desc_of_topCategories">
                   Automate and track emails to individuals or g organization and
                   track emails .
                 </p> */}
-                </div>
               </div>
             </div>
-            <div className="col col_top_categories">
-              <Link to={"tradein"}style={{textDecoration:"none"}}>
+          </div>
+          <div className="col col_top_categories">
+            <Link to={"tradein"} style={{ textDecoration: "none" }}>
               <div className="card mx-auto card_topCategories tradein">
                 <div className="card-body">
                   <div className="icon-wrapper">
@@ -127,18 +173,16 @@ function Home() {
                   <h5 className="card-title card_title_topCategories">
                     Trade In{" "}
                   </h5>
-               
                 </div>
               </div>
-              </Link>
-
-            </div>
+            </Link>
           </div>
         </div>
+      </div>
       <br></br>
       <br></br>
       <br></br>
-      <CardSlider title="Special Offers" cardsData={cardsData}/>
+      <CardSlider title="Special Offers" cardsData={cardsData} />
       <br></br>
       <br></br>
       {/* <br></br> */}
@@ -147,10 +191,7 @@ function Home() {
       <br></br>
       <br></br>
       <br></br>
-      <TopSellingCard
-       title="Top Selling Accessories" 
-
-      />
+      <TopSellingCard title="Top Selling Accessories" />
     </div>
   );
 }

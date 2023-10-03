@@ -20,6 +20,10 @@ function ProductDetails() {
   const [chosenProduct, setChosenProduct] = useState([]);
   const [details, setDetails] = useState([]);
   const [color, setColor] = useState([]);
+  const [model, setModel] = useState([]);
+  const [product_id, setProduct_id] = useState("");
+  const [images, setImages] = useState([]);
+  const [getImg, setGetImg] = useState([]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -35,6 +39,8 @@ function ProductDetails() {
 
         this.classList.add("active");
         document.getElementById("featured").src = this.src;
+        console.log("Thumbnail clicked!");
+
       });
     }
 
@@ -67,6 +73,7 @@ function ProductDetails() {
         slider.scrollLeft += 180;
       });
     };
+    
   }, []);
 
   const handleColorClick = (color) => {
@@ -81,6 +88,7 @@ function ProductDetails() {
   console.log(selectedColor);
   console.log(selectedModel);
   console.log(chosenProduct);
+  console.log("iddddddddddddd", id);
   useEffect(() => {
     console.log("Fetching data...");
     window.scrollTo(0, 0);
@@ -110,11 +118,11 @@ function ProductDetails() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://monkfish-app-wyvrc.ondigitalocean.app/color/getproductdetails`
+          `http://localhost:1010/color/getproductdetails/${product_id}`
         ); // Replace with your actual API endpoint
         if (response.data) {
           setColor(response.data); // Assuming your API returns the product details in the response data
-          console.log("color", details);
+          console.log("color", color);
         } else {
           // Handle the case where the product with the given ID was not found
         }
@@ -124,9 +132,89 @@ function ProductDetails() {
     };
 
     fetchData();
-  }, [id]);
-  console.log("Color Name:", selectedColor.color_name);
+    const fetchModel = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:1010/model/getproducts`
+        ); // Replace with your actual API endpoint
+        if (response.data) {
+          setModel(response.data); // Assuming your API returns the product details in the response data
+          console.log("model", model);
+        } else {
+          // Handle the case where the product with the given ID was not found
+        }
+      } catch (error) {
+        // Handle any errors that occurred during the Axios request
+      }
+    };
 
+    fetchModel();
+    fetchImages(); // Call fetchImages here
+  }, [id]);
+
+  const fetchImages = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:1010/newimgproducts/images/${id}`
+      );
+      const relativePaths = response.data.images;
+
+      // Convert relative paths to absolute URLs
+      // const absolutePaths = relativePaths.map(relativePath => {
+      //   return `http://localhost:1010${relativePath}`;
+      // });
+      setGetImg(relativePaths); // Update getImg state with absolute image URLs
+      console.log("image", relativePaths);
+      // console.log("getimage",getImg)
+    } catch (error) {
+      console.log(`Error fetching images: ${error}`);
+    }
+  };
+
+  // const handleUpload = async () => {
+  //   try {
+  //     if (!product_id) {
+  //       alert("Please enter a product ID.");
+  //       return;
+  //     }
+
+  //     const formData = new FormData();
+  //     formData.append("product_id", product_id);
+
+  //     // Append image files to the FormData object
+  //     images.forEach((image) => {
+  //       formData.append("image", image);
+  //     });
+
+  //     // Send the FormData to the image upload route
+  //     const response = await axios.post(
+  //       "http://localhost:1010/newimgproducts/upload",
+  //       formData,
+  //       {
+  //         headers: {
+  //           "Content-Type": "multipart/form-data",
+  //         },
+  //       }
+  //     );
+
+  //     // setMessage(response.data.message);
+  //     // Fetch images only after the image upload is successful
+
+  //     // Log getImg inside this function
+  //     // console.log("getimg", getImg);
+  //   } catch (error) {
+  //     console.error("Error uploading images:", error);
+  //     // setMessage("Image upload failed");
+  //   }
+  // };
+  // useEffect(() => {
+  //   // Log getImg when it changes
+  //   console.log("getimg", getImg);
+  // }, [getImg]);
+  console.log("Color Name:", selectedColor.color_name);
+  console.log("model Name:", selectedModel.model_name);
+  console.log("getimg", getImg);
+  
   return (
     <div>
       <div className="container" style={{ marginTop: "5%" }}>
@@ -135,11 +223,25 @@ function ProductDetails() {
             <div id="content-wrapper">
               <div class="column mb-5">
                 <div className="d-flex justify-content-center">
-                  <img
+                  {Array.isArray(getImg) && getImg.length > 0 ? (
+                   
+                      <img
+                        src={`http://localhost:1010/${getImg[0]}`}
+                        alt="product"
+                        id="featured"
+                        className="thumbnail"
+                        onError={(e) => console.log("Image load error", e)}
+                        key={getImg.id}
+                      />
+                    
+                  ) : (
+                    <p>No images available.</p>
+                  )}
+                  {/* <img
                     id="featured"
                     src={require("../images/iphoneBlack.webp")}
                     alt=""
-                  />
+                  /> */}
                 </div>
 
                 <div id="slide-wrapper">
@@ -153,20 +255,21 @@ function ProductDetails() {
                     <i className="fa fa-arrow-left "></i>
                   </button>
                   <div id="slider">
-                    {/* <img
-                      className="thumbnail active"
-                      src={selectData.sliderImg[0]}
-                    />
-                    <img
-                      className="thumbnail"
-                      src={selectData.sliderImg[1]}
-                    />
-                    <img
-                      className="thumbnail"
-                      src={selectData.sliderImg[2]}
-                    /> */}
-
-                    <img
+                    {/* {Array.isArray(getImg) && getImg.length > 0 ? ( */}
+                      {getImg.map((image, imageIndex) => (
+                        <img
+                          src={`http://localhost:1010/${image}`}
+                          alt="product"
+                          class="thumbnail"
+                          // onError={(e) => console.log("Image load error", e)}
+                          key={image.id}
+                        />
+                      ))}
+                    {/* ) : (
+                      <p>No images available.</p>
+                    )} */}
+{/* 
+                     <img
                       className="thumbnail"
                       src={require("../images/iPhone_14_Pro_Silver_Pure_Back_iPhone_14_Pro_Silver.png")}
                     />
@@ -180,8 +283,8 @@ function ProductDetails() {
                     />
                     <img
                       class="thumbnail"
-                      src={require("../images/iPhone_14_Pro_Silver_Pure_Back_iPhone_14_Pro_Silver.png")}
-                    />
+                      src={require("../images/iPhone_14_Pro_Silver_Pure_Back_iPhone_14_Pro_Silver.png")} */}
+                    {/* />  */}
                   </div>
                   <button
                     id="slideRight"
@@ -213,32 +316,48 @@ function ProductDetails() {
 
             </div> */}
             <div className="container_box">
-              {color.map((colorOption, index) => (
-                <p
-                  key={color.color_id}
-                  className={`color ${
-                    selectedColor === colorOption ? "selectedOption" : ""
-                  }`}
-                >
-                  <img
-                    src={require("../images/blue_1.png")}
-                    alt=""
-                    className="img_color"
-                    onClick={() => handleColorClick(colorOption)}
-                  ></img>
-
-                  {/* {colorOption.color_name} */}
-                </p>
-              ))}
+              {color.length > 0 ? (
+                color.map((colorOption, index) => (
+                  <p
+                    key={colorOption.color_id}
+                    className={`color ${
+                      selectedColor === colorOption ? "selectedOption" : ""
+                    }`}
+                  >
+                    <img
+                      src={require("../images/blue_1.png")}
+                      alt=""
+                      className="img_color"
+                      onClick={() => handleColorClick(colorOption)}
+                    ></img>
+                  </p>
+                ))
+              ) : (
+                <p>Loading colors...</p>
+              )}
             </div>
             <h5 className="colorAndModel_text">Model</h5>
             <div className="container_box">
-              <p className="model_space">64 GB</p>
+              {model.map((modelOption, index) => (
+                <p
+                  key={model.model_id}
+                  className={`img_color ${
+                    selectedModel === modelOption ? "selectedOption" : ""
+                  }`}
+                  onClick={() => handleModel(modelOption)}
+                >
+                  {modelOption.model_name}
+                </p>
+              ))}
+              {/* {model.map((capacity)=>(
+              <p className="model_space">{capacity.model_name}</p>
+
+              ))} */}
+              {/* <p className="model_space">64 GB</p>
               <p className="model_space">128 GB</p>
-              <p className="model_space">256 GB</p>
-              <p className="model_space">526 GB</p>
+              <p className="model_space">256 GB</p> */}
             </div>
-            {selectedColor && (
+            {selectedColor && selectedModel ? (
               <Link to={"/cart"}>
                 <button
                   className="btn btn-primary w-100 btn_details_cart mb-1 "
@@ -256,7 +375,7 @@ function ProductDetails() {
                   Add to Cart{" "}
                 </button>
               </Link>
-            )}
+            ) : null}
             <Link to={"/tradein"}>
               <button
                 className="btn btn-primary w-100 btn_details_trade mb-1"

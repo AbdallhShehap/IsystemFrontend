@@ -1,14 +1,15 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import { LinkContainer } from "react-router-bootstrap";
-import { Navbar, Nav, Container, Form, Row, Col } from "react-bootstrap";
-import { Link ,useLocation } from 'react-router-dom';
-import {BiUserCircle} from "react-icons/fa";
+import { LinkContainer } from 'react-router-bootstrap';
+import { Navbar, Nav, Container, Form, Row, Col } from 'react-bootstrap';
+import { Link, useLocation } from 'react-router-dom';
+import { BiUserCircle } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+// import {useUserContext} from '../component/UserContext.js'
 const modalStyle = {
   position: 'absolute',
   top: '50%',
@@ -27,123 +28,124 @@ const formStyle = {
   flexDirection: 'column',
   gap: '15px',
 };
+
 const customButtonStyles = {
   textTransform: 'none', // Reset text-transform to default
 };
 
-export default function EnhancedModal({ onClose }) {
+export default function EnhancedModal({ onClose, setIsLoggedIn, isLoggedIn }) {
+  // const {setUserContext} =useUserContext()
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-const [userFlag,setUserFlag]=useState(true)
-const [emailFlag,setEmailFlag]=useState(true)
-const [passwordFlag,setPasswordFlag]=useState(true)
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [userFlag, setUserFlag] = useState(true);
+  const [emailFlag, setEmailFlag] = useState(true);
+  const [passwordFlag, setPasswordFlag] = useState(true);
+  const navigate = useNavigate();
 
-const navigate = useNavigate();
-const handleEmailChange = (event) => {
-  setEmail(event.target.value);
-};
-const handlePasswordChange = (event) => {
-  setPassword(event.target.value);
-};
-// const validateEmail = (email) => {
-//   const pattern = /^[^\s@]+@[^\s@]+.[^\s@]+$/;
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
 
-//   return pattern.test(email);
-// };
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
 
-const validatePassword = (password) => {
-if(!password){
-  return false;
-}else{
-  return true;
-}
+  const validatePassword = (password) => {
+    if (!password) {
+      return false;
+    } else {
+      return true;
+    }
+  };
 
-};
-const handleFormSubmit = (event) => {
-  event.preventDefault(); // Prevent the default form submission behavior
-  validateUser();
-};
-const validateUser = async () => {
-  // let emailIsValid = validateEmail(email);
-  let passwordIsValid = validatePassword(password);
-  // console.log(email, password,);
-  setUserFlag(true);
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    validateUser();
+  };
 
-  if ( passwordIsValid ) {
-    setEmailFlag(true);
-    setPasswordFlag(true);
-    submitUser()
-  } else {
-    handleOpen()
-    setEmailFlag(false);
-    setPasswordFlag(false);
-  }
+  const validateUser = async () => {
+    let passwordIsValid = validatePassword(password);
+    setUserFlag(true);
 
- 
-
-
-};
+    if (passwordIsValid) {
+      setEmailFlag(true);
+      setPasswordFlag(true);
+      submitUser();
+    } else {
+      handleOpen();
+      setEmailFlag(false);
+      setPasswordFlag(false);
+    }
+  };
 
   const submitUser = async () => {
-      try{
+    try {
       const response = await axios.post(
-        "https://monkfish-app-wyvrc.ondigitalocean.app/login",
+        'https://monkfish-app-wyvrc.ondigitalocean.app/login',
         {
           email: email,
           password: password,
-         
-        },
-     
+        }
       );
 
       const result = await response.data;
       console.log(result);
-      if (result.status === "error") {
+      if (result.status === 'error') {
         console.log(result.message);
         setUserFlag(false);
+        setIsLoggedIn(false);
       }
-      if (result.status === "success") {
+      if (result.status === 'success') {
         console.log(result.token);
         setUserFlag(true);
-        handleClose()
+        handleClose();
+        setIsLoggedIn(true);
 
-        navigate("/");
-
-       
+        // setUserContext(result.user)
+        navigate('/');
       }
     } catch (err) {
       console.log(err.message);
     }
+  };
 
-    
-      }
-
-
-
-   
+  const handleLogout = () => {
+    setIsLoggedIn(false); // Set isLoggedIn to false when logging out
+    navigate('/');
+  };
 
   const location = useLocation();
-  const isRegistrationPage = location.pathname === "/registration" ;
-  
+  const isRegistrationPage = location.pathname === '/registration';
 
   return (
-    <div >
-      <Button  onClick={handleOpen} style={customButtonStyles}>
-      <LinkContainer to="" style={{fontSize:"12px" }} >
-                  <Nav.Link>
-                  <i class="fa-solid fa-circle-user fa-sm" style={{Color: "#fff"}}></i>              Login
-                  </Nav.Link>
-                </LinkContainer>
-      </Button>
+    <div>
+      {isLoggedIn ? ( // Check if the user is logged in
+        <Button onClick={handleLogout} style={customButtonStyles} className='logout'>
+          Logout
+        </Button>
+      ) : (
+        <Button onClick={handleOpen} style={customButtonStyles}>
+          <LinkContainer to="" style={{ fontSize: '12px' }}>
+            <Nav.Link>
+              <i
+                class="fa-solid fa-circle-user fa-sm"
+                style={{ Color: '#fff' }}
+              ></i>{' '}
+              Login
+            </Nav.Link>
+          </LinkContainer>
+        </Button>
+      )}
+
       <Modal
         open={open}
         onClose={() => {
-            handleClose();
-            onClose(); 
-          }}
+          handleClose();
+          onClose();
+        }}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
@@ -169,20 +171,20 @@ const validateUser = async () => {
               onChange={handlePasswordChange}
             />
             <p>
-
               <a href="#">Forgot password?</a>
             </p>
             {userFlag === false && (
-              <p style={{ color: 'red' }}>Incorrect email or password. Please try again.</p>
+              <p style={{ color: 'red' }}>
+                Incorrect email or password. Please try again.
+              </p>
             )}
-            <Button type="submit" variant="contained" color="primary" >
+            <Button type="submit" variant="contained" color="primary">
               Login
             </Button>
-            <Link to="/registration"  onClick={handleClose} >
-            <Button type="submit" variant="outlined" color="primary" >
-              Create an account
-            </Button>
-
+            <Link to="/registration" onClick={handleClose}>
+              <Button type="submit" variant="outlined" color="primary">
+                Create an account
+              </Button>
             </Link>
           </form>
         </Box>

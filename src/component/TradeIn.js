@@ -3,22 +3,22 @@ import "../assests/TradeIn.css";
 import { Link } from "@mui/material";
 import axios from "axios";
 function TradeIn() {
-  const [iphone,setIphone]=useState([])
+  const [dataCategory,setDataCategory]=useState([])
   useEffect(() => {
     window.scrollTo(0, 0);
-//     axios.get('https://plankton-app-dde9x.ondigitalocean.app/productdetails/getproductdetailsiphone')
-//     .then((res) => {
-//   const dataWithImages = res.data.map(data => ({
-//           ...data,
-//           image_main: `data:image/jpeg;base64,${data.image_base64}`
-//         }));
-//         console.log("Data with images:", dataWithImages);
-//         setIphone(dataWithImages);
-// console.log("iphone",iphone)
-//     })
-//     .catch((err) => {
-//       console.log(`err${err}`);
-//     });
+      const fetchData = async () => {
+        try {
+          const response = await axios.get(
+            "http://localhost:1010/tradein/gettrades"
+          );
+          setDataCategory(response.data);
+          console.log("dataCategory",dataCategory)
+        } catch (error) {
+          console.log(`Error getting product from frontend: ${error}`);
+        }
+      };
+      fetchData();
+  
   }, []);
   const [activeTab, setActiveTab] = useState("active"); // Initialize active tab state
 
@@ -92,137 +92,131 @@ function TradeIn() {
       </ul>
 
       <div className="tab-content">
-        {activeTab === "active" ? (
-          <div className="container">
-            <div className="row">
-              <div className="col">
-                <h6 className="device">Your device</h6>
-                <ul className="li_order">
-                  <li className="li_order">iPhone 12 Pro Max </li>
-                  <li>iPhone 12 Pro </li>
-                  <li>iPhone 12 </li>
-                  <li>iPhone 12 mini </li>
-                  <li>iPhone SE (2nd generation) </li>
-                  <li>iPhone 11 Pro Max</li>
-                  <li>iPhone 11 Pro</li>
-                  <li>iPhone 11 </li>
-                  <li>iPhone XS Max</li>
-                  <li>iPhone XS</li>
-                  <li>iPhone XR</li>
-                  <li>iPhone X</li>
-                  <li>iPhone 8 Plus</li>
-                  <li>iPhone 8 </li>
-                  <li>iPhone 13 and 14 Pro Max</li>
-                  <li>iPhone 13 and 14 Pro </li>
-                  <li>iPhone 13 and 14 </li>
-                  <li>iPhone 13 mini</li>
-                </ul>
-              </div>
-              <div className="col">
-                <h6 className="device">Up to (JD)</h6>
-                <ul className="li_order">
-                  <li>350 JD</li>
-                  <li>300 JD</li>
-                  <li>220 JD </li>
-                  <li>200 JD</li>
-                  <li>110 JD</li>
-                  <li>320 JD</li>
-                  <li>250 JD</li>
-                  <li>210 JD</li>
-                  <li>190 JD</li>
-                  <li>120 JD</li>
-                  <li>120 JD</li>
-                  <li>100 JD</li>
-                  <li>100 JD</li>
-                  <li>70 JD</li>
-                  <li>400-450 JD</li>
-                  <li>300-350 JD</li>
-                  <li>280-320 JD</li>
-                  <li>250 JD</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        ) : (
-          ""
-        )}
+      {activeTab === "active" ? (
+    <div className="container">
+      <div className="row">
+        <div className="col">
+          <h6 className="device">Your device</h6>
+          <ul className="li_order">
+            {/* Filter devices with category_id === 2 */
+            dataCategory
+              .filter(device => device.category_id === 2)
+              .map(device => (
+                <li key={device.id} className="li_order">
+                  {device.your_device}
+                </li>
+              ))}
+          </ul>
+        </div>
+        <div className="col">
+          <h6 className="device">Up to (JD)</h6>
+          <ul className="li_order">
+            {/* Render corresponding prices for the filtered devices */
+            dataCategory
+              .filter(device => device.category_id === 2)
+              .map(device => (
+                <li key={device.id}>{device.up_to}</li>
+              ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  ) : (
+    ""
+  )}
         {activeTab === "link" ? (
-          <div className="container">
-            <div className="row">
-              <div className="col">
-                <h6 className="device">Your device</h6>
-                <ul className="li_order">
-                  <li>iPad Pro </li>
-                  <li>iPad Air </li>
-                  <li>iPad mini </li>
-                </ul>
-              </div>
-              <div className="col">
-                <h6 className="device">Up to (JD)</h6>
-                <ul className="li_order">
-                  <li>250 JD</li>
-                  <li>220 JD</li>
-                  <li>150 JD </li>
-                </ul>
-              </div>
-            </div>
-          </div>
+         <div className="container">
+         <div className="row">
+           <div className="col">
+             <h6 className="device">Your device</h6>
+             <ul className="li_order">
+               {/* Filter devices with category_id === 2 */
+               dataCategory
+                 .filter(device => device.category_id === 3)
+                 .map(device => (
+                   <li key={device.id} className="li_order">
+                     {device.your_device}
+                   </li>
+                 ))}
+             </ul>
+           </div>
+           <div className="col">
+             <h6 className="device">Up to (JD)</h6>
+             <ul className="li_order">
+               {/* Render corresponding prices for the filtered devices */
+               dataCategory
+                 .filter(device => device.category_id === 3)
+                 .map(device => (
+                   <li key={device.id}>{device.up_to}</li>
+                 ))}
+             </ul>
+           </div>
+         </div>
+       </div>
         ) : (
           ""
         )}
         {activeTab === "link2" ? (
-          <div className="container">
-            <div className="row">
-              <div className="col">
-                <h6 className="device">Your device</h6>
-                <ul className="li_order">
-                  <li className="li_order">MacBook Pro </li>
-                  <li>MacBook Air </li>
-                  <li>MacBook </li>
-                  <li>iMac Pro </li>
-                  <li>iMac </li>
-                </ul>
-              </div>
-              <div className="col">
-                <h6 className="device">Up to (JD)</h6>
-                <ul className="li_order">
-                  <li>1100 JD</li>
-                  <li>390 JD</li>
-                  <li>250 JD </li>
-                  <li>1350 JD</li>
-                  <li>700 JD</li>
-                </ul>
-              </div>
-            </div>
-          </div>
+           <div className="container">
+           <div className="row">
+             <div className="col">
+               <h6 className="device">Your device</h6>
+               <ul className="li_order">
+                 {/* Filter devices with category_id === 2 */
+                 dataCategory
+                   .filter(device => device.category_id === 2)
+                   .map(device => (
+                     <li key={device.id} className="li_order">
+                       {device.your_device}
+                     </li>
+                   ))}
+               </ul>
+             </div>
+             <div className="col">
+               <h6 className="device">Up to (JD)</h6>
+               <ul className="li_order">
+                 {/* Render corresponding prices for the filtered devices */
+                 dataCategory
+                   .filter(device => device.category_id === 2)
+                   .map(device => (
+                     <li key={device.id}>{device.up_to}</li>
+                   ))}
+               </ul>
+             </div>
+           </div>
+         </div>
         ) : (
           ""
         )}
         {activeTab === "link3" ? (
-          <div className="container">
-            <div className="row">
-              <div className="col">
-                <h6 className="device">Your device</h6>
-                <ul className="li_order">
-                  <li className="li_order">Apple Watch Series 6 </li>
-                  <li>Apple Watch SE </li>
-                  <li>Apple Watch Series ultra </li>
-                  <li>Apple Watch Series 7 </li>
-                  <li>Apple Watch Series 8</li>
-                </ul>
-              </div>
-              <div className="col">
-                <h6 className="device">Up to (JD)</h6>
-                <ul className="li_order">
-                  <li>100 JD</li>
-                  <li>95 JD</li>
-                  <li>220 JD </li>
-                  <li>100 JD</li>
-                  <li>150 JD</li>
-                </ul>
-              </div>
-            </div>
+        <div className="container">
+        <div className="row">
+          <div className="col">
+            <h6 className="device">Your device</h6>
+            <ul className="li_order">
+              {/* Filter devices with category_id === 2 */
+              dataCategory
+                .filter(device => device.category_id === 2)
+                .map(device => (
+                  <li key={device.id} className="li_order">
+                    {device.your_device}
+                  </li>
+                ))}
+            </ul>
           </div>
+          <div className="col">
+            <h6 className="device">Up to (JD)</h6>
+            <ul className="li_order">
+              {/* Render corresponding prices for the filtered devices */
+              dataCategory
+                .filter(device => device.category_id === 2)
+                .map(device => (
+                  <li key={device.id}>{device.up_to}</li>
+                ))}
+            </ul>
+          </div>
+        </div>
+      </div>
         ) : (
           ""
         )}{" "}

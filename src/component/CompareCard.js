@@ -1,6 +1,6 @@
 import React from "react";
-import '../assests/Compare.css'
-function CompareCard({ selected, selected2,selected3,selected4 }) {
+import "../assests/Compare.css";
+function CompareCard({ selected, selected2, selected3, selected4 }) {
   return (
     <div>
       <div className="row">
@@ -13,25 +13,30 @@ function CompareCard({ selected, selected2,selected3,selected4 }) {
                 flexDirection: "row",
                 alignItems: "center",
               }}
-              key={selected.id}
+              key={selected.p_id}
             >
               <div className="d-flex flex-column">
-                <div class="card card_info ms-2 " >
-                  <img
-                    src={require("../images/watch.png")}
-                    class="card-img-top"
-                    alt="Laptop"
-                  />
+                <div class="card card_info ms-2 ">
+                  {Array.isArray(selected.images) &&
+                    selected.images.length > 0 && (
+                      <img
+                        src={`http://localhost:1010/${selected.images[0].image_path}`}
+                        alt=""
+                        onError={(e) => console.log("Image load error", e)}
+                        style={{height:"340px",width:"335px"}}
+                        />
+                    )}
+
                   <div class="d-flex justify-content-between p-3">
-                    <p class="lead mb-0 card_title">{selected.title}</p>
+                    <p class="lead mb-0 card_title">{selected.product_name}</p>
                   </div>
                   <div class="card-body">
                     <div class="d-flex justify-content-between">
                       <p class="small text-danger">{selected.price}</p>
-                      <p class="small oldPrice">{selected.oldPrice}</p>
+                      <p class="small oldPrice">{selected.old_price}</p>
                     </div>
                     <div class="d-flex justify-content-between mb-2">
-                      <p class="mb-0 inStock">{selected.inStock} </p>
+                      <p class="mb-0 inStock">{selected.stock} </p>
                     </div>
 
                     <div class="d-flex justify-content-between mb-3">
@@ -66,14 +71,12 @@ function CompareCard({ selected, selected2,selected3,selected4 }) {
                     className="mb-0 mt-3"
                     style={{ fontSize: "40px", textAlign: "center" }}
                   >
-                    6.7
                   </p>
                   <p
                     className="mb-0"
                     style={{ fontSize: "15px", textAlign: "center" }}
                   >
-                    Super Retina XDR display ProMotion technology Always-On
-                    display
+                   {selected.screen}
                   </p>
                   <div className=" d-flex justify-content-center">
                     <img
@@ -88,8 +91,7 @@ function CompareCard({ selected, selected2,selected3,selected4 }) {
                     className="mb-0 mt-3"
                     style={{ fontSize: "15px", textAlign: "center" }}
                   >
-                    Up to 29 hours of video playback
-                  </p>
+{selected.battery}                  </p>
                   <div className=" d-flex justify-content-center">
                     <img
                       src={require("../images/camera.png")}
@@ -103,9 +105,7 @@ function CompareCard({ selected, selected2,selected3,selected4 }) {
                     className="mb-5 mt-3"
                     style={{ fontSize: "15px", textAlign: "center" }}
                   >
-                    Pro camera system 48MP Main | Ultra Wide Telephoto Photonic
-                    Engine for incredible detail and color Autofocus on
-                    TrueDepth front camera
+                   camera front: {selected.camera_front}<br/>camera back: {selected.camera_back}
                   </p>
                 </div>
               </div>
@@ -123,25 +123,29 @@ function CompareCard({ selected, selected2,selected3,selected4 }) {
                 flexDirection: "row",
                 alignItems: "center",
               }}
-              key={selected2.id}
+              key={selected2.p_id}
             >
               <div className="d-flex flex-column">
                 <div class="card card_info ms-2">
-                  <img
-                    src={require("../images/watch.png")}
-                    class="card-img-top"
-                    alt="Laptop"
-                  />
+                {Array.isArray(selected2.images) && selected2.images.length > 0 && (
+  <img
+    src={`http://localhost:1010/${selected2.images[0].image_path}`}
+    alt=""
+    onError={(e) => console.log("Image load error", e)}
+    style={{height:"340px",width:"335px"}}
+  />
+)}
+
                   <div class="d-flex justify-content-between p-3">
-                    <p class="lead mb-0 card_title">{selected2.title}</p>
+                    <p class="lead mb-0 card_title">{selected2.product_name}</p>
                   </div>
                   <div class="card-body">
                     <div class="d-flex justify-content-between">
                       <p class="small text-danger">{selected2.price}</p>
-                      <p class="small oldPrice">{selected2.oldPrice}</p>
+                      <p class="small oldPrice">{selected2.old_price}</p>
                     </div>
                     <div class="d-flex justify-content-between mb-2">
-                      <p class="mb-0 inStock">{selected2.inStock} </p>
+                      <p class="mb-0 inStock">{selected2.stock} </p>
                     </div>
 
                     <div class="d-flex justify-content-between mb-3">
@@ -176,14 +180,12 @@ function CompareCard({ selected, selected2,selected3,selected4 }) {
                     className="mb-0 mt-3"
                     style={{ fontSize: "40px", textAlign: "center" }}
                   >
-                    6.7
                   </p>
                   <p
                     className="mb-0"
                     style={{ fontSize: "15px", textAlign: "center" }}
                   >
-                    Super Retina XDR display ProMotion technology Always-On
-                    display
+                {selected2.screen}
                   </p>
                   <div className=" d-flex justify-content-center">
                     <img
@@ -198,8 +200,7 @@ function CompareCard({ selected, selected2,selected3,selected4 }) {
                     className="mb-0 mt-3"
                     style={{ fontSize: "15px", textAlign: "center" }}
                   >
-                    Up to 29 hours of video playback
-                  </p>
+{selected2.battery}                  </p>
                   <div className=" d-flex justify-content-center">
                     <img
                       src={require("../images/camera.png")}
@@ -213,17 +214,17 @@ function CompareCard({ selected, selected2,selected3,selected4 }) {
                     className="mb-5 mt-3"
                     style={{ fontSize: "15px", textAlign: "center" }}
                   >
-                    Pro camera system 48MP Main | Ultra Wide Telephoto Photonic
-                    Engine for incredible detail and color Autofocus on
-                    TrueDepth front camera
+                                       camera front: {selected2.camera_front}<br/>camera back: {selected2.camera_back}
+
                   </p>
                 </div>
               </div>
             </div>
           </>
         ) : (
-""        )}
- {selected3 && Object.keys(selected3).length > 0 ? (
+          ""
+        )}
+        {selected3 && Object.keys(selected3).length > 0 ? (
           <>
             <div
               className="col-lg-3 col-md-6 col-sm-12 "
@@ -232,25 +233,30 @@ function CompareCard({ selected, selected2,selected3,selected4 }) {
                 flexDirection: "row",
                 alignItems: "center",
               }}
-              key={selected3.id}
+              key={selected3.p_id}
             >
               <div className="d-flex flex-column">
                 <div class="card card_info ms-2">
-                  <img
-                    src={require("../images/watch.png")}
-                    class="card-img-top"
-                    alt="Laptop"
-                  />
+                {Array.isArray(selected3.images) && selected3.images.length > 0 && (
+  <img
+    src={`http://localhost:1010/${selected3.images[0].image_path}`}
+    alt=""
+    style={{height:"340px",width:"335px"}}
+
+    onError={(e) => console.log("Image load error", e)}
+  />
+)}
+
                   <div class="d-flex justify-content-between p-3">
-                    <p class="lead mb-0 card_title">{selected3.title}</p>
+                    <p class="lead mb-0 card_title">{selected3.product_name}</p>
                   </div>
                   <div class="card-body">
                     <div class="d-flex justify-content-between">
                       <p class="small text-danger">{selected3.price}</p>
-                      <p class="small oldPrice">{selected3.oldPrice}</p>
+                      <p class="small oldPrice">{selected3.old_price}</p>
                     </div>
                     <div class="d-flex justify-content-between mb-2">
-                      <p class="mb-0 inStock">{selected3.inStock} </p>
+                      <p class="mb-0 inStock">{selected3.stock} </p>
                     </div>
 
                     <div class="d-flex justify-content-between mb-3">
@@ -285,14 +291,12 @@ function CompareCard({ selected, selected2,selected3,selected4 }) {
                     className="mb-0 mt-3"
                     style={{ fontSize: "40px", textAlign: "center" }}
                   >
-                    6.7
                   </p>
                   <p
                     className="mb-0"
                     style={{ fontSize: "15px", textAlign: "center" }}
                   >
-                    Super Retina XDR display ProMotion technology Always-On
-                    display
+              {selected3.screen}
                   </p>
                   <div className=" d-flex justify-content-center">
                     <img
@@ -307,8 +311,7 @@ function CompareCard({ selected, selected2,selected3,selected4 }) {
                     className="mb-0 mt-3"
                     style={{ fontSize: "15px", textAlign: "center" }}
                   >
-                    Up to 29 hours of video playback
-                  </p>
+{selected3.battery}                  </p>
                   <div className=" d-flex justify-content-center">
                     <img
                       src={require("../images/camera.png")}
@@ -322,17 +325,17 @@ function CompareCard({ selected, selected2,selected3,selected4 }) {
                     className="mb-5 mt-3"
                     style={{ fontSize: "15px", textAlign: "center" }}
                   >
-                    Pro camera system 48MP Main | Ultra Wide Telephoto Photonic
-                    Engine for incredible detail and color Autofocus on
-                    TrueDepth front camera
+                                  camera front: {selected3.camera_front}<br/>camera back: {selected3.camera_back}
+
                   </p>
                 </div>
               </div>
             </div>
           </>
         ) : (
-""        )}
- {selected4 && Object.keys(selected4).length > 0 ? (
+          ""
+        )}
+        {selected4 && Object.keys(selected4).length > 0 ? (
           <>
             <div
               className="col-lg-3 col-md-6 col-sm-12 "
@@ -341,25 +344,30 @@ function CompareCard({ selected, selected2,selected3,selected4 }) {
                 flexDirection: "row",
                 alignItems: "center",
               }}
-              key={selected4.id}
+              key={selected4.p_id}
             >
               <div className="d-flex flex-column">
                 <div class="card card_info ms-2">
-                  <img
-                    src={require("../images/watch.png")}
-                    class="card-img-top"
-                    alt="Laptop"
-                  />
+                {Array.isArray(selected4.images) && selected4.images.length > 0 && (
+  <img
+    src={`http://localhost:1010/${selected4.images[0].image_path}`}
+    alt=""
+    style={{height:"340px",width:"335px"}}
+
+    onError={(e) => console.log("Image load error", e)}
+  />
+)}
+
                   <div class="d-flex justify-content-between p-3">
-                    <p class="lead mb-0 card_title">{selected4.title}</p>
+                    <p class="lead mb-0 card_title">{selected4.product_name}</p>
                   </div>
                   <div class="card-body">
                     <div class="d-flex justify-content-between">
                       <p class="small text-danger">{selected4.price}</p>
-                      <p class="small oldPrice">{selected4.oldPrice}</p>
+                      <p class="small oldPrice">{selected4.old_price}</p>
                     </div>
                     <div class="d-flex justify-content-between mb-2">
-                      <p class="mb-0 inStock">{selected4.inStock} </p>
+                      <p class="mb-0 inStock">{selected4.stock} </p>
                     </div>
 
                     <div class="d-flex justify-content-between mb-3">
@@ -394,14 +402,12 @@ function CompareCard({ selected, selected2,selected3,selected4 }) {
                     className="mb-0 mt-3"
                     style={{ fontSize: "40px", textAlign: "center" }}
                   >
-                    6.7
                   </p>
                   <p
                     className="mb-0"
                     style={{ fontSize: "15px", textAlign: "center" }}
                   >
-                    Super Retina XDR display ProMotion technology Always-On
-                    display
+                 {selected4.screen}
                   </p>
                   <div className=" d-flex justify-content-center">
                     <img
@@ -416,8 +422,7 @@ function CompareCard({ selected, selected2,selected3,selected4 }) {
                     className="mb-0 mt-3"
                     style={{ fontSize: "15px", textAlign: "center" }}
                   >
-                    Up to 29 hours of video playback
-                  </p>
+{selected4.battery}                  </p>
                   <div className=" d-flex justify-content-center">
                     <img
                       src={require("../images/camera.png")}
@@ -431,16 +436,15 @@ function CompareCard({ selected, selected2,selected3,selected4 }) {
                     className="mb-5 mt-3"
                     style={{ fontSize: "15px", textAlign: "center" }}
                   >
-                    Pro camera system 48MP Main | Ultra Wide Telephoto Photonic
-                    Engine for incredible detail and color Autofocus on
-                    TrueDepth front camera
+                   camera front: {selected4.camera_front}<br/>camera back: {selected4.camera_back}
                   </p>
                 </div>
               </div>
             </div>
           </>
         ) : (
-""        )}
+          ""
+        )}
       </div>
     </div>
   );

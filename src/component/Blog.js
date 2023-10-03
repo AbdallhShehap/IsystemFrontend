@@ -9,7 +9,7 @@ function Blog() {
   const [slider, setSlider] = useState(null);
   // const [cardsData, setCardsData] = useState(CardsData);
   const [blogData, setBlogData] = useState([]);
-  const [searchFlag,setSearchFlag]=useState(false)
+  const [searchFlag, setSearchFlag] = useState(false);
   const settings = {
     dots: true,
     infinite: false,
@@ -52,29 +52,27 @@ function Blog() {
 
   // Initialize the slider reference once the component has mounted
   useEffect(() => {
-    window.scrollTo(0,0)
+    window.scrollTo(0, 0);
     if (slider) {
     }
   }, [slider]);
 
-  useEffect(()=>{
-    axios.get('https://monkfish-app-wyvrc.ondigitalocean.app/blog/data')
-    .then((res)=>{
-      const dataWithImages = res.data.map(data => ({
-        ...data,
-        image_blog: `data:image/jpeg;base64,${data.image_base64}`
-      }));
-      
-      console.log("Data with images:", dataWithImages);
-      setBlogData(dataWithImages)
-      console.log("Data with images:", dataWithImages);
-    })
-    .catch((err)=>{
-      console.log(err)
-    })
-  },[])
-  console.log("Blog Data:", blogData);
+  useEffect(() => {
+    axios
+      .get("http://localhost:1010/blog/data")
+      .then((res) => {
+        const dataWithImages = res.data;
+        console.log("img", res.data.image_blog);
 
+        console.log("Data with images:", dataWithImages);
+        setBlogData(dataWithImages);
+        console.log("Data with images:", dataWithImages);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+  console.log("Blog Data:", blogData);
 
   const [searchField, setSearchField] = useState("");
 
@@ -83,7 +81,6 @@ function Blog() {
     setSearchField(e.target.value);
     console.log("Search Field:", e.target.value);
   };
-  
 
   const [filteredBlogData, setFilteredBlogData] = useState([]);
 
@@ -100,114 +97,58 @@ function Blog() {
     }
   }, [searchField, blogData]);
 
-  
   return (
     <>
-    <div className="w-100 overflow-x-hidden overflow-y-hidden">
-
-    <div className="blog_container">
-
-      <Image
-        src={require("../images/blogBackground.png")}
-        width={"100%"}
-      />
-    </div>
-      <div className="container">
-        <div className="row">
-          <h3 className="mt-5 mb-4" >Our Blog</h3>
-          <form>
-            <div className="input-group  ms-4">
-              <input
-                type="text"
-                className="form-control search_blog  "
-                placeholder="Search Blog"
-                aria-describedby="basic-addon1"
-                value={searchField}
-                onChange={handleChange}
-              />
-            </div>
-          </form>
+      <div className="w-100 overflow-x-hidden overflow-y-hidden">
+        <div className="blog_container">
+          <Image src={require("../images/blogBackground.png")} width={"100%"} />
         </div>
-        <div className="row">
-          <div class="card-slider">
-            <div className="row">
-
-            {searchField && searchFlag ? (
-  <Slider {...settings} ref={(slider) => setSlider(slider)}>
-
-    {filteredBlogData.map((data) => (
-      <div key={data.id_blogs}>
-        <div class="col-lg-12 col-md-12 m-1">
+        <div className="container">
           <div className="row">
-            <div
-              className="card mx-auto"
-              style={{
-                width: "25rem",
-                border: "none",
-                textAlign: "left",
-              }}
-              key={data.id_blogs}
-            >
-            <img src={data.image_blog} className="card-img-top" alt={data.title} />
-
-              <div className="card-body">
-                <p className="card-text">{data.title}</p>
-                <small
-                  className="card-title blog_title"
-                  style={{ color: "#BEBEBE" }}
-                >
-                  {data.date}
-                </small>
-                <br></br>
-                <Link
-                  to={`blogdetails/${data.id_blogs}`}
-                  href="#"
-                  className="btn btn-primary"
-                  style={{
-                    backgroundColor: "#27579A",
-                    border: "none",
-                    marginTop: "2%",
-                  }}
-                >
-                  Read More{" "}
-                </Link>
+            <h3 className="mt-5 mb-4">Our Blog</h3>
+            <form>
+              <div className="input-group  ms-4">
+                <input
+                  type="text"
+                  className="form-control search_blog  "
+                  placeholder="Search Blog"
+                  aria-describedby="basic-addon1"
+                  value={searchField}
+                  onChange={handleChange}
+                />
               </div>
-            </div>
+            </form>
           </div>
-        </div>
-      </div>
-    ))}
-  </Slider>
-) : (
-  <Slider {...settings} ref={(slider) => setSlider(slider)}>
-                  {filteredBlogData
-                    .reduce((rows, item, index) => {
-                      if (index % 2 === 0) rows.push([]);
-                      rows[rows.length - 1].push(item);
-                      return rows;
-                    }, [])
-                    .map((row, rowIndex) => (
-                      <div className="row" key={rowIndex}>
-                        {row.map((data) => (
-                          <div key={data.id_blogs} className="col-lg-12 col-md-12 m-1">
-                                             <div className='row'>
-  
+          <div className="row">
+            <div class="card-slider">
+              <div className="row">
+                {searchField && searchFlag ? (
+                  <Slider {...settings} ref={(slider) => setSlider(slider)}>
+                    {filteredBlogData.map((data) => (
+                      <div key={data.id_blogs}>
+                        <div class="col-lg-12 col-md-12 m-1">
+                          <div className="row">
                             <div
                               className="card mx-auto"
                               style={{
                                 width: "25rem",
                                 border: "none",
                                 textAlign: "left",
-                                height:"25rem"
                               }}
                               key={data.id_blogs}
                             >
-                            <img src={data.image_blog} className="card-img-top" alt={data.title} />
+                              <img
+                                src={`http://localhost:1010/${data.image_blog}`}
+                                alt="blog"
+                                onError={(e) =>
+                                  console.log("Image load error", e)
+                                }
+                              />
 
                               <div className="card-body">
-                                <p className="card-text blog_title">{data.title}</p>
+                                <p className="card-text">{data.title}</p>
                                 <small
-                                  className="card-title"
+                                  className="card-title blog_title"
                                   style={{ color: "#BEBEBE" }}
                                 >
                                   {data.date}
@@ -227,49 +168,107 @@ function Blog() {
                                 </Link>
                               </div>
                             </div>
-                            </div>
                           </div>
-                        ))}
+                        </div>
                       </div>
                     ))}
-                </Slider>)}
+                  </Slider>
+                ) : (
+                  <Slider {...settings} ref={(slider) => setSlider(slider)}>
+                    {filteredBlogData
+                      .reduce((rows, item, index) => {
+                        if (index % 2 === 0) rows.push([]);
+                        rows[rows.length - 1].push(item);
+                        return rows;
+                      }, [])
+                      .map((row, rowIndex) => (
+                        <div className="row" key={rowIndex}>
+                          {row.map((data) => (
+                            <div
+                              key={data.id_blogs}
+                              className="col-lg-12 col-md-12 m-1"
+                            >
+                              <div className="row">
+                                <div
+                                  className="card mx-auto"
+                                  style={{
+                                    width: "25rem",
+                                    border: "none",
+                                    textAlign: "left",
+                                    height: "25rem",
+                                  }}
+                                  key={data.id_blogs}
+                                >
+                                  <img
+                                    src={`http://localhost:1010/${data.image_blog}`}
+                                    alt="blog"
+                                    style={{width:"300px",height:"150px"}}
 
- 
-            
-            </div>
+                                    onError={(e) =>
+                                      console.log("Image load error", e)
+                                    }
+                                  />
 
-            {/* </div> */}
-            <div
-              className="col-md-12 col-sm-12 col_btn_prevNext"
-              style={{ marginTop: "10px" }}
-            >
-              <button
-                onClick={goToPrevSlide}
-                className="btn btn-primary mb-3  slider_home custom_btn_margin1"
+                                  <div className="card-body">
+                                    <p className="card-text blog_title">
+                                      {data.title}
+                                    </p>
+                                    <small
+                                      className="card-title"
+                                      style={{ color: "#BEBEBE" }}
+                                    >
+                                      {data.date}
+                                    </small>
+                                    <br></br>
+                                    <Link
+                                      to={`blogdetails/${data.id_blogs}`}
+                                      href="#"
+                                      className="btn btn-primary"
+                                      style={{
+                                        backgroundColor: "#27579A",
+                                        border: "none",
+                                        marginTop: "2%",
+                                      }}
+                                    >
+                                      Read More{" "}
+                                    </Link>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      ))}
+                  </Slider>
+                )}
+              </div>
+
+              {/* </div> */}
+              <div
+                className="col-md-12 col-sm-12 col_btn_prevNext"
+                style={{ marginTop: "10px" }}
               >
-                {" "}
-                <i className="fa fa-arrow-left" style={{ color: "#fff" }}></i>
-              </button>
-              <button
-                onClick={goToNextSlide}
-                className="btn btn-primary mb-3 slider_home custom_btn_margin2"
-              >
-                {" "}
-                <i className="fa fa-arrow-right"></i>
-              </button>
+                <button
+                  onClick={goToPrevSlide}
+                  className="btn btn-primary mb-3  slider_home custom_btn_margin1"
+                >
+                  {" "}
+                  <i className="fa fa-arrow-left" style={{ color: "#fff" }}></i>
+                </button>
+                <button
+                  onClick={goToNextSlide}
+                  className="btn btn-primary mb-3 slider_home custom_btn_margin2"
+                >
+                  {" "}
+                  <i className="fa fa-arrow-right"></i>
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
       </div>
     </>
   );
 }
 
 export default Blog;
-
-
-
-
-
-

@@ -10,15 +10,33 @@ function BlogDetails() {
   const { id } = useParams();
   const [selectedBlog, setSelectedBlog] = useState([]);
   let [blog, setBlog] = useState([]);
-  const [searchFlag,setSearchFlag]=useState(false)
+  const [searchFlag, setSearchFlag] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
   useEffect(() => {
     axios
-      .get(`https://monkfish-app-wyvrc.ondigitalocean.app/blog/data`)
+      .get(`http://localhost:1010/blog/data/${id}`)
+      .then((res) => {
+        console.log("API Response:", res.data);
+
+        // const dataWithImages = [res.data].map((data) => ({
+        //   ...data,
+        //   image_blog: `data:image/jpeg;base64,${data.image_base64}`,
+        // }));
+
+        // console.log("Data with images:", dataWithImages);
+        console.log("details", details);
+        setDetails(res.data);
+      })
+      .catch((err) => {
+        console.log("API Error:", err);
+      });
+  }, [id]);
+  useEffect(() => {
+    axios
+      .get(`http://localhost:1010/blog/data`)
       .then((res) => {
         console.log("API Response:", res.data);
 
@@ -29,67 +47,49 @@ function BlogDetails() {
 
         // console.log("Data with images:", dataWithImages);
         setBlog(res.data);
-        
-        console.log("blog",blog)
+
+        console.log("blog", blog);
       })
       .catch((err) => {
         console.log("API Error:", err);
       });
   }, []);
 
-useEffect(() => {
-  axios
-    .get(`https://monkfish-app-wyvrc.ondigitalocean.app/blog/data/${id}`)
-    .then((res) => {
-      console.log("API Response:", res.data);
-      
-          // const dataWithImages = [res.data].map((data) => ({
-        //   ...data,
-        //   image_blog: `data:image/jpeg;base64,${data.image_base64}`,
-        // }));
-
-        // console.log("Data with images:", dataWithImages);
-      setDetails(res.data);
-    })
-    .catch((err) => {
-      console.log("API Error:", err);
-    });
-}, [id]);
-
-useEffect(() => {
-  // Move the code that depends on the "details" state here
-  console.log("details", details);
-
-  if (details.length > 0) {
-    const foundBlog = details.find((blog) => blog.id_blogs == id);
-    setSelectedBlog(foundBlog);
-    console.log("selectedBlog", selectedBlog);
-  }
-}, [details, id]);
-
-const [searchField, setSearchField] = useState("");
-
-const handleChange = (e) => {
-  setSearchFlag(true);
-  setSearchField(e.target.value);
-  console.log("Search Field:", e.target.value);
-};
 
 
-const [filteredBlogData, setFilteredBlogData] = useState([]);
+  useEffect(() => {
+    // Move the code that depends on the "details" state here
+    console.log("details", details);
 
-// Update the filtered data whenever the searchField changes
-useEffect(() => {
-  if (searchField) {
-    const filteredData = blog.filter((data) =>
-      data.title.toLowerCase().includes(searchField.toLowerCase())
-    );
-    setFilteredBlogData(filteredData);
-  } else {
-    // If the search input is empty, show all data
-    setFilteredBlogData(blog);
-  }
-}, [searchField, blog]);
+    if (details.length > 0) {
+      const foundBlog = details.find((blog) => blog.id_blogs == id);
+      setSelectedBlog(foundBlog);
+      console.log("selectedBlog", selectedBlog);
+    }
+  }, [details, id]);
+
+  const [searchField, setSearchField] = useState("");
+
+  const handleChange = (e) => {
+    setSearchFlag(true);
+    setSearchField(e.target.value);
+    console.log("Search Field:", e.target.value);
+  };
+
+  const [filteredBlogData, setFilteredBlogData] = useState([]);
+
+  // Update the filtered data whenever the searchField changes
+  useEffect(() => {
+    if (searchField) {
+      const filteredData = blog.filter((data) =>
+        data.title.toLowerCase().includes(searchField.toLowerCase())
+      );
+      setFilteredBlogData(filteredData);
+    } else {
+      // If the search input is empty, show all data
+      setFilteredBlogData(blog);
+    }
+  }, [searchField, blog]);
 
   return (
     <div class="container">
@@ -106,8 +106,8 @@ useEffect(() => {
         </div>
         {/* <p>{id}</p> */}
       </form>
-      { searchField && searchFlag  ? (
-          filteredBlogData.map((data) => (
+      {searchField && searchFlag
+        ? filteredBlogData.map((data) => (
             <div key={data.id_blogs}>
               <div class="col-lg-12 col-md-12 m-1">
                 <div className="row">
@@ -120,8 +120,13 @@ useEffect(() => {
                     }}
                     key={data.id_blogs}
                   >
-                  <img src={data.image_blog} className="card-img-top" alt={data.title} />
-      
+                    <img
+                      src={`http://localhost:1010/${data.image_blog}`}
+                      alt="blog"
+                      onError={(e) => console.log("Image load error", e)}
+                      style={{width:"300px",height:"150px"}}
+
+                    />
                     <div className="card-body">
                       <p className="card-text">{data.title}</p>
                       <small
@@ -149,31 +154,28 @@ useEffect(() => {
               </div>
             </div>
           ))
-          ) : (
-  
-      selectedBlog && (
-
-      <div className="square mt-5">
-        
-        <div>
-          <Image
-            src={require("../images/appleEvents.png")}
-            //  src={selectedBlog.image_base64}
-            fluid
-            style={{
-              float: "left",
-              margin: "2px",
-              paddingRight: "13px",
-              height: "300px",
-              width: "550px",
-              borderRadius: "50px",
-            }}
-          />
-        </div>
-        <h3 className="title">{selectedBlog.title} </h3>
-        <p className="paragraph"> {selectedBlog.details}</p>
-      </div>
-     ))}
+        : details && (
+            <div className="square mt-5">
+              <div>
+              <img
+                                src={`http://localhost:1010/${details.image_blog}`}
+                                alt="blog"
+                                onError={(e) =>
+                                  console.log("Image load error", e)
+                                }
+                                style={{
+                                  float: "left",
+                                  margin: "2px",
+                                  paddingRight: "13px",
+                                  height: "300px",
+                                  width: "550px",
+                                  borderRadius: "50px"}}
+                              />
+              </div>
+              <h3 className="title">{details.title} </h3>
+              <p className="paragraph"> {details.details}</p>
+            </div>
+          )}
 
       <div className="row also_blog">
         <div className="col">
@@ -189,9 +191,11 @@ useEffect(() => {
               key={data.id_blogs}
             >
               <img
-                src={data.image_base64}
-                className="card-img-top blog_img"
-                alt={data.title}
+                src={`http://localhost:1010/${data.image_blog}`}
+                alt="blog"
+                style={{width:"300px",height:"150px"}}
+
+                onError={(e) => console.log("Image load error", e)}
               />
               <div className="card-body">
                 <p className="card-text blog_title">{data.title}</p>
@@ -221,4 +225,3 @@ useEffect(() => {
 }
 
 export default BlogDetails;
-
